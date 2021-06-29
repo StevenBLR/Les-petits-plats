@@ -1,0 +1,35 @@
+header{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    align-items: center;
+}
+
+.page-wrapper{
+    margin: 20px 60px;
+}
+.filters{
+    position: relative;
+}
+
+.filter__send-bt{
+    position: absolute;
+}
+
+button.filters__send-bt {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 35px;
+    border: none;
+    background-color: unset;
+}
+
+input.filters__search-bar {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #E7E7E7;
+}
