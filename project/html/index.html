@@ -14,19 +14,23 @@
         <img src="../imgs/toque.svg" class="header__logo">
         <h1 class="header__title">Les petits plats</h1>
       </header>
-      <main>
-        <form class="filters">
-          <input type="text" class="filters__search-bar" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
-          <button type="submit" class="filters__send-bt">
-              <i class="fas fa-search"></i>
-          </button>
+      <div class="filters">
+        <form>
+          <div class="filters__search-bar-wrapper">
+            <input type="text" class="filters__search-bar" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+            <button type="submit" class="filters__send-bt">
+                <i class="fas fa-search"></i>
+            </button>
+          </div>
         </form>
-
+        
         <nav class="filters__tags">
           <div>
             <span class="filters__tag">Test</span>
           </div>
         </nav>
+      </div>
+      <main>
         <div class="card" style="width: 18rem;">
           <img src="..." class="card-img-top" alt="...">
           <div class="card-body">

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "sass --watch ./project/sass/main.scss:./project/css/style.css"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/StevenBLR/OC_06_AlgosDeRecherche/issues"
   },
-  "homepage": "https://github.com/StevenBLR/OC_06_AlgosDeRecherche#readme"
+  "homepage": "https://github.com/StevenBLR/OC_06_AlgosDeRecherche#readme",
+  "dependencies": {}
 }

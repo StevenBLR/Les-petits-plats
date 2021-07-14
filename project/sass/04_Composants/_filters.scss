@@ -1,0 +1,48 @@
+/* FILTERS --------------------------- */
+$search-bar-height : 55px;
+
+.filters{
+    position: relative;
+    &__send-bt{
+        position: absolute;
+        font-size: 20px;
+    }
+    &__send-bt {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: $search-bar-height;
+        border: none;
+        background-color: unset;
+    }
+    &__search-bar {
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px $search-bar-height 10px 15px;
+        border: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: #E7E7E7;
+    }
+    &__search-bar-wrapper{
+        height: $search-bar-height;
+        position: relative;
+    }
+    &__tag {
+        border-radius: 3px;
+        padding: 3px 30px 3px 10px;
+        color: white;
+        background-color: #3282F7;
+    }
+    &__tags {
+        margin-top: 15px;
+    }
+}
+
+
+
+
+
+
+
