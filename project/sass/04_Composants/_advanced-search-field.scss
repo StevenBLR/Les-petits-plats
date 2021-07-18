@@ -1,0 +1,32 @@
+@mixin advanced-sf($color){
+    width: 180px;
+    border-radius: 10px;
+    margin-right: 20px;
+    background-color: $color;
+    
+    &__text-input{
+        border: none;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+        font-weight: 600;
+        color: white;
+        background-color: transparent;
+    }
+
+    ::placeholder{
+        color: white;
+    }
+}
+
+
+.advanced-search-field{
+    @include advanced-sf($blue);
+    &--green{
+        @include advanced-sf($green);
+    }
+    &--orange{
+        @include advanced-sf($orange);
+    }
+    
+}

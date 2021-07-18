@@ -77,23 +77,83 @@ header .header__logo {
   width: 40px;
 }
 
+.advanced-search-field {
+  width: 180px;
+  border-radius: 10px;
+  margin-right: 20px;
+  background-color: #3282F7;
+}
+.advanced-search-field__text-input {
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  font-weight: 600;
+  color: white;
+  background-color: transparent;
+}
+.advanced-search-field ::placeholder {
+  color: white;
+}
+.advanced-search-field--green {
+  width: 180px;
+  border-radius: 10px;
+  margin-right: 20px;
+  background-color: #68D9A4;
+}
+.advanced-search-field--green__text-input {
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  font-weight: 600;
+  color: white;
+  background-color: transparent;
+}
+.advanced-search-field--green ::placeholder {
+  color: white;
+}
+.advanced-search-field--orange {
+  width: 180px;
+  border-radius: 10px;
+  margin-right: 20px;
+  background-color: #ED6454;
+}
+.advanced-search-field--orange__text-input {
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  font-weight: 600;
+  color: white;
+  background-color: transparent;
+}
+.advanced-search-field--orange ::placeholder {
+  color: white;
+}
+
+.recipes {
+  display: flex;
+}
+
 /* FILTERS --------------------------- */
 .filters {
   position: relative;
 }
-.filters__send-bt {
+.filters__search-bar-wrapper {
+  height: 55px;
+  position: relative;
+}
+.filters__search-bar-wrapper .filters__send-bt {
   position: absolute;
   font-size: 20px;
-}
-.filters__send-bt {
-  position: absolute;
   right: 0;
   height: 100%;
   width: 55px;
   border: none;
   background-color: unset;
 }
-.filters__search-bar {
+.filters__search-bar-wrapper .filters__search-bar {
   height: 100%;
   width: 100%;
   border-radius: 5px;
@@ -103,18 +163,29 @@ header .header__logo {
   text-overflow: ellipsis;
   background-color: #E7E7E7;
 }
-.filters__search-bar-wrapper {
-  height: 55px;
-  position: relative;
+.filters__tags {
+  margin-block: 15px;
 }
-.filters__tag {
-  border-radius: 3px;
-  padding: 3px 30px 3px 10px;
+.filters__tags .filters__tag {
+  font-size: 14px;
+  border-radius: 7px;
+  padding: 10px 3px 10px 10px;
+  margin: 7px 7px 0 0;
   color: white;
   background-color: #3282F7;
 }
-.filters__tags {
-  margin-top: 15px;
+.filters__tags button {
+  border: none;
+  color: white;
+  background-color: transparent;
+}
+.filters__tags button i {
+  font-size: 14px;
+}
+.filters__advanced-search {
+  display: flex;
+  height: 70px;
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

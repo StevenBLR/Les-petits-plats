@@ -25,14 +25,30 @@
         </form>
         
         <nav class="filters__tags">
-          <div>
-            <span class="filters__tag">Test</span>
-          </div>
+            <span class="filters__tag">Element 01
+              <button id=""><i class="far fa-times-circle"></i></button>
+            </span>
+            <span class="filters__tag">Element 02
+              <button id=""><i class="far fa-times-circle"></i></button>
+            </span>
         </nav>
+
+        <div class="filters__advanced-search">
+          <div class="advanced-search-field">
+            <input type="text" placeholder="Ingrédients" class="advanced-search-field__text-input">
+          </div>
+          <div class="advanced-search-field--green">
+            <input type="text" placeholder="Appareils" class="advanced-search-field__text-input">
+          </div>
+          <div class="advanced-search-field--orange">
+            <input type="text" placeholder="Ustensiles" class="advanced-search-field__text-input">
+          </div>
+        </div>
       </div>
-      <main>
+
+      <main class="recipes">
         <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+          <img src="../imgs/sample_img.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
