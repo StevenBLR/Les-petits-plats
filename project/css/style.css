@@ -78,6 +78,7 @@ header .header__logo {
 }
 
 .advanced-search-field {
+  position: relative;
   width: 180px;
   border-radius: 10px;
   margin-right: 20px;
@@ -94,8 +95,16 @@ header .header__logo {
 }
 .advanced-search-field ::placeholder {
   color: white;
+  opacity: 0.9;
+}
+.advanced-search-field i {
+  position: absolute;
+  right: 15px;
+  top: 27px;
+  color: white;
 }
 .advanced-search-field--green {
+  position: relative;
   width: 180px;
   border-radius: 10px;
   margin-right: 20px;
@@ -112,8 +121,16 @@ header .header__logo {
 }
 .advanced-search-field--green ::placeholder {
   color: white;
+  opacity: 0.9;
+}
+.advanced-search-field--green i {
+  position: absolute;
+  right: 15px;
+  top: 27px;
+  color: white;
 }
 .advanced-search-field--orange {
+  position: relative;
   width: 180px;
   border-radius: 10px;
   margin-right: 20px;
@@ -129,6 +146,13 @@ header .header__logo {
   background-color: transparent;
 }
 .advanced-search-field--orange ::placeholder {
+  color: white;
+  opacity: 0.9;
+}
+.advanced-search-field--orange i {
+  position: absolute;
+  right: 15px;
+  top: 27px;
   color: white;
 }
 

@@ -1,4 +1,5 @@
 @mixin advanced-sf($color){
+    position: relative;
     width: 180px;
     border-radius: 10px;
     margin-right: 20px;
@@ -15,6 +16,14 @@
     }
 
     ::placeholder{
+        color: white;
+        opacity: 0.9;
+    }
+
+    i{
+        position: absolute;
+        right: 15px;
+        top: 27px;
         color: white;
     }
 }
