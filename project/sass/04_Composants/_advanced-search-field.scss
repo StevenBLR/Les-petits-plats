@@ -1,13 +1,16 @@
+$asf-max-height : 100px;
+
 @mixin advanced-sf($color){
     position: relative;
-    width: 180px;
+    width: max-content;
+    height: max-content;
     border-radius: 10px;
-    margin-right: 20px;
+    margin: 0 20px 20px 0;
     background-color: $color;
     
     &__text-input{
         border: none;
-        height: 100%;
+        height: 70px;
         width: 100%;
         padding: 20px;
         font-weight: 600;
@@ -26,8 +29,40 @@
         top: 27px;
         color: white;
     }
-}
 
+    .advanced-search-field__tags{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: 150px;
+        margin-inline: 20px;
+        margin-bottom: 20px;
+
+        button{
+            border: none;
+            margin-right: 15px;
+            background-color: transparent;
+            color: white;
+        }
+    }
+    // Advanced search list
+    // ul{
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     max-height: $asf-max-height;
+    //     flex-direction: column;
+    //     padding: unset;
+    // }
+    // li{
+    //     margin-inline: 20px;
+    //     button{
+    //         border: none;
+    //         margin-right: 15px;
+    //         background-color: transparent;
+    //         color: white;
+    //     }
+    // }
+}
 
 .advanced-search-field{
     @include advanced-sf($blue);

@@ -54,7 +54,7 @@ $tag-font-size : 14px;
     // Advanced search
     &__advanced-search{
         display: flex;
-        height: 70px;
+        flex-wrap: wrap;
         margin-bottom: 10px;
     }
 }
