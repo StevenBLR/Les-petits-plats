@@ -210,6 +210,16 @@ header .header__logo {
 .recipes {
   display: flex;
 }
+.recipes__time-label {
+  position: absolute;
+  font-weight: 600;
+  font-size: 17px;
+  right: 17px;
+  top: 17px;
+}
+.recipes .card-body {
+  position: relative;
+}
 
 /* FILTERS --------------------------- */
 .filters {

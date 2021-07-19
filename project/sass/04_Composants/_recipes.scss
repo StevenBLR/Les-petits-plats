@@ -1,3 +1,15 @@
 .recipes{
     display: flex;
+
+    &__time-label{
+        position: absolute;
+        font-weight: 600;
+        font-size: 17px;
+        right: 17px;
+        top: 17px;
+    }
+
+    .card-body{
+        position: relative;
+    }
 }
