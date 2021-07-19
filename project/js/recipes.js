@@ -1723,3 +1723,55 @@ const recipes = [
     }
 ]
 
+var ingredients = [];
+var appareils = [];
+var ustensils = [];
+
+function Init(){
+    GetAllIngredients();
+    GetAllAppareils();
+    GetAllUstencils();
+}
+
+//[TODO] Gerer les différences d'accents 
+function GetAllIngredients(){
+    tmp = [];
+    recipes.forEach(r => {
+        r.ingredients.forEach(i => {
+            if(!tmp.includes(i.ingredient.toUpperCase())){
+                tmp.push(i.ingredient.toUpperCase());
+                ingredients.push(i.ingredient);
+                //console.log(i.ingredient)
+            }
+        });
+    });
+    console.log(ingredients);
+}
+
+//[TODO] Supprimer les caractères spéciaux
+function GetAllAppareils(){
+    tmp = [];
+    recipes.forEach(r => {
+        if (!tmp.includes(r.appliance.toUpperCase())){
+            tmp.push(r.appliance.toUpperCase());
+            appareils.push(r.appliance);
+            //console.log(r.appliance);
+        }
+    });
+    console.log(appareils);
+}
+
+function GetAllUstencils(){
+    tmp = [];
+    recipes.forEach(r => {
+        r.ustensils.forEach(u =>{
+            if(!tmp.includes(u.toUpperCase())){
+                tmp.push(u.toUpperCase());
+                ustensils.push(u);
+            }
+        })
+    })
+    console.log(ustensils);
+}
+
+Init();

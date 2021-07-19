@@ -30,14 +30,16 @@ $asf-max-height : 100px;
         color: white;
     }
 
-    .advanced-search-field__tags{
+    // Advanced search list
+    ul{
         display: flex;
-        flex-direction: column;
         flex-wrap: wrap;
-        max-height: 150px;
+        max-height: $asf-max-height;
+        flex-direction: column;
+        padding: unset;
+    }
+    li{
         margin-inline: 20px;
-        margin-bottom: 20px;
-
         button{
             border: none;
             margin-right: 15px;
@@ -45,23 +47,6 @@ $asf-max-height : 100px;
             color: white;
         }
     }
-    // Advanced search list
-    // ul{
-    //     display: flex;
-    //     flex-wrap: wrap;
-    //     max-height: $asf-max-height;
-    //     flex-direction: column;
-    //     padding: unset;
-    // }
-    // li{
-    //     margin-inline: 20px;
-    //     button{
-    //         border: none;
-    //         margin-right: 15px;
-    //         background-color: transparent;
-    //         color: white;
-    //     }
-    // }
 }
 
 .advanced-search-field{
