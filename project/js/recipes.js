@@ -1761,6 +1761,7 @@ function GetAllAppareils(){
     console.log(appareils);
 }
 
+//[TODO] Uniformiser les entrées (Premier caractere majuscule)
 function GetAllUstencils(){
     tmp = [];
     recipes.forEach(r => {
