@@ -1,0 +1,7 @@
+$body-max-width: 1250px;
+
+@media (min-width: $body-max-width){
+    body .page-wrapper{
+        margin: 20px auto auto auto;
+    }
+}

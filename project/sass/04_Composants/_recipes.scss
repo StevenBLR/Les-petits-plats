@@ -1,5 +1,23 @@
 .recipes{
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-inline: -20px;
+    .recipes__img{
+        height: 170px;
+        object-fit: cover;
+    }
+
+    .recipes__card{
+        width: 33%;
+        max-width: 400px;
+        min-width: 300px;
+        max-height: 364px;
+        margin: 20px;
+    }
+    .card-body{
+        position: relative;
+    }
 
     &__time-label{
         position: absolute;
@@ -9,7 +27,16 @@
         top: 17px;
     }
 
-    .card-body{
-        position: relative;
+    &__content{
+        display: flex;
+        font-size: small;
+        .recipes__ingredients{
+            flex-shrink: 0;
+            margin-right: 20px;
+            p{
+                margin-bottom: unset;
+            }
+        }
     }
+    
 }

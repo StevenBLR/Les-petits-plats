@@ -6,10 +6,13 @@ var ingredientsRootElt = document.querySelector(".advanced-search-field ul");
 var appareilsRootElt = document.querySelector(".advanced-search-field--green ul");
 var ustencilsRootElt = document.querySelector(".advanced-search-field--orange ul");
 
+var recipesRootElt = document.querySelector(".recipes");
+
 function Init(){
     PopulateIngredients();
     PopulateAppareils();
     PopulateUstencils();
+    PopulateRecipeFeed();
     InitEvents();
 }
 
@@ -40,6 +43,35 @@ function PopulateUstencils(){
     ustencilsRootElt.innerHTML = "";
     ustensils.forEach(u =>{
         ustencilsRootElt.innerHTML += `<li><button type="button">${u}</button></li>`; 
+    })
+}
+
+function PopulateRecipeFeed(){
+    recipesRootElt.innerHTML = "";
+    recipes.forEach(r => {
+        recipesRootElt.innerHTML += 
+        `<div class="card recipes__card">
+        <img src="../imgs/sample_img.jpg" class="card-img-top recipes__img" alt="...">
+        <div class="card-body">
+          <h5 class="card-title recipes__title">${r.name}</h5>
+          <div class="recipes__time-label">
+            <i class="far fa-clock"></i>
+            <span class="recipes__time">${r.time} min</span>
+          </div>
+          <div class="recipes__content">
+            <div class="recipes__ingredients">
+            ${r.ingredients.forEach(i =>{
+                str ="";
+                str += `<p><strong>${i.ingredient}:</strong> ${i.quantity} ${i.unit}</p>`;
+            })}
+              <p><strong>Lait de coco:</strong> 400ml</p>
+            </div>
+            <div class="recipes_recipe">
+              <p>${r.description}</p>
+          </div>
+        </div>
+      </div>
+        `
     })
 }
 
