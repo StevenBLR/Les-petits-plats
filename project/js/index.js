@@ -49,6 +49,10 @@ function PopulateUstencils(){
 function PopulateRecipeFeed(){
     recipesRootElt.innerHTML = "";
     recipes.forEach(r => {
+        r.ingredients.forEach(i =>{
+            str ="";
+            str += `<p><strong>${i.ingredient}:</strong> ${i.quantity} ${i.unit=="undefined"?"":i.unit}</p>`;
+        })
         recipesRootElt.innerHTML += 
         `<div class="card recipes__card">
         <img src="../imgs/sample_img.jpg" class="card-img-top recipes__img" alt="...">
@@ -60,13 +64,9 @@ function PopulateRecipeFeed(){
           </div>
           <div class="recipes__content">
             <div class="recipes__ingredients">
-            ${r.ingredients.forEach(i =>{
-                str ="";
-                str += `<p><strong>${i.ingredient}:</strong> ${i.quantity} ${i.unit}</p>`;
-            })}
-              <p><strong>Lait de coco:</strong> 400ml</p>
+            ${str}
             </div>
-            <div class="recipes_recipe">
+            <div class="recipes__recipe">
               <p>${r.description}</p>
           </div>
         </div>

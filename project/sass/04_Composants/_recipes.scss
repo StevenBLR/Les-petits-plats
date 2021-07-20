@@ -10,7 +10,7 @@
 
     .recipes__card{
         width: 33%;
-        max-width: 400px;
+        max-width: 380px;
         min-width: 300px;
         max-height: 364px;
         margin: 20px;
@@ -30,12 +30,17 @@
     &__content{
         display: flex;
         font-size: small;
+        height: 100px;
         .recipes__ingredients{
             flex-shrink: 0;
             margin-right: 20px;
             p{
                 margin-bottom: unset;
             }
+        }
+
+        .recipes__recipe{
+            overflow: auto;
         }
     }
     

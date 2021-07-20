@@ -225,7 +225,7 @@ header .header__logo {
 }
 .recipes .recipes__card {
   width: 33%;
-  max-width: 400px;
+  max-width: 380px;
   min-width: 300px;
   max-height: 364px;
   margin: 20px;
@@ -243,6 +243,7 @@ header .header__logo {
 .recipes__content {
   display: flex;
   font-size: small;
+  height: 100px;
 }
 .recipes__content .recipes__ingredients {
   flex-shrink: 0;
@@ -250,6 +251,9 @@ header .header__logo {
 }
 .recipes__content .recipes__ingredients p {
   margin-bottom: unset;
+}
+.recipes__content .recipes__recipe {
+  overflow: auto;
 }
 
 /* FILTERS --------------------------- */
