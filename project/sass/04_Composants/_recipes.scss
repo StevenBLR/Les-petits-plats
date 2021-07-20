@@ -18,6 +18,9 @@
     .card-body{
         position: relative;
     }
+    &__title{
+        width: calc(80% - 30px);
+    }
 
     &__time-label{
         position: absolute;

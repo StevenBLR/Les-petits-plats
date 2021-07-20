@@ -1,4 +1,4 @@
-const recipes = [
+const recipesJSON = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -1723,6 +1723,7 @@ const recipes = [
     }
 ]
 
+var recipes = [];
 var ingredients = [];
 var appareils = [];
 var ustensils = [];
@@ -1731,12 +1732,20 @@ function Init(){
     GetAllIngredients();
     GetAllAppareils();
     GetAllUstencils();
+    GetAllRecipes();
+}
+
+function GetAllRecipes(){
+    recipesJSON.forEach(r => {
+        recipes.push(r.name);
+    })
+    console.log(recipes);
 }
 
 //[TODO] Gerer les différences d'accents 
 function GetAllIngredients(){
     tmp = [];
-    recipes.forEach(r => {
+    recipesJSON.forEach(r => {
         r.ingredients.forEach(i => {
             if(!tmp.includes(i.ingredient.toUpperCase())){
                 tmp.push(i.ingredient.toUpperCase());
@@ -1751,7 +1760,7 @@ function GetAllIngredients(){
 //[TODO] Supprimer les caractères spéciaux
 function GetAllAppareils(){
     tmp = [];
-    recipes.forEach(r => {
+    recipesJSON.forEach(r => {
         if (!tmp.includes(r.appliance.toUpperCase())){
             tmp.push(r.appliance.toUpperCase());
             appareils.push(r.appliance);
@@ -1764,7 +1773,7 @@ function GetAllAppareils(){
 //[TODO] Uniformiser les entrées (Premier caractere majuscule)
 function GetAllUstencils(){
     tmp = [];
-    recipes.forEach(r => {
+    recipesJSON.forEach(r => {
         r.ustensils.forEach(u =>{
             if(!tmp.includes(u.toUpperCase())){
                 tmp.push(u.toUpperCase());
@@ -1773,6 +1782,25 @@ function GetAllUstencils(){
         })
     })
     console.log(ustensils);
+}
+
+
+
+function GetMatchingElement(input){
+    var everything = [];
+    everything.push(...recipes);
+    everything.push(...ingredients);
+    everything.push(...appareils);
+    everything.push(...ustensils);
+
+    var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
+    return everything.filter(item => {
+      if (item.toString().match(reg)) {
+          console.log(`Input = ${input} / Item = ${item}`);
+        return item;
+      }
+    });
+      
 }
 
 

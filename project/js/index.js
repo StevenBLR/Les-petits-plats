@@ -17,12 +17,13 @@ function Init(){
 }
 
 function InitEvents(){
+    // Text input on main search bar
     mainSearchBar.addEventListener("input", function(e){
        if(mainSearchBar.value.toString().length > 2){
            console.log("Refresh UI");
+           GetMatchingElement(mainSearchBar.value);
        }
     })
-
 }
 
 function PopulateIngredients(){
@@ -46,9 +47,16 @@ function PopulateUstencils(){
     })
 }
 
-function PopulateRecipeFeed(){
+function PopulateRecipeFeed(tagList = [], searchBarInput = ""){
     recipesRootElt.innerHTML = "";
-    recipes.forEach(r => {
+    recipesToDisplay = [];
+    if (tagList.length > 0 || searchBarInput != ""){
+
+    }
+    else{
+
+    }
+    recipesJSON.forEach(r => {
         r.ingredients.forEach(i =>{
             str ="";
             str += `<p><strong>${i.ingredient}:</strong> ${i.quantity} ${i.unit=="undefined"?"":i.unit}</p>`;
@@ -74,5 +82,7 @@ function PopulateRecipeFeed(){
         `
     })
 }
+
+
 
 Init();

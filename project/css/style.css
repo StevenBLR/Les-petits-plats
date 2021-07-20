@@ -233,6 +233,9 @@ header .header__logo {
 .recipes .card-body {
   position: relative;
 }
+.recipes__title {
+  width: calc(80% - 30px);
+}
 .recipes__time-label {
   position: absolute;
   font-weight: 600;
