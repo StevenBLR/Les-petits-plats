@@ -1724,6 +1724,7 @@ const recipesJSON = [
 ]
 
 var recipes = [];
+var descriptions = [];
 var ingredients = [];
 var appareils = [];
 var ustensils = [];
@@ -1733,6 +1734,7 @@ function Init(){
     GetAllAppareils();
     GetAllUstencils();
     GetAllRecipes();
+    GetAllDescriptions();
 }
 
 function GetAllRecipes(){
@@ -1740,6 +1742,13 @@ function GetAllRecipes(){
         recipes.push(r.name);
     })
     console.log(recipes);
+}
+
+function GetAllDescriptions(){
+    recipesJSON.forEach(r => {
+        descriptions.push(r.description);
+    })
+    console.log(descriptions);
 }
 
 //[TODO] Gerer les différences d'accents 
@@ -1788,6 +1797,7 @@ function GetAllUstencils(){
 
 function GetMatchingElement(input){
     var everything = [];
+    // Sythaxe de décomposition - Spread Operator (...)
     everything.push(...recipes);
     everything.push(...ingredients);
     everything.push(...appareils);
