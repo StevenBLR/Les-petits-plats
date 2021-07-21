@@ -32,14 +32,16 @@ $asf-max-height : 100px;
 
     // Advanced search list
     ul{
-        display: flex;
-        flex-wrap: wrap;
         max-height: $asf-max-height;
-        flex-direction: column;
         padding: unset;
+        column-count: 3;
     }
     li{
         margin-inline: 20px;
+        max-width: 150px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         button{
             border: none;
             margin-right: 15px;

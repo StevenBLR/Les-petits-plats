@@ -1738,16 +1738,12 @@ function Init(){
 }
 
 function GetAllRecipes(){
-    recipesJSON.forEach(r => {
-        recipes.push(r.name);
-    })
+    recipesJSON.forEach(r => {recipes.push(r.name);})
     console.log(recipes);
 }
 
 function GetAllDescriptions(){
-    recipesJSON.forEach(r => {
-        descriptions.push(r.description);
-    })
+    recipesJSON.forEach(r => {descriptions.push(r.description);})
     console.log(descriptions);
 }
 
@@ -1759,7 +1755,6 @@ function GetAllIngredients(){
             if(!tmp.includes(i.ingredient.toUpperCase())){
                 tmp.push(i.ingredient.toUpperCase());
                 ingredients.push(i.ingredient);
-                //console.log(i.ingredient)
             }
         });
     });
@@ -1773,7 +1768,6 @@ function GetAllAppareils(){
         if (!tmp.includes(r.appliance.toUpperCase())){
             tmp.push(r.appliance.toUpperCase());
             appareils.push(r.appliance);
-            //console.log(r.appliance);
         }
     });
     console.log(appareils);
@@ -1806,16 +1800,16 @@ function GetMatchingElement(input){
     everything.push(...descriptions);
 
     var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
-    return everything.filter(item => {
+    everything.filter(item => {
       if (item.toString().match(reg)) {
         matchingItems.push(item);
-        console.log(`Input = ${input}`);
-        console.log(matchingItems);
         //console.log(`Input = ${input} / Item = ${item}`);
-        return item;
+        //return item;
       }
     });
       
+    console.log(`Input = ${input}`);
+    console.log(matchingItems);
 }
 
 

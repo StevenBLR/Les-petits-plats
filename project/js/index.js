@@ -1,13 +1,20 @@
 var mainSearchBar = document.querySelector(".filters__search-bar");
 var tagsRootElt = document.querySelector(".filters__tags");
+var recipesRootElt = document.querySelector(".recipes");
 
-// Advanced search fields
+//#region (Elements) Advanced search fields
 var ingredientsRootElt = document.querySelector(".advanced-search-field ul");
 var appareilsRootElt = document.querySelector(".advanced-search-field--green ul");
 var ustencilsRootElt = document.querySelector(".advanced-search-field--orange ul");
 
-var recipesRootElt = document.querySelector(".recipes");
+var ingredientTxtField = document.querySelector(".advanced-search-field .advanced-search-field__text-input")
+var appareilsTxtField = document.querySelector(".advanced-search-field--green .advanced-search-field__text-input");
+var ustencilsTxtField = document.querySelector(".advanced-search-field--orange .advanced-search-field__text-input");
 
+var asfPlaceholders = document.querySelectorAll(".filters__advanced-search::placeholder");
+//#endregion
+
+//#region (Fonctions) Initialization
 function Init(){
     PopulateIngredients();
     PopulateAppareils();
@@ -24,8 +31,22 @@ function InitEvents(){
            GetMatchingElement(mainSearchBar.value);
        }
     })
+    InitAdvancedSearchField(ingredientTxtField);
+    InitAdvancedSearchField(appareilsTxtField);
+    InitAdvancedSearchField(ustencilsTxtField);
 }
 
+function InitAdvancedSearchField(elt){
+    var events = ["focus","blur"];
+    for (let i=0; i<events.length; i++){
+        elt.addEventListener(events[i], function(e){
+            events[i]=="focus"?SwitchSearchFieldState(true, elt):SwitchSearchFieldState(false, elt);
+        })
+    }
+}
+//#endregion
+
+//#region (Fonctions) Population
 function PopulateIngredients(){
     ingredientsRootElt.innerHTML = "";
     ingredients.forEach(i =>{
@@ -82,7 +103,18 @@ function PopulateRecipeFeed(tagList = [], searchBarInput = ""){
         `
     })
 }
+//#endregion
 
-
+function SwitchSearchFieldState(open, elt){
+    open?console.log(`Opening`, elt):console.log(`Closing`, elt);
+    if(open){
+        elt.style.opacity = "0.5";
+        if (!elt.value > 0) elt.setAttribute("placeholder", `Rechercher un ${elt.id}`)
+    }
+    else{
+        elt.style.opacity = "1";
+        elt.setAttribute("placeholder", `${elt.id}s`);
+    }
+}
 
 Init();

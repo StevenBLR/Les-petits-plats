@@ -111,14 +111,16 @@ header .header__logo {
   color: white;
 }
 .advanced-search-field ul {
-  display: flex;
-  flex-wrap: wrap;
   max-height: 100px;
-  flex-direction: column;
   padding: unset;
+  column-count: 3;
 }
 .advanced-search-field li {
   margin-inline: 20px;
+  max-width: 150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .advanced-search-field li button {
   border: none;
@@ -154,14 +156,16 @@ header .header__logo {
   color: white;
 }
 .advanced-search-field--green ul {
-  display: flex;
-  flex-wrap: wrap;
   max-height: 100px;
-  flex-direction: column;
   padding: unset;
+  column-count: 3;
 }
 .advanced-search-field--green li {
   margin-inline: 20px;
+  max-width: 150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .advanced-search-field--green li button {
   border: none;
@@ -197,14 +201,16 @@ header .header__logo {
   color: white;
 }
 .advanced-search-field--orange ul {
-  display: flex;
-  flex-wrap: wrap;
   max-height: 100px;
-  flex-direction: column;
   padding: unset;
+  column-count: 3;
 }
 .advanced-search-field--orange li {
   margin-inline: 20px;
+  max-width: 150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .advanced-search-field--orange li button {
   border: none;
