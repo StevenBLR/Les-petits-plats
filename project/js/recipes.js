@@ -1797,16 +1797,21 @@ function GetAllUstencils(){
 
 function GetMatchingElement(input){
     var everything = [];
+    var matchingItems = [];
     // Sythaxe de décomposition - Spread Operator (...)
     everything.push(...recipes);
     everything.push(...ingredients);
-    everything.push(...appareils);
-    everything.push(...ustensils);
+    // everything.push(...appareils);
+    // everything.push(...ustensils);
+    everything.push(...descriptions);
 
     var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
     return everything.filter(item => {
       if (item.toString().match(reg)) {
-          console.log(`Input = ${input} / Item = ${item}`);
+        matchingItems.push(item);
+        console.log(`Input = ${input}`);
+        console.log(matchingItems);
+        //console.log(`Input = ${input} / Item = ${item}`);
         return item;
       }
     });
