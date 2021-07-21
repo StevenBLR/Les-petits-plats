@@ -57,9 +57,10 @@ function PopulateRecipeFeed(tagList = [], searchBarInput = ""){
 
     }
     recipesJSON.forEach(r => {
+        str ="";
         r.ingredients.forEach(i =>{
-            str ="";
             str += `<p><strong>${i.ingredient}:</strong> ${i.quantity} ${i.unit=="undefined"?"":i.unit}</p>`;
+            console.log(str);
         })
         recipesRootElt.innerHTML += 
         `<div class="card recipes__card">
