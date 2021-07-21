@@ -59,8 +59,7 @@ function PopulateRecipeFeed(tagList = [], searchBarInput = ""){
     recipesJSON.forEach(r => {
         str ="";
         r.ingredients.forEach(i =>{
-            str += `<p><strong>${i.ingredient}:</strong> ${i.quantity} ${i.unit=="undefined"?"":i.unit}</p>`;
-            console.log(str);
+            str += `<p><strong>${i.ingredient} ${i.hasOwnProperty('quantity') || i.hasOwnProperty('unit')?":":""}</strong> ${i.hasOwnProperty('quantity')?i.quantity:""} ${i.hasOwnProperty('unit')?i.unit:""}</p>`;
         })
         recipesRootElt.innerHTML += 
         `<div class="card recipes__card">
