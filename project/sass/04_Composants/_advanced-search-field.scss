@@ -33,20 +33,25 @@ $asf-max-height : 100px;
     // Advanced search list
     ul{
         max-height: $asf-max-height;
+        margin-inline: 20px;
         padding: unset;
         column-count: 3;
+        overflow: hidden;
     }
     li{
-        margin-inline: 20px;
-        max-width: 150px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        max-width: 125px;
         overflow: hidden;
         button{
             border: none;
-            margin-right: 15px;
             background-color: transparent;
             color: white;
+            padding: unset;
+            // [TODO] Fix (not effective)
+            span{
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
         }
     }
 }

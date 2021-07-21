@@ -17,8 +17,8 @@ var asfPlaceholders = document.querySelectorAll(".filters__advanced-search::plac
 //#region (Fonctions) Initialization
 function Init(){
     PopulateIngredients();
-    PopulateAppareils();
-    PopulateUstencils();
+    //PopulateAppareils();
+    //PopulateUstencils();
     PopulateRecipeFeed();
     InitEvents();
 }
@@ -50,21 +50,21 @@ function InitAdvancedSearchField(elt){
 function PopulateIngredients(){
     ingredientsRootElt.innerHTML = "";
     ingredients.forEach(i =>{
-        ingredientsRootElt.innerHTML += `<li><button type="button">${i}</button></li>`;
+        ingredientsRootElt.innerHTML += `<li><button type="button"><span>${i}</span></button></li>`;
     })
 }
 
 function PopulateAppareils(){
     appareilsRootElt.innerHTML = "";
     appareils.forEach(a =>{
-        appareilsRootElt.innerHTML += `<li><button type="button">${a}</button></li>`;
+        appareilsRootElt.innerHTML += `<li><button type="button"><span>${a}</span></button></li>`;
     })
 }
 
 function PopulateUstencils(){
     ustencilsRootElt.innerHTML = "";
     ustensils.forEach(u =>{
-        ustencilsRootElt.innerHTML += `<li><button type="button">${u}</button></li>`; 
+        ustencilsRootElt.innerHTML += `<li><button type="button"><span>${u}</span></button></li>`; 
     })
 }
 
@@ -106,13 +106,15 @@ function PopulateRecipeFeed(tagList = [], searchBarInput = ""){
 //#endregion
 
 function SwitchSearchFieldState(open, elt){
-    open?console.log(`Opening`, elt):console.log(`Closing`, elt);
+    //open?console.log(`Opening`, elt):console.log(`Closing`, elt);
     if(open){
-        elt.style.opacity = "0.5";
+        //elt.style.opacity = "0.7";
+        //elt.style.maxHeight = "100px";
         if (!elt.value > 0) elt.setAttribute("placeholder", `Rechercher un ${elt.id}`)
     }
     else{
-        elt.style.opacity = "1";
+        //elt.style.opacity = "1";
+        //elt.style.maxHeight = "0px";
         elt.setAttribute("placeholder", `${elt.id}s`);
     }
 }

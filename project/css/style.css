@@ -112,21 +112,25 @@ header .header__logo {
 }
 .advanced-search-field ul {
   max-height: 100px;
+  margin-inline: 20px;
   padding: unset;
   column-count: 3;
+  overflow: hidden;
 }
 .advanced-search-field li {
-  margin-inline: 20px;
-  max-width: 150px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  max-width: 125px;
   overflow: hidden;
 }
 .advanced-search-field li button {
   border: none;
-  margin-right: 15px;
   background-color: transparent;
   color: white;
+  padding: unset;
+}
+.advanced-search-field li button span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .advanced-search-field--green {
   position: relative;
@@ -157,21 +161,25 @@ header .header__logo {
 }
 .advanced-search-field--green ul {
   max-height: 100px;
+  margin-inline: 20px;
   padding: unset;
   column-count: 3;
+  overflow: hidden;
 }
 .advanced-search-field--green li {
-  margin-inline: 20px;
-  max-width: 150px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  max-width: 125px;
   overflow: hidden;
 }
 .advanced-search-field--green li button {
   border: none;
-  margin-right: 15px;
   background-color: transparent;
   color: white;
+  padding: unset;
+}
+.advanced-search-field--green li button span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .advanced-search-field--orange {
   position: relative;
@@ -202,21 +210,25 @@ header .header__logo {
 }
 .advanced-search-field--orange ul {
   max-height: 100px;
+  margin-inline: 20px;
   padding: unset;
   column-count: 3;
+  overflow: hidden;
 }
 .advanced-search-field--orange li {
-  margin-inline: 20px;
-  max-width: 150px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  max-width: 125px;
   overflow: hidden;
 }
 .advanced-search-field--orange li button {
   border: none;
-  margin-right: 15px;
   background-color: transparent;
   color: white;
+  padding: unset;
+}
+.advanced-search-field--orange li button span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .recipes {
