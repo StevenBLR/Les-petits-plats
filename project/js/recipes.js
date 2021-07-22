@@ -1803,8 +1803,6 @@ function GetMatchingElement(input){
     everything.filter(item => {
       if (item.toString().match(reg)) {
         matchingItems.push(item);
-        //console.log(`Input = ${input} / Item = ${item}`);
-        //return item;
       }
     });
       

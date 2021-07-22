@@ -14,9 +14,12 @@ var ustencilsTxtField = document.querySelector(".advanced-search-field--orange .
 var asfPlaceholders = document.querySelectorAll(".filters__advanced-search::placeholder");
 //#endregion
 
+var currentAsf; // ASF = Advanced Search Field
+var tagList = [];
+
 //#region (Fonctions) Initialization
 function Init(){
-    PopulateIngredients();
+    //PopulateIngredients();
     //PopulateAppareils();
     //PopulateUstencils();
     PopulateRecipeFeed();
@@ -37,46 +40,69 @@ function InitEvents(){
 }
 
 function InitAdvancedSearchField(elt){
-    var events = ["focus","blur"];
-    for (let i=0; i<events.length; i++){
-        elt.addEventListener(events[i], function(e){
-            events[i]=="focus"?SwitchSearchFieldState(true, elt):SwitchSearchFieldState(false, elt);
-        })
-    }
+    elt.addEventListener("click", function(e){
+        if (elt != currentAsf){
+            OpenAsf(elt);
+            currentAsf = elt;
+        }
+    })
+    // var events = ["click"];
+    // for (let i=0; i<events.length; i++){
+    //     elt.addEventListener(events[i], function(e){
+    //         events[i]=="click"?SwitchSearchFieldState(true, elt):SwitchSearchFieldState(false, elt);
+    //     })
+    // }
 }
 //#endregion
 
 //#region (Fonctions) Population
-function PopulateIngredients(){
+function PopulateIngredients(tagList = []){
     ingredientsRootElt.innerHTML = "";
-    ingredients.forEach(i =>{
+    ingredientsToDisplay = [];
+    if (tagList.length > 0 || mainSearchBar.value.toString().length){
+        // [TODO] Filtering data with tags & main search input
+    }
+    else ingredientsToDisplay = ingredients;
+    ingredientsToDisplay.forEach(i =>{
         ingredientsRootElt.innerHTML += `<li><button type="button"><span>${i}</span></button></li>`;
     })
 }
 
-function PopulateAppareils(){
+function PopulateAppareils(tagList = []){
     appareilsRootElt.innerHTML = "";
     appareils.forEach(a =>{
         appareilsRootElt.innerHTML += `<li><button type="button"><span>${a}</span></button></li>`;
     })
 }
 
-function PopulateUstencils(){
+function PopulateUstencils(tagList = []){
     ustencilsRootElt.innerHTML = "";
     ustensils.forEach(u =>{
         ustencilsRootElt.innerHTML += `<li><button type="button"><span>${u}</span></button></li>`; 
     })
 }
 
-function PopulateRecipeFeed(tagList = [], searchBarInput = ""){
+function PopulateAdvancedSearchField(id){
+    switch(id){
+        case "Ingrédient":
+            PopulateIngredients();
+            break;
+        case "Appareil":
+            PopulateAppareils();
+            break;   
+        case "Ustensile":
+            PopulateUstencils();
+            break;  
+    }
+}
+
+function PopulateRecipeFeed(tagList = []){
     recipesRootElt.innerHTML = "";
     recipesToDisplay = [];
-    if (tagList.length > 0 || searchBarInput != ""){
-
+    if (tagList.length > 0 || mainSearchBar.value.toString().length){
+        // [TODO] Filtering data with tags & main search input
     }
-    else{
-
-    }
+    else recipesToDisplay.push(recipesJSON);
     recipesJSON.forEach(r => {
         str ="";
         r.ingredients.forEach(i =>{
@@ -105,19 +131,21 @@ function PopulateRecipeFeed(tagList = [], searchBarInput = ""){
 }
 //#endregion
 
-function SwitchSearchFieldState(open, elt){
-    //open?console.log(`Opening`, elt):console.log(`Closing`, elt);
-    if(open){
-        //elt.style.opacity = "0.7";
-        //elt.style.maxHeight = "100px";
-        //elt.parentNode
-        if (!elt.value > 0) elt.setAttribute("placeholder", `Rechercher un ${elt.id}`)
-    }
-    else{
-        //elt.style.opacity = "1";
-        //elt.style.maxHeight = "0px";
-        elt.setAttribute("placeholder", `${elt.id}s`);
-    }
+function OpenAsf(elt){
+    // Close all other asfs
+    var asfRootElt = document.querySelector(".filters__advanced-search");
+    asfRootElt.querySelectorAll('div[data-info=asf]').forEach(asf => {
+        asf.querySelector(".advanced-search-field__tags ul").innerHTML = "";
+        asf.querySelector(".advanced-search-field__text-input").setAttribute("placeholder", `${asf.querySelector(".advanced-search-field__text-input").id}s`);
+    })
+    // Opening current asf
+    PopulateAdvancedSearchField(elt.id);
+    elt.setAttribute("placeholder", `Rechercher un ${elt.id}`);
+    //if (!elt.value > 0) elt.setAttribute("placeholder", `Rechercher un ${elt.id}`)
+    //elt.style.opacity = "0.7";
+    //elt.style.maxHeight = "100px";
+    // elt.parentNode.querySelector(".advanced-search-field__tags ul").innerHTML = "";
+    // elt.setAttribute("placeholder", `${elt.id}s`);
 }
 
 Init();
