@@ -1,0 +1,97 @@
+
+// true = anim out / false = anim in
+@mixin hideInOut($out, $delay, $offsetY) {
+    //animation-delay: 5s;
+    //animation: hideOut 1.5s cubic-bezier(.17,.67,.33,.99) .5s backwards;
+    animation-delay: $delay;
+    @if($out){
+        animation-delay: $delay;
+        animation: hideOut 1.5s cubic-bezier(0,.71,0,1.01) $delay backwards;
+    }
+    @else{
+        animation: hideOut 1.5s cubic-bezier(.17,.67,.33,.99) $delay forwards reverse;
+    }
+    
+    @keyframes hideOut {
+        0%{
+            transform: translateY(offsetY);
+        }
+        100%{
+            transform: translateY(0px);
+        }
+    }
+}
+
+@mixin staggerAnim($speed, $delay, $offset) {
+    $elements:100; // Nb elements to animate ( big offset to manage any amount of items )
+    animation-delay: $delay;
+    @for $i from 0 to $elements {
+        &:nth-child(#{$i + 1}) {
+            animation: staggerAnimation $speed cubic-bezier(.17,.67,.33,.99) $i * $delay backwards;
+        }
+    }
+    @keyframes staggerAnimation {
+        0%{
+            opacity: 0;
+            transform: translateY($offset);
+        }
+        100%{
+            opacity: 100%;
+            transform: translateY(0);
+        }
+    }
+}
+
+@keyframes rotateX {
+    0% {
+      opacity: 0;
+      transform: rotateX(-90deg);
+    }
+    50% {
+      transform: rotateX(-20deg);
+    }
+    100% {
+      opacity: 1;
+      transform: rotateX(0deg);
+    }
+  }
+
+  @mixin dropdownReveal($speed, $delay){
+    $elements:100; // Nb elements to animate ( big offset to manage any amount of items )
+    @for $i from 0 to $elements {
+        &:nth-child(#{$i + 1}) {
+            animation: staggerFade $speed cubic-bezier(0,.93,.02,1)  $i * $delay forwards;
+        }
+    }
+
+    @keyframes staggerFade{
+        0%{
+            opacity: 0;
+            bottom: -30px;
+        }
+        100%{
+            opacity: 100;
+            bottom: 0;
+        }
+    }
+  }
+
+  @mixin separatorAnim($speed, $delay){
+    $elements:100; // Nb elements to animate ( big offset to manage any amount of items )
+    @for $i from 0 to $elements {
+        &:nth-child(#{$i + 1}) {
+            // animation: staggerScaleX $speed cubic-bezier(0,.93,.02,1) $i * $delay forwards;
+            animation: staggerScaleX $speed cubic-bezier(.42,.54,.02,1) $i * $delay forwards;
+        }
+    }
+    @keyframes staggerScaleX{
+        0%{
+            opacity: 0;
+            width: 0%;
+        }
+        100%{
+            opacity: 100;
+            width: 100%;
+        }
+    }
+  }

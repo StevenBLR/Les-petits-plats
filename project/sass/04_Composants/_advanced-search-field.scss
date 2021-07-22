@@ -20,7 +20,7 @@ $asf-max-height : 100px;
 
     ::placeholder{
         color: white;
-        opacity: 0.9;
+        //opacity: 0.9;
     }
 
     i{
@@ -39,6 +39,7 @@ $asf-max-height : 100px;
         overflow: hidden;
     }
     li{
+        @include staggerAnim(1500ms, 0.05s, 2rem);
         max-width: 125px;
         overflow: hidden;
         button{

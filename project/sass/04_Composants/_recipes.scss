@@ -12,6 +12,7 @@ $card-border-radius : 10px;
     }
 
     .recipes__card{
+        @include staggerAnim(1500ms, 0.1s, 2rem);
         width: 33%;
         max-width: 380px;
         min-width: 300px;

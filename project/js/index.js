@@ -110,6 +110,7 @@ function SwitchSearchFieldState(open, elt){
     if(open){
         //elt.style.opacity = "0.7";
         //elt.style.maxHeight = "100px";
+        //elt.parentNode
         if (!elt.value > 0) elt.setAttribute("placeholder", `Rechercher un ${elt.id}`)
     }
     else{

@@ -83,6 +83,19 @@ header .header__logo {
   width: 40px;
 }
 
+@keyframes rotateX {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  50% {
+    transform: rotateX(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
 .advanced-search-field {
   position: relative;
   width: max-content;
@@ -102,7 +115,6 @@ header .header__logo {
 }
 .advanced-search-field ::placeholder {
   color: white;
-  opacity: 0.9;
 }
 .advanced-search-field i {
   position: absolute;
@@ -118,8 +130,319 @@ header .header__logo {
   overflow: hidden;
 }
 .advanced-search-field li {
+  animation-delay: 0.05s;
   max-width: 125px;
   overflow: hidden;
+}
+.advanced-search-field li:nth-child(1) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0s backwards;
+}
+.advanced-search-field li:nth-child(2) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.05s backwards;
+}
+.advanced-search-field li:nth-child(3) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.1s backwards;
+}
+.advanced-search-field li:nth-child(4) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.15s backwards;
+}
+.advanced-search-field li:nth-child(5) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.2s backwards;
+}
+.advanced-search-field li:nth-child(6) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.25s backwards;
+}
+.advanced-search-field li:nth-child(7) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.3s backwards;
+}
+.advanced-search-field li:nth-child(8) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.35s backwards;
+}
+.advanced-search-field li:nth-child(9) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.4s backwards;
+}
+.advanced-search-field li:nth-child(10) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.45s backwards;
+}
+.advanced-search-field li:nth-child(11) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.5s backwards;
+}
+.advanced-search-field li:nth-child(12) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.55s backwards;
+}
+.advanced-search-field li:nth-child(13) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.6s backwards;
+}
+.advanced-search-field li:nth-child(14) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.65s backwards;
+}
+.advanced-search-field li:nth-child(15) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.7s backwards;
+}
+.advanced-search-field li:nth-child(16) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.75s backwards;
+}
+.advanced-search-field li:nth-child(17) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.8s backwards;
+}
+.advanced-search-field li:nth-child(18) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.85s backwards;
+}
+.advanced-search-field li:nth-child(19) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.9s backwards;
+}
+.advanced-search-field li:nth-child(20) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.95s backwards;
+}
+.advanced-search-field li:nth-child(21) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1s backwards;
+}
+.advanced-search-field li:nth-child(22) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.05s backwards;
+}
+.advanced-search-field li:nth-child(23) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.1s backwards;
+}
+.advanced-search-field li:nth-child(24) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.15s backwards;
+}
+.advanced-search-field li:nth-child(25) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.2s backwards;
+}
+.advanced-search-field li:nth-child(26) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.25s backwards;
+}
+.advanced-search-field li:nth-child(27) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.3s backwards;
+}
+.advanced-search-field li:nth-child(28) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.35s backwards;
+}
+.advanced-search-field li:nth-child(29) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.4s backwards;
+}
+.advanced-search-field li:nth-child(30) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.45s backwards;
+}
+.advanced-search-field li:nth-child(31) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.5s backwards;
+}
+.advanced-search-field li:nth-child(32) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.55s backwards;
+}
+.advanced-search-field li:nth-child(33) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.6s backwards;
+}
+.advanced-search-field li:nth-child(34) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.65s backwards;
+}
+.advanced-search-field li:nth-child(35) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.7s backwards;
+}
+.advanced-search-field li:nth-child(36) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.75s backwards;
+}
+.advanced-search-field li:nth-child(37) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.8s backwards;
+}
+.advanced-search-field li:nth-child(38) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.85s backwards;
+}
+.advanced-search-field li:nth-child(39) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.9s backwards;
+}
+.advanced-search-field li:nth-child(40) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.95s backwards;
+}
+.advanced-search-field li:nth-child(41) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2s backwards;
+}
+.advanced-search-field li:nth-child(42) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.05s backwards;
+}
+.advanced-search-field li:nth-child(43) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.1s backwards;
+}
+.advanced-search-field li:nth-child(44) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.15s backwards;
+}
+.advanced-search-field li:nth-child(45) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.2s backwards;
+}
+.advanced-search-field li:nth-child(46) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.25s backwards;
+}
+.advanced-search-field li:nth-child(47) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.3s backwards;
+}
+.advanced-search-field li:nth-child(48) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.35s backwards;
+}
+.advanced-search-field li:nth-child(49) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.4s backwards;
+}
+.advanced-search-field li:nth-child(50) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.45s backwards;
+}
+.advanced-search-field li:nth-child(51) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.5s backwards;
+}
+.advanced-search-field li:nth-child(52) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.55s backwards;
+}
+.advanced-search-field li:nth-child(53) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.6s backwards;
+}
+.advanced-search-field li:nth-child(54) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.65s backwards;
+}
+.advanced-search-field li:nth-child(55) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.7s backwards;
+}
+.advanced-search-field li:nth-child(56) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.75s backwards;
+}
+.advanced-search-field li:nth-child(57) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.8s backwards;
+}
+.advanced-search-field li:nth-child(58) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.85s backwards;
+}
+.advanced-search-field li:nth-child(59) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.9s backwards;
+}
+.advanced-search-field li:nth-child(60) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.95s backwards;
+}
+.advanced-search-field li:nth-child(61) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3s backwards;
+}
+.advanced-search-field li:nth-child(62) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.05s backwards;
+}
+.advanced-search-field li:nth-child(63) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.1s backwards;
+}
+.advanced-search-field li:nth-child(64) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.15s backwards;
+}
+.advanced-search-field li:nth-child(65) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.2s backwards;
+}
+.advanced-search-field li:nth-child(66) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.25s backwards;
+}
+.advanced-search-field li:nth-child(67) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.3s backwards;
+}
+.advanced-search-field li:nth-child(68) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.35s backwards;
+}
+.advanced-search-field li:nth-child(69) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.4s backwards;
+}
+.advanced-search-field li:nth-child(70) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.45s backwards;
+}
+.advanced-search-field li:nth-child(71) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.5s backwards;
+}
+.advanced-search-field li:nth-child(72) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.55s backwards;
+}
+.advanced-search-field li:nth-child(73) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.6s backwards;
+}
+.advanced-search-field li:nth-child(74) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.65s backwards;
+}
+.advanced-search-field li:nth-child(75) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.7s backwards;
+}
+.advanced-search-field li:nth-child(76) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.75s backwards;
+}
+.advanced-search-field li:nth-child(77) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.8s backwards;
+}
+.advanced-search-field li:nth-child(78) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.85s backwards;
+}
+.advanced-search-field li:nth-child(79) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.9s backwards;
+}
+.advanced-search-field li:nth-child(80) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.95s backwards;
+}
+.advanced-search-field li:nth-child(81) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4s backwards;
+}
+.advanced-search-field li:nth-child(82) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.05s backwards;
+}
+.advanced-search-field li:nth-child(83) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.1s backwards;
+}
+.advanced-search-field li:nth-child(84) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.15s backwards;
+}
+.advanced-search-field li:nth-child(85) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.2s backwards;
+}
+.advanced-search-field li:nth-child(86) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.25s backwards;
+}
+.advanced-search-field li:nth-child(87) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.3s backwards;
+}
+.advanced-search-field li:nth-child(88) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.35s backwards;
+}
+.advanced-search-field li:nth-child(89) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.4s backwards;
+}
+.advanced-search-field li:nth-child(90) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.45s backwards;
+}
+.advanced-search-field li:nth-child(91) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.5s backwards;
+}
+.advanced-search-field li:nth-child(92) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.55s backwards;
+}
+.advanced-search-field li:nth-child(93) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.6s backwards;
+}
+.advanced-search-field li:nth-child(94) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.65s backwards;
+}
+.advanced-search-field li:nth-child(95) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.7s backwards;
+}
+.advanced-search-field li:nth-child(96) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.75s backwards;
+}
+.advanced-search-field li:nth-child(97) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.8s backwards;
+}
+.advanced-search-field li:nth-child(98) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.85s backwards;
+}
+.advanced-search-field li:nth-child(99) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.9s backwards;
+}
+.advanced-search-field li:nth-child(100) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.95s backwards;
+}
+@keyframes staggerAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
 }
 .advanced-search-field li button {
   border: none;
@@ -151,7 +474,6 @@ header .header__logo {
 }
 .advanced-search-field--green ::placeholder {
   color: white;
-  opacity: 0.9;
 }
 .advanced-search-field--green i {
   position: absolute;
@@ -167,8 +489,319 @@ header .header__logo {
   overflow: hidden;
 }
 .advanced-search-field--green li {
+  animation-delay: 0.05s;
   max-width: 125px;
   overflow: hidden;
+}
+.advanced-search-field--green li:nth-child(1) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0s backwards;
+}
+.advanced-search-field--green li:nth-child(2) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.05s backwards;
+}
+.advanced-search-field--green li:nth-child(3) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.1s backwards;
+}
+.advanced-search-field--green li:nth-child(4) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.15s backwards;
+}
+.advanced-search-field--green li:nth-child(5) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.2s backwards;
+}
+.advanced-search-field--green li:nth-child(6) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.25s backwards;
+}
+.advanced-search-field--green li:nth-child(7) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.3s backwards;
+}
+.advanced-search-field--green li:nth-child(8) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.35s backwards;
+}
+.advanced-search-field--green li:nth-child(9) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.4s backwards;
+}
+.advanced-search-field--green li:nth-child(10) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.45s backwards;
+}
+.advanced-search-field--green li:nth-child(11) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.5s backwards;
+}
+.advanced-search-field--green li:nth-child(12) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.55s backwards;
+}
+.advanced-search-field--green li:nth-child(13) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.6s backwards;
+}
+.advanced-search-field--green li:nth-child(14) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.65s backwards;
+}
+.advanced-search-field--green li:nth-child(15) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.7s backwards;
+}
+.advanced-search-field--green li:nth-child(16) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.75s backwards;
+}
+.advanced-search-field--green li:nth-child(17) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.8s backwards;
+}
+.advanced-search-field--green li:nth-child(18) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.85s backwards;
+}
+.advanced-search-field--green li:nth-child(19) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.9s backwards;
+}
+.advanced-search-field--green li:nth-child(20) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.95s backwards;
+}
+.advanced-search-field--green li:nth-child(21) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1s backwards;
+}
+.advanced-search-field--green li:nth-child(22) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.05s backwards;
+}
+.advanced-search-field--green li:nth-child(23) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.1s backwards;
+}
+.advanced-search-field--green li:nth-child(24) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.15s backwards;
+}
+.advanced-search-field--green li:nth-child(25) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.2s backwards;
+}
+.advanced-search-field--green li:nth-child(26) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.25s backwards;
+}
+.advanced-search-field--green li:nth-child(27) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.3s backwards;
+}
+.advanced-search-field--green li:nth-child(28) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.35s backwards;
+}
+.advanced-search-field--green li:nth-child(29) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.4s backwards;
+}
+.advanced-search-field--green li:nth-child(30) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.45s backwards;
+}
+.advanced-search-field--green li:nth-child(31) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.5s backwards;
+}
+.advanced-search-field--green li:nth-child(32) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.55s backwards;
+}
+.advanced-search-field--green li:nth-child(33) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.6s backwards;
+}
+.advanced-search-field--green li:nth-child(34) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.65s backwards;
+}
+.advanced-search-field--green li:nth-child(35) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.7s backwards;
+}
+.advanced-search-field--green li:nth-child(36) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.75s backwards;
+}
+.advanced-search-field--green li:nth-child(37) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.8s backwards;
+}
+.advanced-search-field--green li:nth-child(38) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.85s backwards;
+}
+.advanced-search-field--green li:nth-child(39) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.9s backwards;
+}
+.advanced-search-field--green li:nth-child(40) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.95s backwards;
+}
+.advanced-search-field--green li:nth-child(41) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2s backwards;
+}
+.advanced-search-field--green li:nth-child(42) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.05s backwards;
+}
+.advanced-search-field--green li:nth-child(43) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.1s backwards;
+}
+.advanced-search-field--green li:nth-child(44) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.15s backwards;
+}
+.advanced-search-field--green li:nth-child(45) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.2s backwards;
+}
+.advanced-search-field--green li:nth-child(46) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.25s backwards;
+}
+.advanced-search-field--green li:nth-child(47) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.3s backwards;
+}
+.advanced-search-field--green li:nth-child(48) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.35s backwards;
+}
+.advanced-search-field--green li:nth-child(49) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.4s backwards;
+}
+.advanced-search-field--green li:nth-child(50) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.45s backwards;
+}
+.advanced-search-field--green li:nth-child(51) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.5s backwards;
+}
+.advanced-search-field--green li:nth-child(52) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.55s backwards;
+}
+.advanced-search-field--green li:nth-child(53) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.6s backwards;
+}
+.advanced-search-field--green li:nth-child(54) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.65s backwards;
+}
+.advanced-search-field--green li:nth-child(55) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.7s backwards;
+}
+.advanced-search-field--green li:nth-child(56) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.75s backwards;
+}
+.advanced-search-field--green li:nth-child(57) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.8s backwards;
+}
+.advanced-search-field--green li:nth-child(58) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.85s backwards;
+}
+.advanced-search-field--green li:nth-child(59) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.9s backwards;
+}
+.advanced-search-field--green li:nth-child(60) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.95s backwards;
+}
+.advanced-search-field--green li:nth-child(61) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3s backwards;
+}
+.advanced-search-field--green li:nth-child(62) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.05s backwards;
+}
+.advanced-search-field--green li:nth-child(63) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.1s backwards;
+}
+.advanced-search-field--green li:nth-child(64) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.15s backwards;
+}
+.advanced-search-field--green li:nth-child(65) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.2s backwards;
+}
+.advanced-search-field--green li:nth-child(66) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.25s backwards;
+}
+.advanced-search-field--green li:nth-child(67) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.3s backwards;
+}
+.advanced-search-field--green li:nth-child(68) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.35s backwards;
+}
+.advanced-search-field--green li:nth-child(69) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.4s backwards;
+}
+.advanced-search-field--green li:nth-child(70) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.45s backwards;
+}
+.advanced-search-field--green li:nth-child(71) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.5s backwards;
+}
+.advanced-search-field--green li:nth-child(72) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.55s backwards;
+}
+.advanced-search-field--green li:nth-child(73) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.6s backwards;
+}
+.advanced-search-field--green li:nth-child(74) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.65s backwards;
+}
+.advanced-search-field--green li:nth-child(75) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.7s backwards;
+}
+.advanced-search-field--green li:nth-child(76) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.75s backwards;
+}
+.advanced-search-field--green li:nth-child(77) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.8s backwards;
+}
+.advanced-search-field--green li:nth-child(78) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.85s backwards;
+}
+.advanced-search-field--green li:nth-child(79) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.9s backwards;
+}
+.advanced-search-field--green li:nth-child(80) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.95s backwards;
+}
+.advanced-search-field--green li:nth-child(81) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4s backwards;
+}
+.advanced-search-field--green li:nth-child(82) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.05s backwards;
+}
+.advanced-search-field--green li:nth-child(83) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.1s backwards;
+}
+.advanced-search-field--green li:nth-child(84) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.15s backwards;
+}
+.advanced-search-field--green li:nth-child(85) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.2s backwards;
+}
+.advanced-search-field--green li:nth-child(86) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.25s backwards;
+}
+.advanced-search-field--green li:nth-child(87) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.3s backwards;
+}
+.advanced-search-field--green li:nth-child(88) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.35s backwards;
+}
+.advanced-search-field--green li:nth-child(89) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.4s backwards;
+}
+.advanced-search-field--green li:nth-child(90) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.45s backwards;
+}
+.advanced-search-field--green li:nth-child(91) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.5s backwards;
+}
+.advanced-search-field--green li:nth-child(92) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.55s backwards;
+}
+.advanced-search-field--green li:nth-child(93) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.6s backwards;
+}
+.advanced-search-field--green li:nth-child(94) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.65s backwards;
+}
+.advanced-search-field--green li:nth-child(95) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.7s backwards;
+}
+.advanced-search-field--green li:nth-child(96) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.75s backwards;
+}
+.advanced-search-field--green li:nth-child(97) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.8s backwards;
+}
+.advanced-search-field--green li:nth-child(98) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.85s backwards;
+}
+.advanced-search-field--green li:nth-child(99) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.9s backwards;
+}
+.advanced-search-field--green li:nth-child(100) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.95s backwards;
+}
+@keyframes staggerAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
 }
 .advanced-search-field--green li button {
   border: none;
@@ -200,7 +833,6 @@ header .header__logo {
 }
 .advanced-search-field--orange ::placeholder {
   color: white;
-  opacity: 0.9;
 }
 .advanced-search-field--orange i {
   position: absolute;
@@ -216,8 +848,319 @@ header .header__logo {
   overflow: hidden;
 }
 .advanced-search-field--orange li {
+  animation-delay: 0.05s;
   max-width: 125px;
   overflow: hidden;
+}
+.advanced-search-field--orange li:nth-child(1) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0s backwards;
+}
+.advanced-search-field--orange li:nth-child(2) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.05s backwards;
+}
+.advanced-search-field--orange li:nth-child(3) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.1s backwards;
+}
+.advanced-search-field--orange li:nth-child(4) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.15s backwards;
+}
+.advanced-search-field--orange li:nth-child(5) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.2s backwards;
+}
+.advanced-search-field--orange li:nth-child(6) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.25s backwards;
+}
+.advanced-search-field--orange li:nth-child(7) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.3s backwards;
+}
+.advanced-search-field--orange li:nth-child(8) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.35s backwards;
+}
+.advanced-search-field--orange li:nth-child(9) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.4s backwards;
+}
+.advanced-search-field--orange li:nth-child(10) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.45s backwards;
+}
+.advanced-search-field--orange li:nth-child(11) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.5s backwards;
+}
+.advanced-search-field--orange li:nth-child(12) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.55s backwards;
+}
+.advanced-search-field--orange li:nth-child(13) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.6s backwards;
+}
+.advanced-search-field--orange li:nth-child(14) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.65s backwards;
+}
+.advanced-search-field--orange li:nth-child(15) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.7s backwards;
+}
+.advanced-search-field--orange li:nth-child(16) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.75s backwards;
+}
+.advanced-search-field--orange li:nth-child(17) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.8s backwards;
+}
+.advanced-search-field--orange li:nth-child(18) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.85s backwards;
+}
+.advanced-search-field--orange li:nth-child(19) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.9s backwards;
+}
+.advanced-search-field--orange li:nth-child(20) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.95s backwards;
+}
+.advanced-search-field--orange li:nth-child(21) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1s backwards;
+}
+.advanced-search-field--orange li:nth-child(22) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.05s backwards;
+}
+.advanced-search-field--orange li:nth-child(23) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.1s backwards;
+}
+.advanced-search-field--orange li:nth-child(24) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.15s backwards;
+}
+.advanced-search-field--orange li:nth-child(25) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.2s backwards;
+}
+.advanced-search-field--orange li:nth-child(26) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.25s backwards;
+}
+.advanced-search-field--orange li:nth-child(27) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.3s backwards;
+}
+.advanced-search-field--orange li:nth-child(28) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.35s backwards;
+}
+.advanced-search-field--orange li:nth-child(29) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.4s backwards;
+}
+.advanced-search-field--orange li:nth-child(30) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.45s backwards;
+}
+.advanced-search-field--orange li:nth-child(31) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.5s backwards;
+}
+.advanced-search-field--orange li:nth-child(32) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.55s backwards;
+}
+.advanced-search-field--orange li:nth-child(33) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.6s backwards;
+}
+.advanced-search-field--orange li:nth-child(34) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.65s backwards;
+}
+.advanced-search-field--orange li:nth-child(35) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.7s backwards;
+}
+.advanced-search-field--orange li:nth-child(36) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.75s backwards;
+}
+.advanced-search-field--orange li:nth-child(37) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.8s backwards;
+}
+.advanced-search-field--orange li:nth-child(38) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.85s backwards;
+}
+.advanced-search-field--orange li:nth-child(39) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.9s backwards;
+}
+.advanced-search-field--orange li:nth-child(40) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.95s backwards;
+}
+.advanced-search-field--orange li:nth-child(41) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2s backwards;
+}
+.advanced-search-field--orange li:nth-child(42) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.05s backwards;
+}
+.advanced-search-field--orange li:nth-child(43) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.1s backwards;
+}
+.advanced-search-field--orange li:nth-child(44) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.15s backwards;
+}
+.advanced-search-field--orange li:nth-child(45) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.2s backwards;
+}
+.advanced-search-field--orange li:nth-child(46) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.25s backwards;
+}
+.advanced-search-field--orange li:nth-child(47) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.3s backwards;
+}
+.advanced-search-field--orange li:nth-child(48) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.35s backwards;
+}
+.advanced-search-field--orange li:nth-child(49) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.4s backwards;
+}
+.advanced-search-field--orange li:nth-child(50) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.45s backwards;
+}
+.advanced-search-field--orange li:nth-child(51) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.5s backwards;
+}
+.advanced-search-field--orange li:nth-child(52) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.55s backwards;
+}
+.advanced-search-field--orange li:nth-child(53) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.6s backwards;
+}
+.advanced-search-field--orange li:nth-child(54) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.65s backwards;
+}
+.advanced-search-field--orange li:nth-child(55) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.7s backwards;
+}
+.advanced-search-field--orange li:nth-child(56) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.75s backwards;
+}
+.advanced-search-field--orange li:nth-child(57) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.8s backwards;
+}
+.advanced-search-field--orange li:nth-child(58) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.85s backwards;
+}
+.advanced-search-field--orange li:nth-child(59) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.9s backwards;
+}
+.advanced-search-field--orange li:nth-child(60) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.95s backwards;
+}
+.advanced-search-field--orange li:nth-child(61) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3s backwards;
+}
+.advanced-search-field--orange li:nth-child(62) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.05s backwards;
+}
+.advanced-search-field--orange li:nth-child(63) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.1s backwards;
+}
+.advanced-search-field--orange li:nth-child(64) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.15s backwards;
+}
+.advanced-search-field--orange li:nth-child(65) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.2s backwards;
+}
+.advanced-search-field--orange li:nth-child(66) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.25s backwards;
+}
+.advanced-search-field--orange li:nth-child(67) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.3s backwards;
+}
+.advanced-search-field--orange li:nth-child(68) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.35s backwards;
+}
+.advanced-search-field--orange li:nth-child(69) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.4s backwards;
+}
+.advanced-search-field--orange li:nth-child(70) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.45s backwards;
+}
+.advanced-search-field--orange li:nth-child(71) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.5s backwards;
+}
+.advanced-search-field--orange li:nth-child(72) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.55s backwards;
+}
+.advanced-search-field--orange li:nth-child(73) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.6s backwards;
+}
+.advanced-search-field--orange li:nth-child(74) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.65s backwards;
+}
+.advanced-search-field--orange li:nth-child(75) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.7s backwards;
+}
+.advanced-search-field--orange li:nth-child(76) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.75s backwards;
+}
+.advanced-search-field--orange li:nth-child(77) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.8s backwards;
+}
+.advanced-search-field--orange li:nth-child(78) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.85s backwards;
+}
+.advanced-search-field--orange li:nth-child(79) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.9s backwards;
+}
+.advanced-search-field--orange li:nth-child(80) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.95s backwards;
+}
+.advanced-search-field--orange li:nth-child(81) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4s backwards;
+}
+.advanced-search-field--orange li:nth-child(82) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.05s backwards;
+}
+.advanced-search-field--orange li:nth-child(83) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.1s backwards;
+}
+.advanced-search-field--orange li:nth-child(84) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.15s backwards;
+}
+.advanced-search-field--orange li:nth-child(85) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.2s backwards;
+}
+.advanced-search-field--orange li:nth-child(86) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.25s backwards;
+}
+.advanced-search-field--orange li:nth-child(87) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.3s backwards;
+}
+.advanced-search-field--orange li:nth-child(88) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.35s backwards;
+}
+.advanced-search-field--orange li:nth-child(89) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.4s backwards;
+}
+.advanced-search-field--orange li:nth-child(90) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.45s backwards;
+}
+.advanced-search-field--orange li:nth-child(91) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.5s backwards;
+}
+.advanced-search-field--orange li:nth-child(92) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.55s backwards;
+}
+.advanced-search-field--orange li:nth-child(93) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.6s backwards;
+}
+.advanced-search-field--orange li:nth-child(94) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.65s backwards;
+}
+.advanced-search-field--orange li:nth-child(95) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.7s backwards;
+}
+.advanced-search-field--orange li:nth-child(96) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.75s backwards;
+}
+.advanced-search-field--orange li:nth-child(97) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.8s backwards;
+}
+.advanced-search-field--orange li:nth-child(98) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.85s backwards;
+}
+.advanced-search-field--orange li:nth-child(99) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.9s backwards;
+}
+.advanced-search-field--orange li:nth-child(100) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.95s backwards;
+}
+@keyframes staggerAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
 }
 .advanced-search-field--orange li button {
   border: none;
@@ -243,12 +1186,323 @@ header .header__logo {
   border-radius: 10px 10px 0 0;
 }
 .recipes .recipes__card {
+  animation-delay: 0.1s;
   width: 33%;
   max-width: 380px;
   min-width: 300px;
   max-height: 364px;
   margin: 20px;
   border-radius: 10px;
+}
+.recipes .recipes__card:nth-child(1) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0s backwards;
+}
+.recipes .recipes__card:nth-child(2) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.1s backwards;
+}
+.recipes .recipes__card:nth-child(3) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.2s backwards;
+}
+.recipes .recipes__card:nth-child(4) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.3s backwards;
+}
+.recipes .recipes__card:nth-child(5) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.4s backwards;
+}
+.recipes .recipes__card:nth-child(6) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.5s backwards;
+}
+.recipes .recipes__card:nth-child(7) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.6s backwards;
+}
+.recipes .recipes__card:nth-child(8) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.7s backwards;
+}
+.recipes .recipes__card:nth-child(9) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.8s backwards;
+}
+.recipes .recipes__card:nth-child(10) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 0.9s backwards;
+}
+.recipes .recipes__card:nth-child(11) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1s backwards;
+}
+.recipes .recipes__card:nth-child(12) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.1s backwards;
+}
+.recipes .recipes__card:nth-child(13) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.2s backwards;
+}
+.recipes .recipes__card:nth-child(14) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.3s backwards;
+}
+.recipes .recipes__card:nth-child(15) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.4s backwards;
+}
+.recipes .recipes__card:nth-child(16) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.5s backwards;
+}
+.recipes .recipes__card:nth-child(17) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.6s backwards;
+}
+.recipes .recipes__card:nth-child(18) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.7s backwards;
+}
+.recipes .recipes__card:nth-child(19) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.8s backwards;
+}
+.recipes .recipes__card:nth-child(20) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 1.9s backwards;
+}
+.recipes .recipes__card:nth-child(21) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2s backwards;
+}
+.recipes .recipes__card:nth-child(22) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.1s backwards;
+}
+.recipes .recipes__card:nth-child(23) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.2s backwards;
+}
+.recipes .recipes__card:nth-child(24) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.3s backwards;
+}
+.recipes .recipes__card:nth-child(25) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.4s backwards;
+}
+.recipes .recipes__card:nth-child(26) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.5s backwards;
+}
+.recipes .recipes__card:nth-child(27) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.6s backwards;
+}
+.recipes .recipes__card:nth-child(28) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.7s backwards;
+}
+.recipes .recipes__card:nth-child(29) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.8s backwards;
+}
+.recipes .recipes__card:nth-child(30) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 2.9s backwards;
+}
+.recipes .recipes__card:nth-child(31) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3s backwards;
+}
+.recipes .recipes__card:nth-child(32) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.1s backwards;
+}
+.recipes .recipes__card:nth-child(33) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.2s backwards;
+}
+.recipes .recipes__card:nth-child(34) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.3s backwards;
+}
+.recipes .recipes__card:nth-child(35) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.4s backwards;
+}
+.recipes .recipes__card:nth-child(36) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.5s backwards;
+}
+.recipes .recipes__card:nth-child(37) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.6s backwards;
+}
+.recipes .recipes__card:nth-child(38) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.7s backwards;
+}
+.recipes .recipes__card:nth-child(39) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.8s backwards;
+}
+.recipes .recipes__card:nth-child(40) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 3.9s backwards;
+}
+.recipes .recipes__card:nth-child(41) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4s backwards;
+}
+.recipes .recipes__card:nth-child(42) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.1s backwards;
+}
+.recipes .recipes__card:nth-child(43) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.2s backwards;
+}
+.recipes .recipes__card:nth-child(44) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.3s backwards;
+}
+.recipes .recipes__card:nth-child(45) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.4s backwards;
+}
+.recipes .recipes__card:nth-child(46) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.5s backwards;
+}
+.recipes .recipes__card:nth-child(47) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.6s backwards;
+}
+.recipes .recipes__card:nth-child(48) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.7s backwards;
+}
+.recipes .recipes__card:nth-child(49) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.8s backwards;
+}
+.recipes .recipes__card:nth-child(50) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 4.9s backwards;
+}
+.recipes .recipes__card:nth-child(51) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5s backwards;
+}
+.recipes .recipes__card:nth-child(52) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.1s backwards;
+}
+.recipes .recipes__card:nth-child(53) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.2s backwards;
+}
+.recipes .recipes__card:nth-child(54) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.3s backwards;
+}
+.recipes .recipes__card:nth-child(55) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.4s backwards;
+}
+.recipes .recipes__card:nth-child(56) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.5s backwards;
+}
+.recipes .recipes__card:nth-child(57) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.6s backwards;
+}
+.recipes .recipes__card:nth-child(58) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.7s backwards;
+}
+.recipes .recipes__card:nth-child(59) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.8s backwards;
+}
+.recipes .recipes__card:nth-child(60) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 5.9s backwards;
+}
+.recipes .recipes__card:nth-child(61) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6s backwards;
+}
+.recipes .recipes__card:nth-child(62) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.1s backwards;
+}
+.recipes .recipes__card:nth-child(63) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.2s backwards;
+}
+.recipes .recipes__card:nth-child(64) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.3s backwards;
+}
+.recipes .recipes__card:nth-child(65) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.4s backwards;
+}
+.recipes .recipes__card:nth-child(66) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.5s backwards;
+}
+.recipes .recipes__card:nth-child(67) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.6s backwards;
+}
+.recipes .recipes__card:nth-child(68) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.7s backwards;
+}
+.recipes .recipes__card:nth-child(69) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.8s backwards;
+}
+.recipes .recipes__card:nth-child(70) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 6.9s backwards;
+}
+.recipes .recipes__card:nth-child(71) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7s backwards;
+}
+.recipes .recipes__card:nth-child(72) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.1s backwards;
+}
+.recipes .recipes__card:nth-child(73) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.2s backwards;
+}
+.recipes .recipes__card:nth-child(74) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.3s backwards;
+}
+.recipes .recipes__card:nth-child(75) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.4s backwards;
+}
+.recipes .recipes__card:nth-child(76) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.5s backwards;
+}
+.recipes .recipes__card:nth-child(77) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.6s backwards;
+}
+.recipes .recipes__card:nth-child(78) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.7s backwards;
+}
+.recipes .recipes__card:nth-child(79) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.8s backwards;
+}
+.recipes .recipes__card:nth-child(80) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 7.9s backwards;
+}
+.recipes .recipes__card:nth-child(81) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8s backwards;
+}
+.recipes .recipes__card:nth-child(82) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.1s backwards;
+}
+.recipes .recipes__card:nth-child(83) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.2s backwards;
+}
+.recipes .recipes__card:nth-child(84) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.3s backwards;
+}
+.recipes .recipes__card:nth-child(85) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.4s backwards;
+}
+.recipes .recipes__card:nth-child(86) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.5s backwards;
+}
+.recipes .recipes__card:nth-child(87) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.6s backwards;
+}
+.recipes .recipes__card:nth-child(88) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.7s backwards;
+}
+.recipes .recipes__card:nth-child(89) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.8s backwards;
+}
+.recipes .recipes__card:nth-child(90) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 8.9s backwards;
+}
+.recipes .recipes__card:nth-child(91) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9s backwards;
+}
+.recipes .recipes__card:nth-child(92) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.1s backwards;
+}
+.recipes .recipes__card:nth-child(93) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.2s backwards;
+}
+.recipes .recipes__card:nth-child(94) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.3s backwards;
+}
+.recipes .recipes__card:nth-child(95) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.4s backwards;
+}
+.recipes .recipes__card:nth-child(96) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.5s backwards;
+}
+.recipes .recipes__card:nth-child(97) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.6s backwards;
+}
+.recipes .recipes__card:nth-child(98) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.7s backwards;
+}
+.recipes .recipes__card:nth-child(99) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.8s backwards;
+}
+.recipes .recipes__card:nth-child(100) {
+  animation: staggerAnimation 1500ms cubic-bezier(0.17, 0.67, 0.33, 0.99) 9.9s backwards;
+}
+@keyframes staggerAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
 }
 .recipes .card-body {
   position: relative;
