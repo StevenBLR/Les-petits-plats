@@ -22,7 +22,7 @@
     }
 }
 
-@mixin staggerAnim($speed, $delay, $offset) {
+@mixin staggerAnim($speed, $delay, $offset:0) {
     $elements:100; // Nb elements to animate ( big offset to manage any amount of items )
     animation-delay: $delay;
     @for $i from 0 to $elements {

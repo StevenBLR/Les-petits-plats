@@ -39,7 +39,7 @@ $asf-max-height : 100px;
         overflow: hidden;
     }
     li{
-        @include staggerAnim(1500ms, 0.05s, 2rem);
+        @include staggerAnim(1500ms, 0.03s);
         max-width: 125px;
         overflow: hidden;
         button{
