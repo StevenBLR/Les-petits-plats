@@ -185,4 +185,9 @@ function OpenAsf(elt){
     elt.setAttribute("placeholder", `Rechercher un ${elt.id}`);
 }
 
+class Tag{
+    constructor(name, id, type){
+    }
+}
+
 Init();

@@ -31,13 +31,16 @@ $tag-font-size : 14px;
 
     // Tags
     &__tags {
-        margin-block: 15px;
+        margin-bottom: 7px;
+        display: flex;
+        flex-wrap: wrap;
         .filters__tag {
             font-size: $tag-font-size;
             border-radius: 7px;
             padding: 10px 3px 10px 10px;
             margin: 7px 7px 0 0;
             color: white;
+            white-space: nowrap;
             background-color: #3282F7;
         }
 
