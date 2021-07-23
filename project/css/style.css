@@ -123,8 +123,8 @@ header .header__logo {
   color: white;
 }
 .advanced-search-field ul {
-  max-height: 100px;
-  margin-inline: 20px;
+  max-height: 250px;
+  margin: 0 20px 10px 20px;
   padding: unset;
   column-count: 3;
   overflow: hidden;
@@ -482,8 +482,8 @@ header .header__logo {
   color: white;
 }
 .advanced-search-field--green ul {
-  max-height: 100px;
-  margin-inline: 20px;
+  max-height: 250px;
+  margin: 0 20px 10px 20px;
   padding: unset;
   column-count: 3;
   overflow: hidden;
@@ -841,8 +841,8 @@ header .header__logo {
   color: white;
 }
 .advanced-search-field--orange ul {
-  max-height: 100px;
-  margin-inline: 20px;
+  max-height: 250px;
+  margin: 0 20px 10px 20px;
   padding: unset;
   column-count: 3;
   overflow: hidden;

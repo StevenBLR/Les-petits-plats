@@ -1,12 +1,20 @@
+class Tag{
+    constructor(name, id, type = ""){
+        this.name = name;
+        this.id = id;
+        this.type = type;
+    }
+}
+
+const blue = "#3282F7";
+const green = "#68D9A4";
+const orange = "#ED6454";
+
 var mainSearchBar = document.querySelector(".filters__search-bar");
 var tagsRootElt = document.querySelector(".filters__tags");
 var recipesRootElt = document.querySelector(".recipes");
 
 //#region (Elements) Advanced search fields
-var ingredientsRootElt = document.querySelector(".advanced-search-field ul");
-var appareilsRootElt = document.querySelector(".advanced-search-field--green ul");
-var ustencilsRootElt = document.querySelector(".advanced-search-field--orange ul");
-
 var ingredientTxtField = document.querySelector(".advanced-search-field .advanced-search-field__text-input")
 var appareilsTxtField = document.querySelector(".advanced-search-field--green .advanced-search-field__text-input");
 var ustencilsTxtField = document.querySelector(".advanced-search-field--orange .advanced-search-field__text-input");
@@ -19,9 +27,6 @@ var currentTagList = [];
 
 //#region (Fonctions) Initialization
 function Init(){
-    PopulateIngredients();
-    //PopulateAppareils();
-    //PopulateUstencils();
     PopulateRecipeFeed();
     InitEvents();
     tagsRootElt.innerHTML = "";
@@ -35,6 +40,7 @@ function InitEvents(){
            GetMatchingElement(mainSearchBar.value);
        }
     })
+    // [TODO] Refactoriser
     InitAdvancedSearchField(ingredientTxtField);
     InitAdvancedSearchField(appareilsTxtField);
     InitAdvancedSearchField(ustencilsTxtField);
@@ -52,64 +58,56 @@ function InitAdvancedSearchField(elt){
 //#endregion
 
 //#region (Fonctions) Population
-function PopulateIngredients(tagList = []){
-    ingredientsRootElt.innerHTML = "";
-    ingredientsToDisplay = [];
-    if (tagList.length > 0 || mainSearchBar.value.toString().length){
-        // [TODO] Filtering data with tags & main search input
+function PopulateAdvancedSearchField(inputField){
+    var asfParent = inputField.parentNode;
+    var asfTagRoot = asfParent.querySelector(".advanced-search-field__tags");
+    var ulElt = document.createElement("ul");
+
+    elementsToDisplay = [];
+    if (false){//(currentTagList.length > 0 || mainSearchBar.value.toString().length){
+        console.log("No tag filtering yet"); // [TODO] Filtering data with tags & main search input
     }
-    else ingredientsToDisplay = ingredients;
-    ingredientsToDisplay.forEach(i =>{
+    else{
+        switch(inputField.id){
+            case "Ingrédient":
+                elementsToDisplay = ingredients;
+                break;
+            case "Appareil":
+                elementsToDisplay = appareils;
+                break;
+            case "Ustensile":
+                elementsToDisplay = ustensils;
+                break;
+        }
+    }
+    elementsToDisplay.forEach(i =>{
         var btElt = document.createElement("button");
         var btId = i.split(' ').join('-');
         btElt.id = btId; // Remplacemeent des espaces par les tirets
 
         // Click event - Create tag
         btElt.addEventListener("click", function(e){
-            if(!currentTagList.includes(btId)){
+            if(!currentTagList.find(tag => tag.id == btId)){
                 e.preventDefault();
                 //e.stopImmediatePropagation();
                 console.log(e.target.parentNode.id);
-                PopulateTag(i, e.target.parentNode.id);
+                PopulateTag(i, e.target.parentNode.id,inputField.id);
             }
         });
 
+
         var liElt = document.createElement("li");
-        ingredientsRootElt.appendChild(liElt);
+        asfParent.appendChild(liElt);
         liElt.appendChild(btElt);
+        ulElt.appendChild(liElt);
 
         var spanElt = document.createElement("span");
         spanElt.textContent = i;
         btElt.appendChild(spanElt);
     })
-}
+    asfTagRoot.appendChild(ulElt);
 
-function PopulateAppareils(tagList = []){
-    appareilsRootElt.innerHTML = "";
-    appareils.forEach(a =>{
-        appareilsRootElt.innerHTML += `<li><button type="button"><span>${a}</span></button></li>`;
-    })
-}
 
-function PopulateUstencils(tagList = []){
-    ustencilsRootElt.innerHTML = "";
-    ustensils.forEach(u =>{
-        ustencilsRootElt.innerHTML += `<li><button type="button"><span>${u}</span></button></li>`; 
-    })
-}
-
-function PopulateAdvancedSearchField(id){
-    switch(id){
-        case "Ingrédient":
-            PopulateIngredients();
-            break;
-        case "Appareil":
-            PopulateAppareils();
-            break;   
-        case "Ustensile":
-            PopulateUstencils();
-            break;  
-    }
 }
 
 function PopulateRecipeFeed(tagList = []){
@@ -124,7 +122,7 @@ function PopulateRecipeFeed(tagList = []){
         r.ingredients.forEach(i =>{
             str += `<p><strong>${i.ingredient} ${i.hasOwnProperty('quantity') || i.hasOwnProperty('unit')?":":""}</strong> ${i.hasOwnProperty('quantity')?i.quantity:""} ${i.hasOwnProperty('unit')?i.unit:""}</p>`;
         })
-        recipesRootElt.innerHTML += 
+        recipesRootElt.innerHTML +=
         `<div class="card recipes__card">
         <img src="../imgs/sample_img.jpg" class="card-img-top recipes__img" alt="...">
         <div class="card-body">
@@ -146,21 +144,15 @@ function PopulateRecipeFeed(tagList = []){
     })
 }
 
-function PopulateTag(title, id){
+function PopulateTag(title, id, type){
+    // Layout - Creating elements
     var spanElt = document.createElement("span");
     spanElt.classList.add("filters__tag");
     spanElt.textContent = title;
 
     var btElt = document.createElement("button");
     btElt.setAttribute("data-info",id);
-    // Click event - Delete tag
-    btElt.addEventListener("click", function(e){
-        e.preventDefault();
-        e.target.parentNode.parentNode.remove();
-        currentTagList.splice(currentTagList.indexOf(id),1);
-        console.log(currentTagList);
-    })
-
+    
     var iElt = document.createElement("i");
     iElt.classList.add("far");
     iElt.classList.add("fa-times-circle");
@@ -168,7 +160,30 @@ function PopulateTag(title, id){
     btElt.appendChild(iElt);
     spanElt.appendChild(btElt);
     tagsRootElt.appendChild(spanElt);
-    currentTagList.push(id);
+
+    // Events - Click on button to delete tag
+    btElt.addEventListener("click", function(e){
+        e.preventDefault();
+        e.target.parentNode.parentNode.remove();
+        currentTagList.splice(currentTagList.findIndex(tag => tag.id == id));
+        console.log(currentTagList);
+    })
+
+    // Style - Update tag color with type
+    switch(type){
+        case "Ingrédient":
+            spanElt.style.backgroundColor = blue;
+            break;
+        case "Appareil":
+            spanElt.style.backgroundColor = green;
+            break;
+        case "Ustensile":
+            spanElt.style.backgroundColor = orange;
+            break;
+    }
+
+    // Data - Updating tag list
+    currentTagList.push(new Tag(title,id,type));
     console.log(currentTagList);
 }
 //#endregion
@@ -177,17 +192,17 @@ function OpenAsf(elt){
     // Close all other asfs
     var asfRootElt = document.querySelector(".filters__advanced-search");
     asfRootElt.querySelectorAll('div[data-info=asf]').forEach(asf => {
-        asf.querySelector(".advanced-search-field__tags ul").innerHTML = "";
+        if(asf.querySelector(".advanced-search-field__tags ul"))
+        asf.querySelector(".advanced-search-field__tags ul").remove();
+        if(asf.querySelector(".advanced-search-field__text-input"))
         asf.querySelector(".advanced-search-field__text-input").setAttribute("placeholder", `${asf.querySelector(".advanced-search-field__text-input").id}s`);
     })
     // Opening current asf
-    PopulateAdvancedSearchField(elt.id);
+    //PopulateAdvancedSearchField(elt.id);
+    PopulateAdvancedSearchField(elt)
     elt.setAttribute("placeholder", `Rechercher un ${elt.id}`);
 }
 
-class Tag{
-    constructor(name, id, type){
-    }
-}
+
 
 Init();

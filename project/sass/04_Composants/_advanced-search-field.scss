@@ -1,4 +1,4 @@
-$asf-max-height : 100px;
+$asf-max-height : 250px;
 
 @mixin advanced-sf($color){
     position: relative;
@@ -33,7 +33,7 @@ $asf-max-height : 100px;
     // Advanced search list
     ul{
         max-height: $asf-max-height;
-        margin-inline: 20px;
+        margin: 0 20px 10px 20px;
         padding: unset;
         column-count: 3;
         overflow: hidden;
