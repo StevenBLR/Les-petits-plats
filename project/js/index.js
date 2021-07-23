@@ -19,7 +19,7 @@ var tagList = [];
 
 //#region (Fonctions) Initialization
 function Init(){
-    //PopulateIngredients();
+    PopulateIngredients();
     //PopulateAppareils();
     //PopulateUstencils();
     PopulateRecipeFeed();
@@ -40,18 +40,13 @@ function InitEvents(){
 }
 
 function InitAdvancedSearchField(elt){
+    // Click on text input
     elt.addEventListener("click", function(e){
         if (elt != currentAsf){
             OpenAsf(elt);
             currentAsf = elt;
         }
     })
-    // var events = ["click"];
-    // for (let i=0; i<events.length; i++){
-    //     elt.addEventListener(events[i], function(e){
-    //         events[i]=="click"?SwitchSearchFieldState(true, elt):SwitchSearchFieldState(false, elt);
-    //     })
-    // }
 }
 //#endregion
 
@@ -64,7 +59,23 @@ function PopulateIngredients(tagList = []){
     }
     else ingredientsToDisplay = ingredients;
     ingredientsToDisplay.forEach(i =>{
-        ingredientsRootElt.innerHTML += `<li><button type="button"><span>${i}</span></button></li>`;
+        var btElt = document.createElement("button");
+        btElt.id = i.split(' ').join('-'); // Remplacemeent des espaces par les tirets
+        btElt.addEventListener("click", clickEvent);
+
+        function clickEvent(e){
+            e.preventDefault();
+            //e.stopImmediatePropagation();
+            PopulateTag(e);
+        }
+
+        var liElt = document.createElement("li");
+        ingredientsRootElt.appendChild(liElt);
+        liElt.appendChild(btElt);
+
+        var spanElt = document.createElement("span");
+        spanElt.textContent = i;
+        btElt.appendChild(spanElt);
     })
 }
 
@@ -129,6 +140,10 @@ function PopulateRecipeFeed(tagList = []){
         `
     })
 }
+
+function PopulateTag(e){
+    console.log(e.target.parentNode.id);
+}
 //#endregion
 
 function OpenAsf(elt){
@@ -141,11 +156,6 @@ function OpenAsf(elt){
     // Opening current asf
     PopulateAdvancedSearchField(elt.id);
     elt.setAttribute("placeholder", `Rechercher un ${elt.id}`);
-    //if (!elt.value > 0) elt.setAttribute("placeholder", `Rechercher un ${elt.id}`)
-    //elt.style.opacity = "0.7";
-    //elt.style.maxHeight = "100px";
-    // elt.parentNode.querySelector(".advanced-search-field__tags ul").innerHTML = "";
-    // elt.setAttribute("placeholder", `${elt.id}s`);
 }
 
 Init();
