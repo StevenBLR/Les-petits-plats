@@ -15,7 +15,7 @@ var asfPlaceholders = document.querySelectorAll(".filters__advanced-search::plac
 //#endregion
 
 var currentAsf; // ASF = Advanced Search Field
-var tagList = [];
+var currentTagList = [];
 
 //#region (Fonctions) Initialization
 function Init(){
@@ -24,6 +24,7 @@ function Init(){
     //PopulateUstencils();
     PopulateRecipeFeed();
     InitEvents();
+    tagsRootElt.innerHTML = "";
 }
 
 function InitEvents(){
@@ -60,14 +61,18 @@ function PopulateIngredients(tagList = []){
     else ingredientsToDisplay = ingredients;
     ingredientsToDisplay.forEach(i =>{
         var btElt = document.createElement("button");
-        btElt.id = i.split(' ').join('-'); // Remplacemeent des espaces par les tirets
-        btElt.addEventListener("click", clickEvent);
+        var btId = i.split(' ').join('-');
+        btElt.id = btId; // Remplacemeent des espaces par les tirets
 
-        function clickEvent(e){
-            e.preventDefault();
-            //e.stopImmediatePropagation();
-            PopulateTag(e);
-        }
+        // Click event - Create tag
+        btElt.addEventListener("click", function(e){
+            if(!currentTagList.includes(btId)){
+                e.preventDefault();
+                //e.stopImmediatePropagation();
+                console.log(e.target.parentNode.id);
+                PopulateTag(i, e.target.parentNode.id);
+            }
+        });
 
         var liElt = document.createElement("li");
         ingredientsRootElt.appendChild(liElt);
@@ -141,8 +146,30 @@ function PopulateRecipeFeed(tagList = []){
     })
 }
 
-function PopulateTag(e){
-    console.log(e.target.parentNode.id);
+function PopulateTag(title, id){
+    var spanElt = document.createElement("span");
+    spanElt.classList.add("filters__tag");
+    spanElt.textContent = title;
+
+    var btElt = document.createElement("button");
+    btElt.setAttribute("data-info",id);
+    // Click event - Delete tag
+    btElt.addEventListener("click", function(e){
+        e.preventDefault();
+        e.target.parentNode.parentNode.remove();
+        currentTagList.splice(currentTagList.indexOf(id),1);
+        console.log(currentTagList);
+    })
+
+    var iElt = document.createElement("i");
+    iElt.classList.add("far");
+    iElt.classList.add("fa-times-circle");
+
+    btElt.appendChild(iElt);
+    spanElt.appendChild(btElt);
+    tagsRootElt.appendChild(spanElt);
+    currentTagList.push(id);
+    console.log(currentTagList);
 }
 //#endregion
 
