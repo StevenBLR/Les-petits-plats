@@ -141,14 +141,11 @@ function PopulateTag(title, id, type){
     var spanElt = document.createElement("span");
     spanElt.classList.add("filters__tag");
     spanElt.textContent = title;
-
     var btElt = document.createElement("button");
     btElt.setAttribute("data-info",id);
-    
     var iElt = document.createElement("i");
     iElt.classList.add("far");
     iElt.classList.add("fa-times-circle");
-
     btElt.appendChild(iElt);
     spanElt.appendChild(btElt);
     tagsRootElt.appendChild(spanElt);
@@ -156,9 +153,9 @@ function PopulateTag(title, id, type){
     // Events - Click on button to delete tag
     btElt.addEventListener("click", function(e){
         e.preventDefault();
-        e.target.parentNode.parentNode.remove();
+        e.target.closest(".filters__tag").remove();
         currentTagList.splice(currentTagList.findIndex(tag => tag.id == id),1);
-        console.log(currentTagList);
+        //console.log(currentTagList);
     })
 
     // Style - Update tag color with type

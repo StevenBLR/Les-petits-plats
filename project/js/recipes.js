@@ -1744,7 +1744,7 @@ function GetAllRecipes(){
 
 function GetAllDescriptions(){
     recipesJSON.forEach(r => {descriptions.push(r.description);})
-    console.log(descriptions);
+    //console.log(descriptions);
 }
 
 //[TODO] Gerer les différences d'accents 
@@ -1758,7 +1758,7 @@ function GetAllIngredients(){
             }
         });
     });
-    console.log(ingredients);
+    //console.log(ingredients);
 }
 
 //[TODO] Supprimer les caractères spéciaux
@@ -1770,7 +1770,7 @@ function GetAllAppareils(){
             appareils.push(r.appliance);
         }
     });
-    console.log(appareils);
+    //console.log(appareils);
 }
 
 //[TODO] Uniformiser les entrées (Premier caractere majuscule)
@@ -1784,7 +1784,7 @@ function GetAllUstencils(){
             }
         })
     })
-    console.log(ustensils);
+    //console.log(ustensils);
 }
 
 
@@ -1799,7 +1799,8 @@ function GetMatchingElement(input){
     // everything.push(...ustensils);
     everything.push(...descriptions);
 
-    var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
+    //var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
+    var reg = new RegExp("")
     everything.filter(item => {
       if (item.toString().match(reg)) {
         matchingItems.push(item);
