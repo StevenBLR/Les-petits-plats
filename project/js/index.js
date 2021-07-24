@@ -14,14 +14,6 @@ var mainSearchBar = document.querySelector(".filters__search-bar");
 var tagsRootElt = document.querySelector(".filters__tags");
 var recipesRootElt = document.querySelector(".recipes");
 
-//#region (Elements) Advanced search fields
-var ingredientTxtField = document.querySelector(".advanced-search-field .advanced-search-field__text-input")
-var appareilsTxtField = document.querySelector(".advanced-search-field--green .advanced-search-field__text-input");
-var ustencilsTxtField = document.querySelector(".advanced-search-field--orange .advanced-search-field__text-input");
-
-var asfPlaceholders = document.querySelectorAll(".filters__advanced-search::placeholder");
-//#endregion
-
 var currentAsf; // ASF = Advanced Search Field
 var currentTagList = [];
 
@@ -40,10 +32,10 @@ function InitEvents(){
            GetMatchingElement(mainSearchBar.value);
        }
     })
-    // [TODO] Refactoriser
-    InitAdvancedSearchField(ingredientTxtField);
-    InitAdvancedSearchField(appareilsTxtField);
-    InitAdvancedSearchField(ustencilsTxtField);
+    
+    document.querySelectorAll("[data-info=asf]").forEach(asf => {
+        InitAdvancedSearchField(asf.querySelector(".advanced-search-field__text-input"));
+    })
 }
 
 function InitAdvancedSearchField(elt){
