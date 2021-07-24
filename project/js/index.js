@@ -25,14 +25,14 @@ function Init(){
 }
 
 function InitEvents(){
-    // Text input on main search bar
+    // Main Search Bar
     mainSearchBar.addEventListener("input", function(e){
        if(mainSearchBar.value.toString().length > 2){
            console.log("Refresh UI");
            GetMatchingElement(mainSearchBar.value);
        }
     })
-    
+    // Advanced Search Fields
     document.querySelectorAll("[data-info=asf]").forEach(asf => {
         InitAdvancedSearchField(asf.querySelector(".advanced-search-field__text-input"));
     })
@@ -79,7 +79,7 @@ function PopulateAdvancedSearchField(inputField){
 
         // Click event - Create tag
         btElt.addEventListener("click", function(e){
-            if(!currentTagList.find(tag => tag.id == btId)){
+            if(!currentTagList.find(tag => tag.id == btId) || !currentTagList.find(tag => tag.name == i)){
                 e.preventDefault();
                 //e.stopImmediatePropagation();
                 console.log(e.target.parentNode.id);
@@ -157,7 +157,7 @@ function PopulateTag(title, id, type){
     btElt.addEventListener("click", function(e){
         e.preventDefault();
         e.target.parentNode.parentNode.remove();
-        currentTagList.splice(currentTagList.findIndex(tag => tag.id == id));
+        currentTagList.splice(currentTagList.findIndex(tag => tag.id == id),1);
         console.log(currentTagList);
     })
 
