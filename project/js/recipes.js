@@ -1723,6 +1723,9 @@ const recipesJSON = [
     }
 ]
 
+// class Recipe{
+//     constructor(id,name,)
+// }
 var recipes = [];
 var descriptions = [];
 var ingredients = [];
@@ -1800,7 +1803,7 @@ function GetMatchingElement(input){
     everything.push(...descriptions);
 
     //var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
-    var reg = new RegExp("")
+    var reg = new RegExp(`${input}`);
     everything.filter(item => {
       if (item.toString().match(reg)) {
         matchingItems.push(item);
