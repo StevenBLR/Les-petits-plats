@@ -1723,37 +1723,39 @@ const recipesJSON = [
     }
 ]
 
-// class Recipe{
-//     constructor(id,name,)
-// }
+class Recipe{
+    constructor(id,name,ingredients,description,appliance,ustensils){
+        this.id = id;
+        this.name = name;
+        this.ingredients = ingredients;
+        this.description = description;
+        this.appliance = appliance;
+        this.ustensils = ustensils;
+    }
+}
 var recipes = [];
 var descriptions = [];
-var ingredients = [];
-var appareils = [];
-var ustensils = [];
+
 
 function Init(){
-    GetAllIngredients();
-    GetAllAppareils();
-    GetAllUstencils();
-    GetAllRecipes();
-    GetAllDescriptions();
+    StoreAllRecipes();
 }
 
-function GetAllRecipes(){
-    recipesJSON.forEach(r => {recipes.push(r.name);})
+function StoreAllRecipes(){
+    recipesJSON.forEach(r => {recipes.push(new Recipe(r.id,r.name,r.ingredients,r.description,r.appliance,r.ustensils));})
     console.log(recipes);
 }
 
-function GetAllDescriptions(){
-    recipesJSON.forEach(r => {descriptions.push(r.description);})
-    //console.log(descriptions);
-}
+// function GetAllDescriptions(){
+//     recipesJSON.forEach(r => {descriptions.push(r.description);})
+//     //console.log(descriptions);
+// }
 
 //[TODO] Gerer les différences d'accents 
 function GetAllIngredients(){
-    tmp = [];
-    recipesJSON.forEach(r => {
+    var tmp = [];
+    var ingredients = [];
+    recipes.forEach(r => {
         r.ingredients.forEach(i => {
             if(!tmp.includes(i.ingredient.toUpperCase())){
                 tmp.push(i.ingredient.toUpperCase());
@@ -1761,24 +1763,28 @@ function GetAllIngredients(){
             }
         });
     });
+    return ingredients;
     //console.log(ingredients);
 }
 
 //[TODO] Supprimer les caractères spéciaux
 function GetAllAppareils(){
-    tmp = [];
+    var tmp = [];
+    var appareils = [];
     recipesJSON.forEach(r => {
         if (!tmp.includes(r.appliance.toUpperCase())){
             tmp.push(r.appliance.toUpperCase());
             appareils.push(r.appliance);
         }
     });
+    return appareils;
     //console.log(appareils);
 }
 
 //[TODO] Uniformiser les entrées (Premier caractere majuscule)
 function GetAllUstencils(){
     tmp = [];
+    var ustensils = [];
     recipesJSON.forEach(r => {
         r.ustensils.forEach(u =>{
             if(!tmp.includes(u.toUpperCase())){
@@ -1787,31 +1793,64 @@ function GetAllUstencils(){
             }
         })
     })
+    return ustensils;
     //console.log(ustensils);
 }
 
+function GetFilteredAsfElements(type = "", input = "", tags = []){
+    var contentToCompare = [];
+    var matchingElements = [];
+    var reg = new RegExp(`${input}`);
+    if(type != ""){
+        switch(type){
+            case "Ingrédient":
+                contentToCompare.push(GetAllIngredients());
+                break;
+            case "Appareil":
+                contentToCompare.push(GetAllAppareils());
+                break;
+            case "Ustensile":
+                contentToCompare.push(GetAllUstencils());
+                break;
+        }
+    }
+    if(input != "" || tags.length > 0){
+        // Tags priorité 1 - 
+        if (tags.length > 0){
+            tags.forEach(t => {
+                recipes.forEach(r => {
+                    if(type == "Ingrédient") matchingElements.push(r.ingredients.forEach(i => {i.filter(i => i.match(reg))})); 
+                    if(type == "Appareil") matchingElements.push(r.appareils.filter(a => a.match(reg)));
+                    if(type == "Ustensile") matchingElements.push(r.ustensils.filter(u => u.match(reg)));
+                })
+                //matchingElements.push(recipes.filter(r => r.ingredients.includes(t)));
+            })
+            console.log(matchingElements);
+            //matchingElements.push(recipes.filter(r => r.name == tags))
+        }
+    }
+    return matchingElements;
+}
 
+function GetMatchingElement(input = "", tags = []){
 
-function GetMatchingElement(input){
-    var everything = [];
-    var matchingItems = [];
+    // var everything = [];
+    // var matchingItems = [];
     // Sythaxe de décomposition - Spread Operator (...)
-    everything.push(...recipes);
-    everything.push(...ingredients);
+    // everything.push(...recipes);
+    // everything.push(...ingredients);
     // everything.push(...appareils);
     // everything.push(...ustensils);
-    everything.push(...descriptions);
-
-    //var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
+    // everything.push(...descriptions);
     var reg = new RegExp(`${input}`);
     everything.filter(item => {
       if (item.toString().match(reg)) {
         matchingItems.push(item);
       }
     });
-      
     console.log(`Input = ${input}`);
     console.log(matchingItems);
+    return matchingItems;
 }
 
 

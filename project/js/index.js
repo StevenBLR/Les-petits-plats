@@ -50,56 +50,62 @@ function InitAdvancedSearchField(elt){
 //#endregion
 
 //#region (Fonctions) Population
-function PopulateAdvancedSearchField(inputField){
-    var asfParent = inputField.parentNode;
+function PopulateAdvancedSearchField(asfId){
+    var asfParent = document.querySelector(`#${asfId}`).closest("[data-info=asf]");
     var asfTagRoot = asfParent.querySelector(".advanced-search-field__tags");
     var ulElt = document.createElement("ul");
 
     elementsToDisplay = [];
-    if (false){//(currentTagList.length > 0 || mainSearchBar.value.toString().length){
-        console.log("No tag filtering yet"); // [TODO] Filtering data with tags & main search input
+    if (currentTagList.length > 0 || mainSearchBar.value.toString().length){
+        elementsToDisplay.push(GetFilteredAsfElements(asfId, mainSearchBar.value,currentTagList));
+        console.log("Elements to display",elementsToDisplay);
+        //console.log("No tag filtering yet"); // [TODO] Filtering data with tags & main search input
     }
     else{
-        switch(inputField.id){
+        switch(asfId){
             case "Ingrédient":
-                elementsToDisplay = ingredients;
+                elementsToDisplay = GetAllIngredients();
                 break;
             case "Appareil":
-                elementsToDisplay = appareils;
+                elementsToDisplay = GetAllAppareils();
                 break;
             case "Ustensile":
-                elementsToDisplay = ustensils;
+                elementsToDisplay = GetAllUstencils();
                 break;
         }
     }
-    elementsToDisplay.forEach(i =>{
-        var btElt = document.createElement("button");
-        var btId = i.split(' ').join('-');
-        btElt.id = btId; // Remplacemeent des espaces par les tirets
-
-        // Click event - Create tag
-        btElt.addEventListener("click", function(e){
-            if(!currentTagList.find(tag => tag.id == btId) || !currentTagList.find(tag => tag.name == i)){
-                e.preventDefault();
-                //e.stopImmediatePropagation();
-                console.log(e.target.parentNode.id);
-                PopulateTag(i, e.target.parentNode.id,inputField.id);
+    if(elementsToDisplay.length > 0){
+        elementsToDisplay.forEach(i =>{
+            if(i != "undefined"){
+                var btElt = document.createElement("button");
+                var btId = i.split(' ').join('-');
+                btElt.id = btId; // Remplacemeent des espaces par les tirets
+        
+                // Click event - Create tag
+                btElt.addEventListener("click", function(e){
+                    if(!currentTagList.find(tag => tag.id == btId) || !currentTagList.find(tag => tag.name == i)){
+                        e.preventDefault();
+                        //e.stopImmediatePropagation();
+                        console.log(e.target.parentNode.id);
+                        PopulateTag(i, e.target.parentNode.id,asfId);
+                        PopulateAdvancedSearchField(btId);
+                    }
+                });
+        
+        
+                var liElt = document.createElement("li");
+                asfParent.appendChild(liElt);
+                liElt.appendChild(btElt);
+                ulElt.appendChild(liElt);
+        
+                var spanElt = document.createElement("span");
+                spanElt.textContent = i;
+                btElt.appendChild(spanElt);
             }
-        });
-
-
-        var liElt = document.createElement("li");
-        asfParent.appendChild(liElt);
-        liElt.appendChild(btElt);
-        ulElt.appendChild(liElt);
-
-        var spanElt = document.createElement("span");
-        spanElt.textContent = i;
-        btElt.appendChild(spanElt);
-    })
-    asfTagRoot.appendChild(ulElt);
-
-
+        })
+        asfTagRoot.appendChild(ulElt);
+    }
+    else console.error("Nothing to display in ASF");
 }
 
 function PopulateRecipeFeed(tagList = []){
@@ -188,7 +194,7 @@ function OpenAsf(elt){
     })
     // Opening current asf
     //PopulateAdvancedSearchField(elt.id);
-    PopulateAdvancedSearchField(elt)
+    PopulateAdvancedSearchField(elt.id)
     elt.setAttribute("placeholder", `Rechercher un ${elt.id}`);
 }
 
