@@ -17,6 +17,56 @@ var recipesRootElt = document.querySelector(".recipes");
 var currentAsf; // ASF = Advanced Search Field
 var currentTagList = [];
 
+
+function search(mainSearchInput, tags){
+
+    // Get all recipes
+    const allRecipes = [...recipes];
+
+    recipes.forEach(recipe => {
+        let visible = false;
+
+        // Get the main search
+        if(recipe.name.indexOf(mainSearchBar) > -1){
+            visible = true;
+        }
+
+        if(recipe.description.indexOf(mainSearchBar) > -1){
+            visible = true;
+        }
+        
+        // Get all the tags
+        // -> Array of tags
+        let score = 0;
+
+        tags.forEach(tag => {
+            
+            if(tag.type == "ustensil"){
+                if(recipe.ustensils.includes(tag.name)){
+                    score++;
+                }
+            }
+
+            if(tag.type == "appliance"){
+                if(recipe.appliance == tag.name){
+                    score++;
+                }
+            }
+        });
+
+        if(score == tags.length){
+            visible = true;
+        }
+
+
+
+        recipe.visible = visible;
+    });
+
+
+}
+
+
 //#region (Fonctions) Initialization
 function Init(){
     PopulateRecipeFeed();
@@ -50,19 +100,24 @@ function InitAdvancedSearchField(elt){
 //#endregion
 
 //#region (Fonctions) Population
-function PopulateAdvancedSearchField(asfId){
-    var asfParent = document.querySelector(`#${asfId}`).closest("[data-info=asf]");
+function PopulateAdvancedSearchField(id){
+    // 
+    // id = asf child id --> Getting asf parent root from current element
+    console.log(`Child element's id = #${id}`);
+    var asfParent = document.querySelector(`#${id}`).closest("[data-info=asf]");
+    var currentAsfId = asfParent.querySelector("input").id;
+    console.log(currentAsfId);
     var asfTagRoot = asfParent.querySelector(".advanced-search-field__tags");
     var ulElt = document.createElement("ul");
 
     elementsToDisplay = [];
     if (currentTagList.length > 0 || mainSearchBar.value.toString().length){
-        elementsToDisplay.push(GetFilteredAsfElements(asfId, mainSearchBar.value,currentTagList));
+        elementsToDisplay.push(GetFilteredAsfElements(currentAsfId,mainSearchBar.value,currentTagList));
         console.log("Elements to display",elementsToDisplay);
         //console.log("No tag filtering yet"); // [TODO] Filtering data with tags & main search input
     }
     else{
-        switch(asfId){
+        switch(id){
             case "Ingrédient":
                 elementsToDisplay = GetAllIngredients();
                 break;
@@ -76,7 +131,7 @@ function PopulateAdvancedSearchField(asfId){
     }
     if(elementsToDisplay.length > 0){
         elementsToDisplay.forEach(i =>{
-            if(i != "undefined"){
+            if(i != "undefined" && i.length > 0){
                 var btElt = document.createElement("button");
                 var btId = i.split(' ').join('-');
                 btElt.id = btId; // Remplacemeent des espaces par les tirets
@@ -86,9 +141,10 @@ function PopulateAdvancedSearchField(asfId){
                     if(!currentTagList.find(tag => tag.id == btId) || !currentTagList.find(tag => tag.name == i)){
                         e.preventDefault();
                         //e.stopImmediatePropagation();
-                        console.log(e.target.parentNode.id);
-                        PopulateTag(i, e.target.parentNode.id,asfId);
-                        PopulateAdvancedSearchField(btId);
+                        //console.log(e.target.parentNode.id);
+                        PopulateTag(i, e.target.parentNode.id,btId);
+                        PopulateRecipeFeed(GetMatchingElement(mainSearchBar.value,currentTagList));
+                        //PopulateAdvancedSearchField(btId);
                     }
                 });
         
@@ -180,24 +236,27 @@ function PopulateTag(title, id, type){
     // Data - Updating tag list
     currentTagList.push(new Tag(title,id,type));
     console.log(currentTagList);
+
+    // Populate ASF
+    
 }
 //#endregion
 
 function OpenAsf(elt){
-    // Close all other asfs
+    // Getting all asf root
     var asfRootElt = document.querySelector(".filters__advanced-search");
+    // Close every Asf
     asfRootElt.querySelectorAll('div[data-info=asf]').forEach(asf => {
+        // Delete current asf list root
         if(asf.querySelector(".advanced-search-field__tags ul"))
         asf.querySelector(".advanced-search-field__tags ul").remove();
+        // Update selected asf
         if(asf.querySelector(".advanced-search-field__text-input"))
         asf.querySelector(".advanced-search-field__text-input").setAttribute("placeholder", `${asf.querySelector(".advanced-search-field__text-input").id}s`);
     })
-    // Opening current asf
-    //PopulateAdvancedSearchField(elt.id);
-    PopulateAdvancedSearchField(elt.id)
+    // Open current asf
+    PopulateAdvancedSearchField(elt.id);
     elt.setAttribute("placeholder", `Rechercher un ${elt.id}`);
 }
-
-
 
 Init();

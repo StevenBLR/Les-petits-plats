@@ -1,0 +1,29 @@
+@mixin likeBt {
+    width: 12rem;
+    position: absolute;
+    right: 50px;
+    bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .like{
+        color: $primaryColor;
+    }
+    .like-switch{
+        position: absolute;
+        height: 100%;
+        z-index: 1;
+        width: 100%;
+        opacity: 0.0;
+        //visibility: hidden; // is Disabling toggle //
+        &:checked ~ .like{
+            font-weight: 600;
+            animation: heartbeat 1s;
+        }
+        &:not(:checked) ~ .like{
+            font-weight: 400;
+            color:black;
+        }
+    } 
+}
+

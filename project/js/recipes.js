@@ -1800,7 +1800,7 @@ function GetAllUstencils(){
 function GetFilteredAsfElements(type = "", input = "", tags = []){
     var contentToCompare = [];
     var matchingElements = [];
-    var reg = new RegExp(`${input}`);
+    //var reg = new RegExp(`${input}`);
     if(type != ""){
         switch(type){
             case "Ingrédient":
@@ -1815,42 +1815,103 @@ function GetFilteredAsfElements(type = "", input = "", tags = []){
         }
     }
     if(input != "" || tags.length > 0){
-        // Tags priorité 1 - 
+        // Filtration via tags
         if (tags.length > 0){
             tags.forEach(t => {
-                recipes.forEach(r => {
-                    if(type == "Ingrédient") matchingElements.push(r.ingredients.forEach(i => {i.filter(i => i.match(reg))})); 
-                    if(type == "Appareil") matchingElements.push(r.appareils.filter(a => a.match(reg)));
-                    if(type == "Ustensile") matchingElements.push(r.ustensils.filter(u => u.match(reg)));
-                })
+                //if(contentToCompare.)
+                // recipes.forEach(r => {
+                    
+
+                // })
                 //matchingElements.push(recipes.filter(r => r.ingredients.includes(t)));
             })
-            console.log(matchingElements);
+            //console.log(matchingElements);
             //matchingElements.push(recipes.filter(r => r.name == tags))
+        }
+        // Filtration via txt input
+        if(input != "" && input.length > 2){
+            if(type == "Ingrédient") matchingElements.push(r.ingredients.forEach(i => {i.filter(i => i.match(reg))})); 
+            if(type == "Appareil") matchingElements.push(r.appareils.filter(a => a.match(reg)));
+            if(type == "Ustensile") matchingElements.push(r.ustensils.filter(u => u.match(reg)));
         }
     }
     return matchingElements;
 }
 
 function GetMatchingElement(input = "", tags = []){
+    // Get all recipes (Local copy)
+    const allRecipes = [...recipes];
+    const matchingRecipes = [];
 
-    // var everything = [];
-    // var matchingItems = [];
-    // Sythaxe de décomposition - Spread Operator (...)
-    // everything.push(...recipes);
-    // everything.push(...ingredients);
-    // everything.push(...appareils);
-    // everything.push(...ustensils);
-    // everything.push(...descriptions);
-    var reg = new RegExp(`${input}`);
-    everything.filter(item => {
-      if (item.toString().match(reg)) {
-        matchingItems.push(item);
-      }
-    });
-    console.log(`Input = ${input}`);
-    console.log(matchingItems);
-    return matchingItems;
+    if(input != "" || tags.length > 0){
+        allRecipes.forEach(recipe => {
+            // Check text input
+            if (input.length > 2) checkTextInput(input);
+            // Check tags
+            if (tags.length > 0) checkTags(tags);
+            
+            allRecipes.visible = visible;
+        });
+        matchingRecipes.push(allRecipes.filter(r => r.visible == true));
+        console.log(matchingRecipes);
+
+
+        function checkTextInput(str){
+            // if text input > 2
+            let visible = false;
+            // if 
+            if(recipe.name.indexOf(str) > -1){
+                visible = true;
+            }
+            if(recipe.description.indexOf(str) > -1){
+                visible = true;
+            }
+        }
+
+        function checkTags(tags){
+            let score = 0;
+            tags.forEach(tag => {
+                if(tag.type == "Ingrédient"){
+                    if(recipe.ingredients.includes(tag.name)){
+                        score++;
+                    }
+                }
+                if(tag.type == "Ustensile"){
+                    if(recipe.ustensils.includes(tag.name)){
+                        score++;
+                    }
+                }
+                
+                if(tag.type == "Appareil"){
+                    if(recipe.appliance == tag.name){
+                        score++;
+                    }
+                }
+            });
+    
+            if(score == tags.length){
+                visible = true;
+            }
+        }
+    }
+    
+    // // var everything = [];
+    // // var matchingItems = [];
+    // // Sythaxe de décomposition - Spread Operator (...)
+    // // everything.push(...recipes);
+    // // everything.push(...ingredients);
+    // // everything.push(...appareils);
+    // // everything.push(...ustensils);
+    // // everything.push(...descriptions);
+    // var reg = new RegExp(`${input}`);
+    // everything.filter(item => {
+    //   if (item.toString().match(reg)) {
+    //     matchingItems.push(item);
+    //   }
+    // });
+    // console.log(`Input = ${input}`);
+    // console.log(matchingItems);
+    // return matchingItems;
 }
 
 
