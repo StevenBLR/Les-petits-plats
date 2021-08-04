@@ -69,7 +69,7 @@ function search(mainSearchInput, tags){
 
 //#region (Fonctions) Initialization
 function Init(){
-    PopulateRecipeFeed();
+    PopulateRecipeFeed(true);
     InitEvents();
     tagsRootElt.innerHTML = "";
 }
@@ -79,7 +79,7 @@ function InitEvents(){
     mainSearchBar.addEventListener("input", function(e){
        if(mainSearchBar.value.toString().length > 2){
            console.log("Refresh UI");
-           GetMatchingElement(mainSearchBar.value);
+           PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value, currentTagList));
        }
     })
     // Advanced Search Fields
@@ -138,12 +138,12 @@ function PopulateAdvancedSearchField(id){
         
                 // Click event - Create tag
                 btElt.addEventListener("click", function(e){
-                    if(!currentTagList.find(tag => tag.id == btId) || !currentTagList.find(tag => tag.name == i)){
+                    if(!currentTagList.find(tag => tag.id == e.target.parentNode.id) || !currentTagList.find(tag => tag.name == i)){
                         e.preventDefault();
                         //e.stopImmediatePropagation();
                         //console.log(e.target.parentNode.id);
-                        PopulateTag(i, e.target.parentNode.id,btId);
-                        PopulateRecipeFeed(GetMatchingElement(mainSearchBar.value,currentTagList));
+                        PopulateTag(i, e.target.parentNode.id,currentAsfId);
+                        PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value,currentTagList));
                         //PopulateAdvancedSearchField(btId);
                     }
                 });
@@ -164,14 +164,16 @@ function PopulateAdvancedSearchField(id){
     else console.error("Nothing to display in ASF");
 }
 
-function PopulateRecipeFeed(tagList = []){
+function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
     recipesRootElt.innerHTML = "";
     recipesToDisplay = [];
-    if (tagList.length > 0 || mainSearchBar.value.toString().length){
-        // [TODO] Filtering data with tags & main search input
-    }
-    else recipesToDisplay.push(recipesJSON);
-    recipesJSON.forEach(r => {
+    // if (currentTagList.length > 0 || mainSearchBar.value.length){
+    //     // [TODO] Filtering data with tags & main search input
+    //     recipesToDisplay.push(tagList);
+    // }
+    if (displayAll) recipesToDisplay = [...recipesJSON];
+    else recipesToDisplay = [...filteredRecipes];
+    recipesToDisplay.forEach(r => {
         str ="";
         r.ingredients.forEach(i =>{
             str += `<p><strong>${i.ingredient} ${i.hasOwnProperty('quantity') || i.hasOwnProperty('unit')?":":""}</strong> ${i.hasOwnProperty('quantity')?i.quantity:""} ${i.hasOwnProperty('unit')?i.unit:""}</p>`;
@@ -217,6 +219,10 @@ function PopulateTag(title, id, type){
         e.preventDefault();
         e.target.closest(".filters__tag").remove();
         currentTagList.splice(currentTagList.findIndex(tag => tag.id == id),1);
+        // Reload filter systeme to previous setup when a tag is deleted
+        if(currentTagList.length >= 1) PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value,currentTagList));
+        // Load all recipes when there is no more tags
+        else PopulateRecipeFeed(true);
         //console.log(currentTagList);
     })
 

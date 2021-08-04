@@ -1724,13 +1724,14 @@ const recipesJSON = [
 ]
 
 class Recipe{
-    constructor(id,name,ingredients,description,appliance,ustensils){
+    constructor(id,name,ingredients,description,appliance,ustensils,time){
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
         this.description = description;
         this.appliance = appliance;
         this.ustensils = ustensils;
+        this.time = time;
     }
 }
 var recipes = [];
@@ -1742,7 +1743,7 @@ function Init(){
 }
 
 function StoreAllRecipes(){
-    recipesJSON.forEach(r => {recipes.push(new Recipe(r.id,r.name,r.ingredients,r.description,r.appliance,r.ustensils));})
+    recipesJSON.forEach(r => {recipes.push(new Recipe(r.id,r.name,r.ingredients,r.description,r.appliance,r.ustensils,r.time));})
     console.log(recipes);
 }
 
@@ -1845,73 +1846,50 @@ function GetMatchingElement(input = "", tags = []){
 
     if(input != "" || tags.length > 0){
         allRecipes.forEach(recipe => {
-            // Check text input
-            if (input.length > 2) checkTextInput(input);
-            // Check tags
-            if (tags.length > 0) checkTags(tags);
-            
-            allRecipes.visible = visible;
-        });
-        matchingRecipes.push(allRecipes.filter(r => r.visible == true));
-        console.log(matchingRecipes);
-
-
-        function checkTextInput(str){
-            // if text input > 2
             let visible = false;
-            // if 
-            if(recipe.name.indexOf(str) > -1){
-                visible = true;
+            // Check text input
+            if (input.length > 2) visible = checkTextInput(input);
+            // Check tags
+            if (tags.length > 0) visible = checkTags(tags);
+            
+            recipe.visible = visible;
+            if(recipe.visible) matchingRecipes.push(recipe);
+            
+            function checkTextInput(str){
+                // if text input > 2
+                if(recipe.name.indexOf(str) > -1){
+                    visible = true;
+                }
+                if(recipe.description.indexOf(str) > -1){
+                    visible = true;
+                }
+                return visible;
             }
-            if(recipe.description.indexOf(str) > -1){
-                visible = true;
-            }
-        }
-
-        function checkTags(tags){
-            let score = 0;
-            tags.forEach(tag => {
-                if(tag.type == "Ingrédient"){
-                    if(recipe.ingredients.includes(tag.name)){
-                        score++;
-                    }
-                }
-                if(tag.type == "Ustensile"){
-                    if(recipe.ustensils.includes(tag.name)){
-                        score++;
-                    }
-                }
-                
-                if(tag.type == "Appareil"){
-                    if(recipe.appliance == tag.name){
-                        score++;
-                    }
-                }
-            });
     
-            if(score == tags.length){
-                visible = true;
+            function checkTags(tags){
+                let score = 0;
+                tags.forEach(tag => {
+                    if(tag.type == "Ingrédient"){
+                        if(recipe.ingredients.find(i => i.ingredient == tag.name)) score++;
+                    }
+                    if(tag.type == "Ustensile"){
+                        if(recipe.ustensils.find(u => u == tag.name)) score++;
+                    }
+                    
+                    if(tag.type == "Appareil"){
+                        if(recipe.appliance == tag.name) score++;
+                    }
+                });
+        
+                if(score == tags.length){
+                    visible = true;
+                }
+                return visible;
             }
-        }
+        });
+        console.log("Matching Elements = ", matchingRecipes);
+        return matchingRecipes;
     }
-    
-    // // var everything = [];
-    // // var matchingItems = [];
-    // // Sythaxe de décomposition - Spread Operator (...)
-    // // everything.push(...recipes);
-    // // everything.push(...ingredients);
-    // // everything.push(...appareils);
-    // // everything.push(...ustensils);
-    // // everything.push(...descriptions);
-    // var reg = new RegExp(`${input}`);
-    // everything.filter(item => {
-    //   if (item.toString().match(reg)) {
-    //     matchingItems.push(item);
-    //   }
-    // });
-    // console.log(`Input = ${input}`);
-    // console.log(matchingItems);
-    // return matchingItems;
 }
 
 
