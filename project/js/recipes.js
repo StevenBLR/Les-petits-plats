@@ -1839,6 +1839,7 @@ function GetFilteredAsfElements(type = "", input = "", tags = []){
     return matchingElements;
 }
 
+
 function GetMatchingElement(input = "", tags = []){
     // Get all recipes (Local copy)
     const allRecipes = [...recipes];
@@ -1857,6 +1858,7 @@ function GetMatchingElement(input = "", tags = []){
             
             function checkTextInput(str){
                 // if text input > 2
+                // Methode de verification de correspondance dans un str / si -1 pas de correspondance
                 if(recipe.name.indexOf(str) > -1){
                     visible = true;
                 }

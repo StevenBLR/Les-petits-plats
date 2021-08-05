@@ -1595,7 +1595,7 @@ header .header__logo {
 .filters__advanced-search {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 /*# sourceMappingURL=style.css.map */
