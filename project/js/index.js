@@ -19,54 +19,6 @@ var currentTagList = [];
 var currentRecipeList = [];
 
 
-function search(mainSearchInput, tags){
-
-    // Get all recipes
-    const allRecipes = [...recipes];
-
-    recipes.forEach(recipe => {
-        let visible = false;
-
-        // Get the main search
-        if(recipe.name.indexOf(mainSearchBar) > -1){
-            visible = true;
-        }
-
-        if(recipe.description.indexOf(mainSearchBar) > -1){
-            visible = true;
-        }
-        
-        // Get all the tags
-        // -> Array of tags
-        let score = 0;
-
-        tags.forEach(tag => {
-            
-            if(tag.type == "ustensil"){
-                if(recipe.ustensils.includes(tag.name)){
-                    score++;
-                }
-            }
-
-            if(tag.type == "appliance"){
-                if(recipe.appliance == tag.name){
-                    score++;
-                }
-            }
-        });
-
-        if(score == tags.length){
-            visible = true;
-        }
-
-
-
-        recipe.visible = visible;
-    });
-
-
-}
-
 
 //#region (Fonctions) Initialization
 function Init(){
