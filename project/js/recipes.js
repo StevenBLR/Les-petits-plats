@@ -1848,16 +1848,46 @@ function GetMatchingElement(input = "", tags = []){
     if(input != "" || tags.length > 0){
         allRecipes.forEach(recipe => {
             let visible = false;
-            // Check text input
-            if (input.length > 2) visible = checkTextInput(input);
             // Check tags
             if (tags.length > 0) visible = checkTags(tags);
+            // Check text input
+            if (input.length > 2) visible = checkTextInput(input);
+            // Check combo
+            if (tags.length > 0 && input.length > 2) visible = checkTags(tags) && checkTextInput(input);
             
             recipe.visible = visible;
-            if(recipe.visible) matchingRecipes.push(recipe);
+            
+            if(recipe.visible){
+                console.log(`Recette ${recipe} tags test = ${checkTags(tags)} / input test = ${checkTextInput(input)} / status = ${checkTags(tags) && checkTextInput(input)}`, recipe);
+                matchingRecipes.push(recipe);
+            }
+             
             
             function checkTextInput(str){
-                // if text input > 2
+                //--------------------------------------------------------------------------------------------
+                // REGEX Version 
+                // const reg = new RegExp(str, "i");
+                // if(recipe.name.match(reg)){
+                //     visible = true;
+                // }
+                // if(recipe.description.match(reg)){
+                //     visible = true;
+                // }
+                // if(recipe.appliance.match(reg)){
+                //     visible = true;
+                // }
+                // recipe.ingredients.forEach(i => {
+                //     if(i.ingredient.match(reg)){
+                //         visible = true;
+                //     }
+                // })
+                // recipe.ustensils.forEach(u => {
+                //     if(u.match(reg)){
+                //         visible = true;
+                //     }
+                // })
+                //--------------------------------------------------------------------------------------------
+
                 // Methode de verification de correspondance dans un str / si -1 pas de correspondance
                 if(recipe.name.indexOf(str) > -1){
                     visible = true;
@@ -1865,6 +1895,12 @@ function GetMatchingElement(input = "", tags = []){
                 if(recipe.description.indexOf(str) > -1){
                     visible = true;
                 }
+                recipe.ingredients.forEach(i => {
+                    if(recipe.description.indexOf(str) > -1){
+                        visible = true;
+                    }
+                })
+                
                 return visible;
             }
     
@@ -1874,6 +1910,7 @@ function GetMatchingElement(input = "", tags = []){
                     if(tag.type == "Ingrédient"){
                         if(recipe.ingredients.find(i => i.ingredient == tag.name)) score++;
                     }
+
                     if(tag.type == "Ustensile"){
                         if(recipe.ustensils.find(u => u == tag.name)) score++;
                     }

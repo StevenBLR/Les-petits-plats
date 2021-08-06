@@ -18,6 +18,7 @@ var currentAsf; // ASF = Advanced Search Field
 var currentTagList = [];
 var currentRecipeList = [];
 var currentAsfContent = new Map();
+var previousAsfContent = new Map();
 
 
 //#region (Fonctions) Initialization
@@ -103,7 +104,7 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
         //elementsToDisplay = 
         elementsToDisplay = GetAsfElementsFromText(id, txtInput);
     }
-    
+    // Generate elements 
     if(elementsToDisplay.length > 0){
         elementsToDisplay.forEach(i =>{
             if(i != "undefined" && i.length > 0){
@@ -115,16 +116,12 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
                 btElt.addEventListener("click", function(e){
                     if(!currentTagList.find(tag => tag.id == e.target.parentNode.id) || !currentTagList.find(tag => tag.name == i)){
                         e.preventDefault();
-                        //e.stopImmediatePropagation();
-                        //console.log(e.target.parentNode.id);
                         PopulateTag(i, e.target.parentNode.id,currentAsfId);
                         PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value,currentTagList));
                         PopulateAdvancedSearchField(currentAsfId);
-                        //PopulateAdvancedSearchField(currentAsfId);
                     }
                 });
-        
-        
+                
                 var liElt = document.createElement("li");
                 asfParent.appendChild(liElt);
                 liElt.appendChild(btElt);
