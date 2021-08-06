@@ -17,7 +17,7 @@ var recipesRootElt = document.querySelector(".recipes");
 var currentAsf; // ASF = Advanced Search Field
 var currentTagList = [];
 var currentRecipeList = [];
-
+var currentAsfContent = new Map();
 
 
 //#region (Fonctions) Initialization
@@ -49,16 +49,29 @@ function InitAdvancedSearchField(elt){
             currentAsf = elt;
         }
     })
+    // Input text
+    elt.addEventListener("input", function(e){
+        console.log(elt);
+        var asfId = elt.id;
+        console.log(`Refresh Asf ${asfId} with value "${elt.value}"`);
+        PopulateAdvancedSearchField(asfId, elt.value);
+    })
+    // Delete key
+    document.addEventListener("keyup", function(e){
+        if(elt === document.activeElement && elt.value.length > 0){
+            if(e.key == "Backspace"){
+                PopulateAdvancedSearchField(elt.id, elt.value);
+            }
+        }
+    })
 }
 //#endregion
 
 //#region (Fonctions) Population
-function PopulateAdvancedSearchField(id){
+function PopulateAdvancedSearchField(id, txtInput = ""){
     // id = asf child id --> Getting asf parent root from current element
-    console.log(`Child element's id = #${id}`);
     var asfParent = document.querySelector(`#${id}`).closest("[data-info=asf]");
     var currentAsfId = asfParent.querySelector("input").id;
-    console.log(currentAsfId);
     var asfTagRoot = asfParent.querySelector(".advanced-search-field__tags");
     // Delete current asf list root
     if(asfParent.querySelector(".advanced-search-field__tags ul"))
@@ -66,24 +79,31 @@ function PopulateAdvancedSearchField(id){
     var ulElt = document.createElement("ul");
 
     elementsToDisplay = [];
-    if (currentTagList.length > 0 || mainSearchBar.value.toString().length){
-        //elementsToDisplay.push(GetFilteredAsfElements(currentAsfId,mainSearchBar.value,currentTagList));
-        elementsToDisplay = [...GetAsfElementsFromRecipes(currentAsfId, currentRecipeList)];
-        console.log("Elements to display",elementsToDisplay);
-    }
-    else{
-        switch(id){
-            case "Ingrédient":
-                elementsToDisplay = GetAllIngredients();
-                break;
-            case "Appareil":
-                elementsToDisplay = GetAllAppareils();
-                break;
-            case "Ustensile":
-                elementsToDisplay = GetAllUstencils();
-                break;
+    // Via tag ou main input
+    if (txtInput == ""){
+        if (currentTagList.length > 0 || mainSearchBar.value.toString().length){
+            elementsToDisplay = [...GetAsfElementsFromRecipes(currentAsfId, currentRecipeList)];
+        }
+        else{
+            switch(id){
+                case "Ingrédient":
+                    elementsToDisplay = GetAllIngredients();
+                    break;
+                case "Appareil":
+                    elementsToDisplay = GetAllAppareils();
+                    break;
+                case "Ustensile":
+                    elementsToDisplay = GetAllUstencils();
+                    break;
+            }
         }
     }
+    //Via asf txt input
+    else{
+        //elementsToDisplay = 
+        elementsToDisplay = GetAsfElementsFromText(id, txtInput);
+    }
+    
     if(elementsToDisplay.length > 0){
         elementsToDisplay.forEach(i =>{
             if(i != "undefined" && i.length > 0){
@@ -118,6 +138,11 @@ function PopulateAdvancedSearchField(id){
         asfTagRoot.appendChild(ulElt);
     }
     else console.error("Nothing to display in ASF");
+
+    // Store asf elements
+    if(currentAsfContent.get(id)) currentAsfContent.delete(id);
+    currentAsfContent.set(id,elementsToDisplay);
+    console.log(currentAsfContent);
 }
 
 function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
@@ -200,9 +225,6 @@ function PopulateTag(title, id, type){
     // Data - Updating tag list
     currentTagList.push(new Tag(title,id,type));
     console.log(currentTagList);
-
-    // Populate ASF
-    
 }
 //#endregion
 
@@ -228,7 +250,7 @@ function GetAsfElementsFromRecipes(asfId, currentRecipes){
     // Adding asf elts from current recipes list if not stored
     currentRecipes.forEach(r => {
         // Adding Appliances
-        if (asfId == "Appareil" && !asfContent.includes(r.appliance)) asfContent.push(r.appliance);
+        if (asfId == "Appareil" && !asfContent.includes(r.appliance))asfContent.push(r.appliance);
 
         // Adding Ingrédients
         if (asfId == "Ingrédient") r.ingredients.forEach(i => {
@@ -239,6 +261,16 @@ function GetAsfElementsFromRecipes(asfId, currentRecipes){
             if(!asfContent.includes(u)) asfContent.push(u);});
     })
     console.log("Asf Content", asfContent);
+    return asfContent;
+}
+
+function GetAsfElementsFromText(asfId,text){
+    const asfContent = [];
+    const reg = new RegExp(`${text}`, 'i'); // Expression, Parametre
+    currentAsfContent.get(asfId)
+    .filter(x => x.match(reg))
+    .forEach(elt => asfContent.push(elt));
+    console.log(`Items to show in ${asfId}`,asfContent);
     return asfContent;
 }
 
