@@ -1768,36 +1768,38 @@ function GetAllIngredients(){
     //console.log(ingredients);
 }
 
-//#region Unused
-// //[UNUSED] Supprimer les caractères spéciaux
-// function GetAllAppareils(){
-//     var tmp = [];
-//     var appareils = [];
-//     recipesJSON.forEach(r => {
-//         if (!tmp.includes(r.appliance.toUpperCase())){
-//             tmp.push(r.appliance.toUpperCase());
-//             appareils.push(r.appliance);
-//         }
-//     });
-//     return appareils;
-//     //console.log(appareils);
-// }
+//[UNUSED] Supprimer les caractères spéciaux
+function GetAllAppareils(){
+    var tmp = [];
+    var appareils = [];
+    recipesJSON.forEach(r => {
+        if (!tmp.includes(r.appliance.toUpperCase())){
+            tmp.push(r.appliance.toUpperCase());
+            appareils.push(r.appliance);
+        }
+    });
+    return appareils;
+    //console.log(appareils);
+}
 
-// //[UNUSED] Uniformiser les entrées (Premier caractere majuscule)
-// function GetAllUstencils(){
-//     tmp = [];
-//     var ustensils = [];
-//     recipesJSON.forEach(r => {
-//         r.ustensils.forEach(u =>{
-//             if(!tmp.includes(u.toUpperCase())){
-//                 tmp.push(u.toUpperCase());
-//                 ustensils.push(u);
-//             }
-//         })
-//     })
-//     return ustensils;
-//     //console.log(ustensils);
-// }
+//[UNUSED] Uniformiser les entrées (Premier caractere majuscule)
+function GetAllUstencils(){
+    tmp = [];
+    var ustensils = [];
+    recipesJSON.forEach(r => {
+        r.ustensils.forEach(u =>{
+            if(!tmp.includes(u.toUpperCase())){
+                tmp.push(u.toUpperCase());
+                ustensils.push(u);
+            }
+        })
+    })
+    return ustensils;
+    //console.log(ustensils);
+}
+
+//#region Unused
+
 
 // function GetFilteredAsfElements(type = "", input = "", tags = []){
 //     var contentToCompare = [];

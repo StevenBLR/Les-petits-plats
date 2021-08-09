@@ -18,7 +18,7 @@ var currentAsf; // ASF = Advanced Search Field
 var currentTagList = [];
 var currentRecipeList = [];
 var currentAsfContent = new Map();
-var previousAsfContent = new Map();
+var asfContentHistory = [];
 
 
 //#region (Fonctions) Initialization
@@ -61,7 +61,10 @@ function InitAdvancedSearchField(elt){
     document.addEventListener("keyup", function(e){
         if(elt === document.activeElement && elt.value.length > 0){
             if(e.key == "Backspace"){
-                currentAsfContent = [...previousAsfContent];
+                // 
+                currentAsfContent.get(elt.id).
+                currentAsfContent = [...asfContentHistory.pop()];
+                console.log(asfContentHistory.pop());//.remove();
                 PopulateAdvancedSearchField(elt.id, elt.value, true);
             }
         }
@@ -138,11 +141,13 @@ function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
     else console.error("Nothing to display in ASF");
 
     // Store asf elements
-    previousAsfContent = [...currentAsfContent];
+    // [TODO] Revoir system
+    //previousAsfContent = [...currentAsfContent];
+    asfContentHistory.push([...currentAsfContent]);
     if(currentAsfContent.get(id)) currentAsfContent.delete(id);
     currentAsfContent.set(id,elementsToDisplay);
     console.log("Current " , currentAsfContent);
-    console.log("Previous " , previousAsfContent);
+    console.log("Asf content history " , asfContentHistory);
     
 }
 
@@ -269,7 +274,7 @@ function GetAsfElementsFromText(asfId,text, reverse){
     const asfContent = [];
     const reg = new RegExp(`${text}`, 'i'); // Expression, Parametre
     var mapToCompare = new Map();
-    reverse ? mapToCompare = new Map(previousAsfContent) : mapToCompare = new Map(currentAsfContent);
+    reverse ? mapToCompare = new Map(asfContentHistory.pop()) : mapToCompare = new Map(currentAsfContent);
 
     mapToCompare.get(asfId)
     .filter(x => x.match(reg))
