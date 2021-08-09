@@ -61,7 +61,8 @@ function InitAdvancedSearchField(elt){
     document.addEventListener("keyup", function(e){
         if(elt === document.activeElement && elt.value.length > 0){
             if(e.key == "Backspace"){
-                PopulateAdvancedSearchField(elt.id, elt.value);
+                currentAsfContent = [...previousAsfContent];
+                PopulateAdvancedSearchField(elt.id, elt.value, true);
             }
         }
     })
@@ -69,7 +70,7 @@ function InitAdvancedSearchField(elt){
 //#endregion
 
 //#region (Fonctions) Population
-function PopulateAdvancedSearchField(id, txtInput = ""){
+function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
     // id = asf child id --> Getting asf parent root from current element
     var asfParent = document.querySelector(`#${id}`).closest("[data-info=asf]");
     var currentAsfId = asfParent.querySelector("input").id;
@@ -102,7 +103,7 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
     //Via asf txt input
     else{
         //elementsToDisplay = 
-        elementsToDisplay = GetAsfElementsFromText(id, txtInput);
+        elementsToDisplay = GetAsfElementsFromText(id, txtInput, reverse);
     }
     // Generate elements 
     if(elementsToDisplay.length > 0){
@@ -137,9 +138,12 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
     else console.error("Nothing to display in ASF");
 
     // Store asf elements
+    previousAsfContent = [...currentAsfContent];
     if(currentAsfContent.get(id)) currentAsfContent.delete(id);
     currentAsfContent.set(id,elementsToDisplay);
-    console.log(currentAsfContent);
+    console.log("Current " , currentAsfContent);
+    console.log("Previous " , previousAsfContent);
+    
 }
 
 function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
@@ -261,10 +265,13 @@ function GetAsfElementsFromRecipes(asfId, currentRecipes){
     return asfContent;
 }
 
-function GetAsfElementsFromText(asfId,text){
+function GetAsfElementsFromText(asfId,text, reverse){
     const asfContent = [];
     const reg = new RegExp(`${text}`, 'i'); // Expression, Parametre
-    currentAsfContent.get(asfId)
+    var mapToCompare = new Map();
+    reverse ? mapToCompare = new Map(previousAsfContent) : mapToCompare = new Map(currentAsfContent);
+
+    mapToCompare.get(asfId)
     .filter(x => x.match(reg))
     .forEach(elt => asfContent.push(elt));
     console.log(`Items to show in ${asfId}`,asfContent);

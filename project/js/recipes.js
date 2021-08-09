@@ -1752,7 +1752,7 @@ function StoreAllRecipes(){
 //     //console.log(descriptions);
 // }
 
-//[TODO] Gerer les différences d'accents 
+//[UNUSED] Gerer les différences d'accents 
 function GetAllIngredients(){
     var tmp = [];
     var ingredients = [];
@@ -1768,77 +1768,78 @@ function GetAllIngredients(){
     //console.log(ingredients);
 }
 
-//[TODO] Supprimer les caractères spéciaux
-function GetAllAppareils(){
-    var tmp = [];
-    var appareils = [];
-    recipesJSON.forEach(r => {
-        if (!tmp.includes(r.appliance.toUpperCase())){
-            tmp.push(r.appliance.toUpperCase());
-            appareils.push(r.appliance);
-        }
-    });
-    return appareils;
-    //console.log(appareils);
-}
+//#region Unused
+// //[UNUSED] Supprimer les caractères spéciaux
+// function GetAllAppareils(){
+//     var tmp = [];
+//     var appareils = [];
+//     recipesJSON.forEach(r => {
+//         if (!tmp.includes(r.appliance.toUpperCase())){
+//             tmp.push(r.appliance.toUpperCase());
+//             appareils.push(r.appliance);
+//         }
+//     });
+//     return appareils;
+//     //console.log(appareils);
+// }
 
-//[TODO] Uniformiser les entrées (Premier caractere majuscule)
-function GetAllUstencils(){
-    tmp = [];
-    var ustensils = [];
-    recipesJSON.forEach(r => {
-        r.ustensils.forEach(u =>{
-            if(!tmp.includes(u.toUpperCase())){
-                tmp.push(u.toUpperCase());
-                ustensils.push(u);
-            }
-        })
-    })
-    return ustensils;
-    //console.log(ustensils);
-}
+// //[UNUSED] Uniformiser les entrées (Premier caractere majuscule)
+// function GetAllUstencils(){
+//     tmp = [];
+//     var ustensils = [];
+//     recipesJSON.forEach(r => {
+//         r.ustensils.forEach(u =>{
+//             if(!tmp.includes(u.toUpperCase())){
+//                 tmp.push(u.toUpperCase());
+//                 ustensils.push(u);
+//             }
+//         })
+//     })
+//     return ustensils;
+//     //console.log(ustensils);
+// }
 
-function GetFilteredAsfElements(type = "", input = "", tags = []){
-    var contentToCompare = [];
-    var matchingElements = [];
-    //var reg = new RegExp(`${input}`);
-    if(type != ""){
-        switch(type){
-            case "Ingrédient":
-                contentToCompare.push(GetAllIngredients());
-                break;
-            case "Appareil":
-                contentToCompare.push(GetAllAppareils());
-                break;
-            case "Ustensile":
-                contentToCompare.push(GetAllUstencils());
-                break;
-        }
-    }
-    if(input != "" || tags.length > 0){
-        // Filtration via tags
-        if (tags.length > 0){
-            tags.forEach(t => {
-                //if(contentToCompare.)
-                // recipes.forEach(r => {
+// function GetFilteredAsfElements(type = "", input = "", tags = []){
+//     var contentToCompare = [];
+//     var matchingElements = [];
+//     //var reg = new RegExp(`${input}`);
+//     if(type != ""){
+//         switch(type){
+//             case "Ingrédient":
+//                 contentToCompare.push(GetAllIngredients());
+//                 break;
+//             case "Appareil":
+//                 contentToCompare.push(GetAllAppareils());
+//                 break;
+//             case "Ustensile":
+//                 contentToCompare.push(GetAllUstencils());
+//                 break;
+//         }
+//     }
+//     if(input != "" || tags.length > 0){
+//         // Filtration via tags
+//         if (tags.length > 0){
+//             tags.forEach(t => {
+//                 //if(contentToCompare.)
+//                 // recipes.forEach(r => {
                     
 
-                // })
-                //matchingElements.push(recipes.filter(r => r.ingredients.includes(t)));
-            })
-            //console.log(matchingElements);
-            //matchingElements.push(recipes.filter(r => r.name == tags))
-        }
-        // Filtration via txt input
-        if(input != "" && input.length > 2){
-            if(type == "Ingrédient") matchingElements.push(r.ingredients.forEach(i => {i.filter(i => i.match(reg))})); 
-            if(type == "Appareil") matchingElements.push(r.appareils.filter(a => a.match(reg)));
-            if(type == "Ustensile") matchingElements.push(r.ustensils.filter(u => u.match(reg)));
-        }
-    }
-    return matchingElements;
-}
-
+//                 // })
+//                 //matchingElements.push(recipes.filter(r => r.ingredients.includes(t)));
+//             })
+//             //console.log(matchingElements);
+//             //matchingElements.push(recipes.filter(r => r.name == tags))
+//         }
+//         // Filtration via txt input
+//         if(input != "" && input.length > 2){
+//             if(type == "Ingrédient") matchingElements.push(r.ingredients.forEach(i => {i.filter(i => i.match(reg))})); 
+//             if(type == "Appareil") matchingElements.push(r.appareils.filter(a => a.match(reg)));
+//             if(type == "Ustensile") matchingElements.push(r.ustensils.filter(u => u.match(reg)));
+//         }
+//     }
+//     return matchingElements;
+// }
+//#endregion
 
 function GetMatchingElement(input = "", tags = []){
     // Get all recipes (Local copy)
@@ -1866,41 +1867,41 @@ function GetMatchingElement(input = "", tags = []){
             function checkTextInput(str){
                 //--------------------------------------------------------------------------------------------
                 // REGEX Version 
-                // const reg = new RegExp(str, "i");
-                // if(recipe.name.match(reg)){
+                const reg = new RegExp(str, "i");
+                if(recipe.name.match(reg)){
+                    visible = true;
+                }
+                if(recipe.description.match(reg)){
+                    visible = true;
+                }
+                if(recipe.appliance.match(reg)){
+                    visible = true;
+                }
+                recipe.ingredients.forEach(i => {
+                    if(i.ingredient.match(reg)){
+                        visible = true;
+                    }
+                })
+                recipe.ustensils.forEach(u => {
+                    if(u.match(reg)){
+                        visible = true;
+                    }
+                })
+                //--------------------------------------------------------------------------------------------
+                // INDEX OF Version 
+                // Verification de correspondance dans un str / si -1 pas de correspondance
+                // if(recipe.name.indexOf(str) > -1){
                 //     visible = true;
                 // }
-                // if(recipe.description.match(reg)){
-                //     visible = true;
-                // }
-                // if(recipe.appliance.match(reg)){
+                // if(recipe.description.indexOf(str) > -1){
                 //     visible = true;
                 // }
                 // recipe.ingredients.forEach(i => {
-                //     if(i.ingredient.match(reg)){
-                //         visible = true;
-                //     }
-                // })
-                // recipe.ustensils.forEach(u => {
-                //     if(u.match(reg)){
+                //     if(recipe.description.indexOf(str) > -1){
                 //         visible = true;
                 //     }
                 // })
                 //--------------------------------------------------------------------------------------------
-
-                // Methode de verification de correspondance dans un str / si -1 pas de correspondance
-                if(recipe.name.indexOf(str) > -1){
-                    visible = true;
-                }
-                if(recipe.description.indexOf(str) > -1){
-                    visible = true;
-                }
-                recipe.ingredients.forEach(i => {
-                    if(recipe.description.indexOf(str) > -1){
-                        visible = true;
-                    }
-                })
-                
                 return visible;
             }
     
@@ -1924,6 +1925,7 @@ function GetMatchingElement(input = "", tags = []){
                     visible = true;
                 }
                 return visible;
+                // 
             }
         });
         console.log("Matching Elements = ", matchingRecipes);
