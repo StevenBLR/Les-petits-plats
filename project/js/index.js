@@ -7,9 +7,11 @@ var tagsRootElt = document.querySelector(".filters__tags");
 var recipesRootElt = document.querySelector(".recipes");
 
 var currentAsf; // ASF = Advanced Search Field
-var currentTagList = [];
+var currentTagList = []; 
 var currentRecipeList = [];
-var allAsfContent = new Map();
+var allAsfContent = new Map(); // key : Asf Type | content : list of elements 
+var logs = false;
+
 
 
 //#region (Fonctions) Initialization
@@ -40,13 +42,15 @@ function InitAdvancedSearchField(elt){
         if (elt != currentAsf){
             OpenAsf(elt);
             currentAsf = elt;
+            ulElt = elt.closest("div[data-info]").querySelector("ul");
+            console.log(ulElt);
+            console.log("UL height", window.getComputedStyle(ulElt));
         }
     })
     // Input text
     elt.addEventListener("input", function(e){
-        console.log(elt);
         var asfId = elt.id;
-        console.log(`Refresh Asf ${asfId} with value "${elt.value}"`);
+        if(logs) console.log(`Refresh Asf ${asfId} with value "${elt.value}"`);
         PopulateAdvancedSearchField(asfId, elt.value);
     })
 }
@@ -115,7 +119,7 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
         })
         asfTagRoot.appendChild(ulElt);
     }
-    else console.error("Nothing to display in ASF");
+    else if(logs) console.error("Nothing to display in ASF");
 
     // Store asfs elements on first load
     if(!allAsfContent.get(id)){
@@ -213,7 +217,7 @@ function PopulateTag(title, id, type){
 
     // Data - Updating tag list
     currentTagList.push(new Tag(title,id,type));
-    console.log(currentTagList);
+    if(logs) console.log(currentTagList);
 }
 //#endregion
 

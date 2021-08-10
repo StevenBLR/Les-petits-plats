@@ -1744,13 +1744,7 @@ function Init(){
 
 function StoreAllRecipes(){
     recipesJSON.forEach(r => {recipes.push(new Recipe(r.id,r.name,r.ingredients,r.description,r.appliance,r.ustensils,r.time));})
-    //console.log(recipes);
 }
-
-// function GetAllDescriptions(){
-//     recipesJSON.forEach(r => {descriptions.push(r.description);})
-//     //console.log(descriptions);
-// }
 
 //[UNUSED] Gerer les différences d'accents 
 function GetAllIngredients(){
@@ -1767,7 +1761,6 @@ function GetAllIngredients(){
         });
     });
     return ingredients;
-    //console.log(ingredients);
 }
 
 //[UNUSED] Supprimer les caractères spéciaux
@@ -1781,7 +1774,6 @@ function GetAllAppareils(){
         }
     });
     return appareils;
-    //console.log(appareils);
 }
 
 function GetAllUstencils(){
@@ -1797,53 +1789,7 @@ function GetAllUstencils(){
         })
     })
     return ustensils;
-    //console.log(ustensils);
 }
-
-//#region Unused
-
-
-// function GetFilteredAsfElements(type = "", input = "", tags = []){
-//     var contentToCompare = [];
-//     var matchingElements = [];
-//     //var reg = new RegExp(`${input}`);
-//     if(type != ""){
-//         switch(type){
-//             case "Ingrédient":
-//                 contentToCompare.push(GetAllIngredients());
-//                 break;
-//             case "Appareil":
-//                 contentToCompare.push(GetAllAppareils());
-//                 break;
-//             case "Ustensile":
-//                 contentToCompare.push(GetAllUstencils());
-//                 break;
-//         }
-//     }
-//     if(input != "" || tags.length > 0){
-//         // Filtration via tags
-//         if (tags.length > 0){
-//             tags.forEach(t => {
-//                 //if(contentToCompare.)
-//                 // recipes.forEach(r => {
-                    
-
-//                 // })
-//                 //matchingElements.push(recipes.filter(r => r.ingredients.includes(t)));
-//             })
-//             //console.log(matchingElements);
-//             //matchingElements.push(recipes.filter(r => r.name == tags))
-//         }
-//         // Filtration via txt input
-//         if(input != "" && input.length > 2){
-//             if(type == "Ingrédient") matchingElements.push(r.ingredients.forEach(i => {i.filter(i => i.match(reg))})); 
-//             if(type == "Appareil") matchingElements.push(r.appareils.filter(a => a.match(reg)));
-//             if(type == "Ustensile") matchingElements.push(r.ustensils.filter(u => u.match(reg)));
-//         }
-//     }
-//     return matchingElements;
-// }
-//#endregion
 
 function GetMatchingElement(input = "", tags = []){
     // Get all recipes (Local copy)
@@ -1933,7 +1879,7 @@ function GetMatchingElement(input = "", tags = []){
                 // 
             }
         });
-        console.log("Matching Elements = ", matchingRecipes);
+        if(logs) console.log("Matching Elements = ", matchingRecipes);
         return matchingRecipes;
     }
 }

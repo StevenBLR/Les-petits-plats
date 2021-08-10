@@ -32,6 +32,7 @@ $asf-max-height : 250px;
 
     // Advanced search list
     ul{
+        //@include animScaleY(1s);
         max-height: $asf-max-height;
         margin: 0 20px 10px 20px;
         padding: unset;
@@ -39,7 +40,7 @@ $asf-max-height : 250px;
         overflow: hidden;
     }
     li{
-        @include staggerAnim(1500ms, 0.03s);
+        @include staggerAnim(1500ms, 0.05s);
         max-width: 125px;
         overflow: hidden;
         button{

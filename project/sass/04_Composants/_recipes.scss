@@ -5,6 +5,13 @@ $card-border-radius : 10px;
     justify-content: center;
     flex-wrap: wrap;
     margin-inline: -20px;
+    
+    p#recipes__message {
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 50px;
+    }
+
     .recipes__img{
         height: 170px;
         object-fit: cover;
