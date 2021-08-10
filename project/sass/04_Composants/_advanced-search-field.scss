@@ -34,7 +34,7 @@ $asf-max-height : 250px;
     ul{
         //@include animScaleY(1s);
         max-height: $asf-max-height;
-        margin: 0 20px 10px 20px;
+        margin: 10px 20px 10px 20px;
         padding: unset;
         column-count: 3;
         overflow: hidden;
