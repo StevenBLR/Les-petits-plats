@@ -17,8 +17,8 @@ var recipesRootElt = document.querySelector(".recipes");
 var currentAsf; // ASF = Advanced Search Field
 var currentTagList = [];
 var currentRecipeList = [];
-var currentAsfContent = new Map();
 var asfContentHistory = [];
+var currentAsfContent = new Map();
 
 
 //#region (Fonctions) Initialization
@@ -61,10 +61,10 @@ function InitAdvancedSearchField(elt){
     document.addEventListener("keyup", function(e){
         if(elt === document.activeElement && elt.value.length > 0){
             if(e.key == "Backspace"){
-                // 
-                currentAsfContent.get(elt.id).
-                currentAsfContent = [...asfContentHistory.pop()];
-                console.log(asfContentHistory.pop());//.remove();
+                // If deleting caractere --> Get previous state in history stack
+                //currentAsfContent = [...asfContentHistory.pop()];
+                //console.log(asfContentHistory.pop());//.remove();
+                console.log("Value", elt.value);
                 PopulateAdvancedSearchField(elt.id, elt.value, true);
             }
         }
@@ -144,10 +144,10 @@ function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
     // [TODO] Revoir system
     //previousAsfContent = [...currentAsfContent];
     asfContentHistory.push([...currentAsfContent]);
-    if(currentAsfContent.get(id)) currentAsfContent.delete(id);
-    currentAsfContent.set(id,elementsToDisplay);
     console.log("Current " , currentAsfContent);
     console.log("Asf content history " , asfContentHistory);
+    if(currentAsfContent != "undefined" && currentAsfContent.get(id)) currentAsfContent.delete(id);
+    currentAsfContent.set(id,elementsToDisplay);
     
 }
 
@@ -274,7 +274,7 @@ function GetAsfElementsFromText(asfId,text, reverse){
     const asfContent = [];
     const reg = new RegExp(`${text}`, 'i'); // Expression, Parametre
     var mapToCompare = new Map();
-    reverse ? mapToCompare = new Map(asfContentHistory.pop()) : mapToCompare = new Map(currentAsfContent);
+    reverse ? mapToCompare = new Map(asfContentHistory[1]) : mapToCompare = new Map(currentAsfContent);
 
     mapToCompare.get(asfId)
     .filter(x => x.match(reg))
