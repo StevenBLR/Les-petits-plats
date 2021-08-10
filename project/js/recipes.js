@@ -1912,16 +1912,17 @@ function GetMatchingElement(input = "", tags = []){
             function checkTags(tags){
                 let score = 0;
                 tags.forEach(tag => {
+                    var reg = new RegExp(tag.name, "i");
                     if(tag.type == "Ingrédient"){
-                        if(recipe.ingredients.find(i => i.ingredient == tag.name)) score++;
+                        if(recipe.ingredients.find(i => i.ingredient.match(reg))) score++;
                     }
 
                     if(tag.type == "Ustensile"){
-                        if(recipe.ustensils.find(u => u == tag.name)) score++;
+                        if(recipe.ustensils.find(u => u.match(reg))) score++;
                     }
                     
                     if(tag.type == "Appareil"){
-                        if(recipe.appliance == tag.name) score++;
+                        if(recipe.appliance.match(reg)) score++;
                     }
                 });
         
