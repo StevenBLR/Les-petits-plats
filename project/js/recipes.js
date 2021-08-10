@@ -1744,7 +1744,7 @@ function Init(){
 
 function StoreAllRecipes(){
     recipesJSON.forEach(r => {recipes.push(new Recipe(r.id,r.name,r.ingredients,r.description,r.appliance,r.ustensils,r.time));})
-    console.log(recipes);
+    //console.log(recipes);
 }
 
 // function GetAllDescriptions(){

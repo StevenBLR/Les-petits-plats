@@ -17,8 +17,7 @@ var recipesRootElt = document.querySelector(".recipes");
 var currentAsf; // ASF = Advanced Search Field
 var currentTagList = [];
 var currentRecipeList = [];
-var asfContentHistory = [];
-var currentAsfContent = new Map();
+var allAsfContent = new Map();
 
 
 //#region (Fonctions) Initialization
@@ -56,18 +55,6 @@ function InitAdvancedSearchField(elt){
         var asfId = elt.id;
         console.log(`Refresh Asf ${asfId} with value "${elt.value}"`);
         PopulateAdvancedSearchField(asfId, elt.value);
-    })
-    // Delete key
-    document.addEventListener("keyup", function(e){
-        if(elt === document.activeElement && elt.value.length > 0){
-            if(e.key == "Backspace"){
-                // If deleting caractere --> Get previous state in history stack
-                //currentAsfContent = [...asfContentHistory.pop()];
-                //console.log(asfContentHistory.pop());//.remove();
-                console.log("Value", elt.value);
-                PopulateAdvancedSearchField(elt.id, elt.value, true);
-            }
-        }
     })
 }
 //#endregion
@@ -140,15 +127,11 @@ function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
     }
     else console.error("Nothing to display in ASF");
 
-    // Store asf elements
-    // [TODO] Revoir system
-    //previousAsfContent = [...currentAsfContent];
-    asfContentHistory.push([...currentAsfContent]);
-    console.log("Current " , currentAsfContent);
-    console.log("Asf content history " , asfContentHistory);
-    if(currentAsfContent != "undefined" && currentAsfContent.get(id)) currentAsfContent.delete(id);
-    currentAsfContent.set(id,elementsToDisplay);
-    
+    // Store asfs elements on first load
+    if(!allAsfContent.get(id)){
+        allAsfContent.set(id,elementsToDisplay);
+        console.log(allAsfContent);
+    }
 }
 
 function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
@@ -270,13 +253,12 @@ function GetAsfElementsFromRecipes(asfId, currentRecipes){
     return asfContent;
 }
 
-function GetAsfElementsFromText(asfId,text, reverse){
+function GetAsfElementsFromText(asfId,text){
     const asfContent = [];
     const reg = new RegExp(`${text}`, 'i'); // Expression, Parametre
-    var mapToCompare = new Map();
-    reverse ? mapToCompare = new Map(asfContentHistory[1]) : mapToCompare = new Map(currentAsfContent);
+    var mapToCompare = allAsfContent.get(asfId);
 
-    mapToCompare.get(asfId)
+    mapToCompare
     .filter(x => x.match(reg))
     .forEach(elt => asfContent.push(elt));
     console.log(`Items to show in ${asfId}`,asfContent);
