@@ -1758,9 +1758,11 @@ function GetAllIngredients(){
     var ingredients = [];
     recipes.forEach(r => {
         r.ingredients.forEach(i => {
+            const reg = new RegExp()
             if(!tmp.includes(i.ingredient.toUpperCase())){
                 tmp.push(i.ingredient.toUpperCase());
-                ingredients.push(i.ingredient);
+                // Set first caracter to UpperCase
+                ingredients.push(i.ingredient.charAt(0).toUpperCase() + i.ingredient.slice(1));
             }
         });
     });
@@ -1782,7 +1784,6 @@ function GetAllAppareils(){
     //console.log(appareils);
 }
 
-//[UNUSED] Uniformiser les entrées (Premier caractere majuscule)
 function GetAllUstencils(){
     tmp = [];
     var ustensils = [];
@@ -1790,7 +1791,8 @@ function GetAllUstencils(){
         r.ustensils.forEach(u =>{
             if(!tmp.includes(u.toUpperCase())){
                 tmp.push(u.toUpperCase());
-                ustensils.push(u);
+                // Set first caracter to UpperCase
+                ustensils.push(u.charAt(0).toUpperCase() + u.slice(1));
             }
         })
     })

@@ -98,6 +98,9 @@ function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
     // Generate elements 
     if(elementsToDisplay.length > 0){
         elementsToDisplay.forEach(i =>{
+            currentTagList.forEach(t => {
+                if(i == t.name) return;
+            })
             if(i != "undefined" && i.length > 0){
                 var btElt = document.createElement("button");
                 var btId = i.toString().split(' ').join('-');
@@ -132,6 +135,7 @@ function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
         allAsfContent.set(id,elementsToDisplay);
         console.log(allAsfContent);
     }
+
 }
 
 function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
