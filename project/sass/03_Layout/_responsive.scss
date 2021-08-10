@@ -5,3 +5,19 @@ $body-max-width: 1250px;
         margin: 20px auto auto auto;
     }
 }
+
+// Mobile version
+@media (max-width: 840px){
+    .filters__advanced-search{
+        div[data-info]{
+            width: 100%;
+            margin: unset;
+            margin-bottom: 10px;
+        }
+    }
+    div .recipes .recipes__card{
+        max-width: unset;
+        min-width: unset;
+        width: 100%;
+    }
+}

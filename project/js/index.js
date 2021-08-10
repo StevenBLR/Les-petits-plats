@@ -1,11 +1,3 @@
-class Tag{
-    constructor(name, id, type = ""){
-        this.name = name;
-        this.id = id;
-        this.type = type;
-    }
-}
-
 const blue = "#3282F7";
 const green = "#68D9A4";
 const orange = "#ED6454";
@@ -30,6 +22,7 @@ function Init(){
 function InitEvents(){
     // Main Search Bar
     mainSearchBar.addEventListener("input", function(e){
+        e.preventDefault;
        if(mainSearchBar.value.toString().length > 2){
            console.log("Refresh UI");
            PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value, currentTagList));
@@ -60,11 +53,12 @@ function InitAdvancedSearchField(elt){
 //#endregion
 
 //#region (Fonctions) Population
-function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
+function PopulateAdvancedSearchField(id, txtInput = ""){
     // id = asf child id --> Getting asf parent root from current element
     var asfParent = document.querySelector(`#${id}`).closest("[data-info=asf]");
     var currentAsfId = asfParent.querySelector("input").id;
     var asfTagRoot = asfParent.querySelector(".advanced-search-field__tags");
+
     // Delete current asf list root
     if(asfParent.querySelector(".advanced-search-field__tags ul"))
     asfParent.querySelector(".advanced-search-field__tags ul").remove();
@@ -78,22 +72,15 @@ function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
         }
         else{
             switch(id){
-                case "Ingrédient":
-                    elementsToDisplay = GetAllIngredients();
-                    break;
-                case "Appareil":
-                    elementsToDisplay = GetAllAppareils();
-                    break;
-                case "Ustensile":
-                    elementsToDisplay = GetAllUstencils();
-                    break;
+                case "Ingrédient": elementsToDisplay = GetAllIngredients(); break;
+                case "Appareil": elementsToDisplay = GetAllAppareils(); break;
+                case "Ustensile": elementsToDisplay = GetAllUstencils(); break;
             }
         }
     }
     //Via asf txt input
     else{
-        //elementsToDisplay = 
-        elementsToDisplay = GetAsfElementsFromText(id, txtInput, reverse);
+        elementsToDisplay = GetAsfElementsFromText(id, txtInput);
     }
     // Generate elements 
     if(elementsToDisplay.length > 0){
@@ -141,38 +128,47 @@ function PopulateAdvancedSearchField(id, txtInput = "", reverse = false){
 function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
     recipesRootElt.innerHTML = "";
     recipesToDisplay = [];
+    // Storing filtered recipes for later use
     currentRecipeList = [...filteredRecipes];
-    // if (currentTagList.length > 0 || mainSearchBar.value.length){
-    //     // [TODO] Filtering data with tags & main search input
-    //     recipesToDisplay.push(tagList);
-    // }
     if (displayAll) recipesToDisplay = [...recipesJSON];
     else recipesToDisplay = [...filteredRecipes];
-    recipesToDisplay.forEach(r => {
-        str ="";
-        r.ingredients.forEach(i =>{
-            str += `<p><strong>${i.ingredient} ${i.hasOwnProperty('quantity') || i.hasOwnProperty('unit')?":":""}</strong> ${i.hasOwnProperty('quantity')?i.quantity:""} ${i.hasOwnProperty('unit')?i.unit:""}</p>`;
-        })
-        recipesRootElt.innerHTML +=
-        `<div class="card recipes__card">
-        <img src="../imgs/sample_img.jpg" class="card-img-top recipes__img" alt="...">
-        <div class="card-body">
-          <h5 class="card-title recipes__title">${r.name}</h5>
-          <div class="recipes__time-label">
-            <i class="far fa-clock"></i>
-            <span class="recipes__time">${r.time} min</span>
-          </div>
-          <div class="recipes__content">
-            <div class="recipes__ingredients">
-            ${str}
+    if (recipesToDisplay.length == 0){
+        console.log("Display none message");
+        // Generate a message with 2 random ingredients
+        var message = `Aucune recette ne correspond à votre critère… vous pouvez
+        chercher « ${GetAllIngredients()[getRandomInt(GetAllIngredients().length)]} », « ${GetAllIngredients()[getRandomInt(GetAllIngredients().length)]} », etc...`;
+        var pElt = document.createElement("p");
+        pElt.textContent = message;
+        pElt.id = "recipes__message";
+        recipesRootElt.appendChild(pElt);
+    }
+    else{
+        recipesToDisplay.forEach(r => {
+            str ="";
+            r.ingredients.forEach(i =>{
+                str += `<p><strong>${i.ingredient} ${i.hasOwnProperty('quantity') || i.hasOwnProperty('unit')?":":""}</strong> ${i.hasOwnProperty('quantity')?i.quantity:""} ${i.hasOwnProperty('unit')?i.unit:""}</p>`;
+            })
+            recipesRootElt.innerHTML +=
+            `<div class="card recipes__card">
+            <img src="../imgs/sample_img.jpg" class="card-img-top recipes__img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title recipes__title">${r.name}</h5>
+              <div class="recipes__time-label">
+                <i class="far fa-clock"></i>
+                <span class="recipes__time">${r.time} min</span>
+              </div>
+              <div class="recipes__content">
+                <div class="recipes__ingredients">
+                ${str}
+                </div>
+                <div class="recipes__recipe">
+                  <p>${r.description}</p>
+              </div>
             </div>
-            <div class="recipes__recipe">
-              <p>${r.description}</p>
           </div>
-        </div>
-      </div>
-        `
-    })
+            `
+        })
+    }
 }
 
 function PopulateTag(title, id, type){
@@ -273,5 +269,21 @@ function GetTagTypeWithId(id){
     var asfId = currentTagList.find(tag => tag.id == id);
     return asfId;
 }
+
+//#region Utils
+class Tag{
+    constructor(name, id, type = ""){
+        this.name = name;
+        this.id = id;
+        this.type = type;
+    }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+//#endregion
+
 
 Init();
