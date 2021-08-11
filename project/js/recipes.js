@@ -1799,84 +1799,21 @@ function GetMatchingElement(input = "", tags = []){
     if(input != "" || tags.length > 0){
         allRecipes.forEach(recipe => {
             let visible = false;
-            // Check tags
-            if (tags.length > 0) visible = checkTags(tags);
-            // Check text input
-            if (input.length > 2) visible = checkTextInput(input);
+            
             // Check combo
-            if (tags.length > 0 && input.length > 2) visible = checkTags(tags) && checkTextInput(input);
+            if (tags.length > 0 && input.length > 2) visible = checkTags(recipe,tags) && checkTextInput(recipe,input);
+            else{
+                // Check tags
+                if (tags.length > 0) visible = checkTags(recipe, tags);
+                // Check text input
+                if (input.length > 2) visible = checkTextInput(recipe, input);
+            }
             
             recipe.visible = visible;
             
             if(recipe.visible){
-                console.log(`Recette ${recipe} tags test = ${checkTags(tags)} / input test = ${checkTextInput(input)} / status = ${checkTags(tags) && checkTextInput(input)}`, recipe);
+                console.log(`Recette ${recipe} tags test = ${checkTags(recipe,tags)} / input test = ${checkTextInput(recipe,input)} / status = ${checkTags(recipe,tags) && checkTextInput(recipe,input)}`, recipe);
                 matchingRecipes.push(recipe);
-            }
-             
-            
-            function checkTextInput(str){
-                //--------------------------------------------------------------------------------------------
-                // REGEX Version 
-                const reg = new RegExp(str, "i");
-                if(recipe.name.match(reg)){
-                    visible = true;
-                }
-                if(recipe.description.match(reg)){
-                    visible = true;
-                }
-                if(recipe.appliance.match(reg)){
-                    visible = true;
-                }
-                recipe.ingredients.forEach(i => {
-                    if(i.ingredient.match(reg)){
-                        visible = true;
-                    }
-                })
-                recipe.ustensils.forEach(u => {
-                    if(u.match(reg)){
-                        visible = true;
-                    }
-                })
-                //--------------------------------------------------------------------------------------------
-                // INDEX OF Version 
-                // Verification de correspondance dans un str / si -1 pas de correspondance
-                // if(recipe.name.indexOf(str) > -1){
-                //     visible = true;
-                // }
-                // if(recipe.description.indexOf(str) > -1){
-                //     visible = true;
-                // }
-                // recipe.ingredients.forEach(i => {
-                //     if(recipe.description.indexOf(str) > -1){
-                //         visible = true;
-                //     }
-                // })
-                //--------------------------------------------------------------------------------------------
-                return visible;
-            }
-    
-            function checkTags(tags){
-                let score = 0;
-                tags.forEach(tag => {
-                    var reg = new RegExp(tag.name, "i");
-                    if(tag.type == "Ingrédient"){
-                        if(recipe.ingredients.find(i => i.ingredient.match(reg))) score++;
-                    }
-
-                    if(tag.type == "Ustensile"){
-                        if(recipe.ustensils.find(u => u.match(reg))) score++;
-                    }
-                    
-                    if(tag.type == "Appareil"){
-                        if(recipe.appliance.match(reg)) score++;
-                    }
-                });
-        
-                if(score == tags.length){
-                    visible = true;
-                }
-                return visible;
-                // 
             }
         });
         if(logs) console.log("Matching Elements = ", matchingRecipes);
@@ -1884,5 +1821,71 @@ function GetMatchingElement(input = "", tags = []){
     }
 }
 
+function checkTextInput(recipe, str){
+    //--------------------------------------------------------------------------------------------
+    // REGEX Version 
+    let visible = false;
+    const reg = new RegExp(str, "i");
+    if(recipe.name.match(reg)){
+        visible = true;
+    }
+    if(recipe.description.match(reg)){
+        visible = true;
+    }
+    if(recipe.appliance.match(reg)){
+        visible = true;
+    }
+    recipe.ingredients.forEach(i => {
+        if(i.ingredient.match(reg)){
+            visible = true;
+        }
+    })
+    recipe.ustensils.forEach(u => {
+        if(u.match(reg)){
+            visible = true;
+        }
+    })
+    //--------------------------------------------------------------------------------------------
+    // INDEX OF Version 
+    // Verification de correspondance dans un str / si -1 pas de correspondance
+    // if(recipe.name.indexOf(str) > -1){
+    //     visible = true;
+    // }
+    // if(recipe.description.indexOf(str) > -1){
+    //     visible = true;
+    // }
+    // recipe.ingredients.forEach(i => {
+    //     if(recipe.description.indexOf(str) > -1){
+    //         visible = true;
+    //     }
+    // })
+    //--------------------------------------------------------------------------------------------
+    return visible;
+}
+
+function checkTags(recipe, tags){
+    let score = 0;
+    let visible = false;
+    tags.forEach(tag => {
+        var reg = new RegExp(tag.name, "i");
+        if(tag.type == "Ingrédient"){
+            if(recipe.ingredients.find(i => i.ingredient.match(reg))) score++;
+        }
+
+        if(tag.type == "Ustensile"){
+            if(recipe.ustensils.find(u => u.match(reg))) score++;
+        }
+        
+        if(tag.type == "Appareil"){
+            if(recipe.appliance.match(reg)) score++;
+        }
+    });
+
+    if(score == tags.length){
+        visible = true;
+    }
+    return visible;
+    // 
+}
 
 Init();
