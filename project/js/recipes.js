@@ -1747,7 +1747,7 @@ function StoreAllRecipes(){
         recipes.push(new Recipe(
             r.id,
             r.name,
-            r.ingredients,
+            UniformizeText(r.ingredients.forEach(ings => ings.ingredient)),
             r.description,
             UniformizeText(r.appliance),
             r.ustensils,
@@ -1893,10 +1893,18 @@ function checkTags(recipe, tags){
     // 
 }
 
-function UniformizeText(text){
-    let outputTxt = "";
-    // First caracter uppercase
-    outputTxt = text.charAt(0).toUpperCase()+ text.slice(1);
+function UniformizeText({text = "",list} = {}){
+    let outputTxt;
+    if (text != ""){
+        outputTxt = "";
+        // First caracter uppercase
+        outputTxt = text.charAt(0).toUpperCase()+ text.slice(1);
+    }
+    if (list != undefined){
+        outputTxt = [];
+        outputTxt.push(list.forEach(elt => elt = elt.charAt(0).toUpperCase()+ elt.slice(1)));
+    }
+    
     return outputTxt;
 }
 
@@ -1941,5 +1949,6 @@ function editDistance(s1, s2) {
     }
     return costs[s2.length];
 }
+//#endregion
 
 Init();
