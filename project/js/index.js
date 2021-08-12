@@ -43,8 +43,6 @@ function InitAdvancedSearchField(elt){
             OpenAsf(elt);
             currentAsf = elt;
             ulElt = elt.closest("div[data-info]").querySelector("ul");
-            console.log(ulElt);
-            console.log("UL height", window.getComputedStyle(ulElt));
         }
     })
     // Input text
@@ -134,7 +132,7 @@ function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
     recipesToDisplay = [];
     // Storing filtered recipes for later use
     currentRecipeList = [...filteredRecipes];
-    if (displayAll) recipesToDisplay = [...recipesJSON];
+    if (displayAll) recipesToDisplay = [...recipes];
     else recipesToDisplay = [...filteredRecipes];
     if (recipesToDisplay.length == 0){
         console.log("Display none message");

@@ -1743,20 +1743,28 @@ function Init(){
 }
 
 function StoreAllRecipes(){
-    recipesJSON.forEach(r => {recipes.push(new Recipe(r.id,r.name,r.ingredients,r.description,r.appliance,r.ustensils,r.time));})
+    recipesJSON.forEach(r => {
+        recipes.push(new Recipe(
+            r.id,
+            r.name,
+            r.ingredients,
+            r.description,
+            UniformizeText(r.appliance),
+            r.ustensils,
+            r.time));
+    })
+
+console.log(recipes);
 }
 
 //[UNUSED] Gerer les différences d'accents 
 function GetAllIngredients(){
-    var tmp = [];
     var ingredients = [];
     recipes.forEach(r => {
         r.ingredients.forEach(i => {
-            const reg = new RegExp()
-            if(!tmp.includes(i.ingredient.toUpperCase())){
-                tmp.push(i.ingredient.toUpperCase());
-                // Set first caracter to UpperCase
-                ingredients.push(i.ingredient.charAt(0).toUpperCase() + i.ingredient.slice(1));
+            const reg = new RegExp(i.ingredient,"i");
+            if(!ingredients.find(ig => ig.match(reg))){
+                ingredients.push(i.ingredient);
             }
         });
     });
@@ -1765,11 +1773,10 @@ function GetAllIngredients(){
 
 //[UNUSED] Supprimer les caractères spéciaux
 function GetAllAppareils(){
-    var tmp = [];
     var appareils = [];
-    recipesJSON.forEach(r => {
-        if (!tmp.includes(r.appliance.toUpperCase())){
-            tmp.push(r.appliance.toUpperCase());
+    recipes.forEach(r => {
+        const reg = new RegExp(r.appliance, "i");
+        if (!appareils.find(a => a.match(reg))){
             appareils.push(r.appliance);
         }
     });
@@ -1777,14 +1784,12 @@ function GetAllAppareils(){
 }
 
 function GetAllUstencils(){
-    tmp = [];
     var ustensils = [];
-    recipesJSON.forEach(r => {
+    recipes.forEach(r => {
         r.ustensils.forEach(u =>{
-            if(!tmp.includes(u.toUpperCase())){
-                tmp.push(u.toUpperCase());
-                // Set first caracter to UpperCase
-                ustensils.push(u.charAt(0).toUpperCase() + u.slice(1));
+            const reg = new RegExp(u, "i");
+            if(!ustensils.find(us => us.match(reg))){
+                ustensils.push(u);
             }
         })
     })
@@ -1886,6 +1891,55 @@ function checkTags(recipe, tags){
     }
     return visible;
     // 
+}
+
+function UniformizeText(text){
+    let outputTxt = "";
+    // First caracter uppercase
+    outputTxt = text.charAt(0).toUpperCase()+ text.slice(1);
+    return outputTxt;
+}
+
+//#region Levenshtein distance --> Check similarity between 2 strings
+function similarity(s1, s2) {
+    var longer = s1;
+    var shorter = s2;
+    if (s1.length < s2.length) {
+      longer = s2;
+      shorter = s1;
+    }
+    var longerLength = longer.length;
+    if (longerLength == 0) {
+      return 1.0;
+    }
+    return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+}
+
+function editDistance(s1, s2) {
+    s1 = s1.toLowerCase();
+    s2 = s2.toLowerCase();
+  
+    var costs = new Array();
+    for (var i = 0; i <= s1.length; i++) {
+      var lastValue = i;
+      for (var j = 0; j <= s2.length; j++) {
+        if (i == 0)
+          costs[j] = j;
+        else {
+          if (j > 0) {
+            var newValue = costs[j - 1];
+            if (s1.charAt(i - 1) != s2.charAt(j - 1))
+              newValue = Math.min(Math.min(newValue, lastValue),
+                costs[j]) + 1;
+            costs[j - 1] = lastValue;
+            lastValue = newValue;
+          }
+        }
+      }
+      if (i > 0)
+        costs[s2.length] = lastValue;
+    }
+    return costs[s2.length];
 }
 
 Init();
