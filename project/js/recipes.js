@@ -1734,6 +1734,14 @@ class Recipe{
         this.time = time;
     }
 }
+
+class Ingrédient{
+    constructor(ingredient,quantity,unit){
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+        this.unit = unit;
+    }
+}
 var recipes = [];
 var descriptions = [];
 
@@ -1744,10 +1752,17 @@ function Init(){
 
 function StoreAllRecipes(){
     recipesJSON.forEach(r => {
+        let ings = [];
+        // Creating recipe Ingredients and Uniformizing names 
+        r.ingredients.forEach(i => {
+            let ingName = UniformizeText(i.ingredient);
+            ings.push(new Ingrédient(ingName,i.quantity,i.unit));
+        })
+        console.log(ings);
         recipes.push(new Recipe(
             r.id,
             r.name,
-            r.ingredients,
+            ings,
             r.description,
             UniformizeText(r.appliance),
             UniformizeText("",r.ustensils),
