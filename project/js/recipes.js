@@ -160,7 +160,7 @@ const recipesJSON = [
                 "quantity": 2
            },
            {
-               "ingredient": "Crème fraiche",
+               "ingredient": "Crème fraîche",
                "quantity": 2,
                "unit": "cuillères à soupe"
            },
@@ -198,7 +198,7 @@ const recipesJSON = [
                 "quantity": "2"
             },
             {
-                "ingredient":"Crème fraiche",
+                "ingredient":"Crème fraîche",
                 "quantity":25,
                 "unit": "cl"
             },
@@ -250,7 +250,7 @@ const recipesJSON = [
         "time": 50,
         "description": "Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
         "appliance":"Four",
-        "ustensils":["moule à tartelettes (6)", "casserolle"]
+        "ustensils":["moule à tartelettes (6)", "casserole"]
     }, {
         "id": 8,
         "name": "Brownie",
@@ -290,7 +290,7 @@ const recipesJSON = [
         "time": 60,
         "description": "Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeuf et le sucre et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25 minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de glace pour plus de gourmandise.",
         "appliance": "Four",
-        "ustensils": ["moule à gateaux", "casserolle"]
+        "ustensils": ["moule à gateaux", "casserole"]
     },
     {
         "id": 9,
@@ -422,7 +422,7 @@ const recipesJSON = [
             }
         ],
         "time": 40,
-        "description": "Éplucher les fruits et les couper en morceaux, les mettre dans une casserolle en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.",
+        "description": "Éplucher les fruits et les couper en morceaux, les mettre dans une casserole en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.",
         "appliance": "Casserole",
         "ustensils": ["couteau", "économe"]
     },
@@ -683,7 +683,7 @@ const recipesJSON = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Crème fraiche",
+                "ingredient": "Crème fraîche",
                 "quantity": 200,
                 "unit": "grammes"
             },
@@ -733,14 +733,14 @@ const recipesJSON = [
                 "unit": "cl"
             },
             {
-                "ingredient": "Crème Fraiche",
+                "ingredient": "Crème fraîche",
                 "quantity" : 1,
                 "unit": "cuillères à soupe"
             }
         ],
         "time": 30,
         "description":"Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.",
-        "appliance": "Casserolle.",
+        "appliance": "casserole",
         "ustensils":["Cuillère en bois", "louche", "couteau"]
     },
     {
@@ -776,7 +776,7 @@ const recipesJSON = [
         "time": 30,
         "description":"Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une crême dessert.",
         "appliance": "Four",
-        "ustensils":["moule à gateaux", "fouet", "casserolle"]
+        "ustensils":["moule à gateaux", "fouet", "casserole"]
     },
     {
         "id": 23,
@@ -954,7 +954,7 @@ const recipesJSON = [
         ],
         "time": 15,
         "description":"Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
-        "appliance": "Casserolle",
+        "appliance": "casserole",
         "ustensils":["couteau","cuillère en bois"]
     },
     {
@@ -982,7 +982,7 @@ const recipesJSON = [
                 "unit":"grammes"
             },
             {
-                "ingredient": "Crême fraîche",
+                "ingredient": "Crème fraîche",
                 "quantity": 10,
                 "unit": "cl"
             }
@@ -990,7 +990,7 @@ const recipesJSON = [
         "time": 80,
         "description":"Emincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. AJouter les pommes de terres coupées en morceaux. Ajouter l'eau et laisser mijoter pour 45 minutes. Chauffer l'oseille avec le beurre restant puis incorporer le tout. Mixez. Ajoutez la crème. Bon appetit.",
         "appliance": "Mixer",
-        "ustensils":["casserolle","couteau"]
+        "ustensils":["casserole","couteau"]
     },
     {
         "id": 29,
@@ -1046,7 +1046,7 @@ const recipesJSON = [
         "time": 60,
         "description":"Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuirre à petit feur pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
         "appliance": "Mixer",
-        "ustensils":["casserolle", "cuillère en bois"]
+        "ustensils":["casserole", "cuillère en bois"]
     },
     {
         "id": 31,
@@ -1182,7 +1182,7 @@ const recipesJSON = [
             }
         ],
         "time": 25,
-        "description":"Eplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserolle d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
+        "description":"Eplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserole d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
         "appliance": "Mixer",
         "ustensils":["couteau", "économe", "cuillère en bois"]
     },
@@ -1416,7 +1416,7 @@ const recipesJSON = [
         ],
         "time": 20,
         "description":"Séparer les blancs d'oeufs. Faire fondre le chocolat au bain marie. Ajouter les jaunes et le sucre au chocolat hors du feu. Battre les blancs en neige. Ajouter les blancs au mélange de chocolat. Mélangez délicatement avec une spatule. Servir dans un plat ou dans des verres. Mettre au frais",
-        "appliance": "Casserolle",
+        "appliance": "casserole",
         "ustensils":["fouet", "spatule", "verres"]
     }, 
     {
@@ -1514,7 +1514,7 @@ const recipesJSON = [
         ],
         "time": 15,
         "description":"Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. Ajouter du sucre après la cuisson. Bien mélanger. Ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une cuillère en bois. Mettre dans des verres",
-        "appliance": "Casserolle",
+        "appliance": "casserole",
         "ustensils":["cuillère en bois"]
     },
     {
@@ -1544,7 +1544,7 @@ const recipesJSON = [
         ],
         "time": 30,
         "description":"Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
-        "appliance": "Casserolle",
+        "appliance": "casserole",
         "ustensils":["fouet","saladier"]
     },
     {
@@ -1750,7 +1750,7 @@ function StoreAllRecipes(){
             r.ingredients,
             r.description,
             UniformizeText(r.appliance),
-            r.ustensils,
+            UniformizeText("",r.ustensils),
             r.time));
     })
 
@@ -1893,53 +1893,64 @@ function checkTags(recipe, tags){
     // 
 }
 
-function UniformizeText(text){
-    let outputTxt = "";
-    // First caracter uppercase
-    outputTxt = text.charAt(0).toUpperCase()+ text.slice(1);
+function UniformizeText(text = "", list = []){
+    let outputTxt;
+    if(text != ""){
+        outputTxt = "";
+        // First caracter uppercase
+        outputTxt = text.charAt(0).toUpperCase()+ text.slice(1);
+    }
+    if (list.length > 0){
+        outputTxt = [];
+        list.forEach(elt => {
+            outputTxt.push(elt.charAt(0).toUpperCase()+ elt.slice(1));
+        });
+    }
     return outputTxt;
 }
 
+//[NOT USED]
 //#region Levenshtein distance --> Check similarity between 2 strings
-function similarity(s1, s2) {
-    var longer = s1;
-    var shorter = s2;
-    if (s1.length < s2.length) {
-      longer = s2;
-      shorter = s1;
-    }
-    var longerLength = longer.length;
-    if (longerLength == 0) {
-      return 1.0;
-    }
-    return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
-}
+// function similarity(s1, s2) {
+//     var longer = s1;
+//     var shorter = s2;
+//     if (s1.length < s2.length) {
+//       longer = s2;
+//       shorter = s1;
+//     }
+//     var longerLength = longer.length;
+//     if (longerLength == 0) {
+//       return 1.0;
+//     }
+//     return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+// }
 
-function editDistance(s1, s2) {
-    s1 = s1.toLowerCase();
-    s2 = s2.toLowerCase();
+// function editDistance(s1, s2) {
+//     s1 = s1.toLowerCase();
+//     s2 = s2.toLowerCase();
   
-    var costs = new Array();
-    for (var i = 0; i <= s1.length; i++) {
-      var lastValue = i;
-      for (var j = 0; j <= s2.length; j++) {
-        if (i == 0)
-          costs[j] = j;
-        else {
-          if (j > 0) {
-            var newValue = costs[j - 1];
-            if (s1.charAt(i - 1) != s2.charAt(j - 1))
-              newValue = Math.min(Math.min(newValue, lastValue),
-                costs[j]) + 1;
-            costs[j - 1] = lastValue;
-            lastValue = newValue;
-          }
-        }
-      }
-      if (i > 0)
-        costs[s2.length] = lastValue;
-    }
-    return costs[s2.length];
-}
+//     var costs = new Array();
+//     for (var i = 0; i <= s1.length; i++) {
+//       var lastValue = i;
+//       for (var j = 0; j <= s2.length; j++) {
+//         if (i == 0)
+//           costs[j] = j;
+//         else {
+//           if (j > 0) {
+//             var newValue = costs[j - 1];
+//             if (s1.charAt(i - 1) != s2.charAt(j - 1))
+//               newValue = Math.min(Math.min(newValue, lastValue),
+//                 costs[j]) + 1;
+//             costs[j - 1] = lastValue;
+//             lastValue = newValue;
+//           }
+//         }
+//       }
+//       if (i > 0)
+//         costs[s2.length] = lastValue;
+//     }
+//     return costs[s2.length];
+// }
+//#endregion
 
 Init();
