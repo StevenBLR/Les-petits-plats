@@ -1738,10 +1738,11 @@ class Recipe{
 class Ingrédient{
     constructor(ingredient,quantity,unit){
         this.ingredient = ingredient;
-        this.quantity = quantity;
-        this.unit = unit;
+        this.quantity = quantity || null;
+        this.unit = unit || null; // truthy or falsy
     }
 }
+
 var recipes = [];
 var descriptions = [];
 
@@ -1842,7 +1843,8 @@ function checkTextInput(recipe, str){
     //--------------------------------------------------------------------------------------------
     // REGEX Version 
     let visible = false;
-    const reg = new RegExp(str, "i");
+    
+    const reg = new RegExp(escapeRegExp(str), "i");
     if(recipe.name.match(reg)){
         visible = true;
     }
@@ -1883,8 +1885,9 @@ function checkTextInput(recipe, str){
 function checkTags(recipe, tags){
     let score = 0;
     let visible = false;
+    
     tags.forEach(tag => {
-        var reg = new RegExp(tag.name, "i");
+        var reg = new RegExp(escapeRegExp(tag.name), "i");
         if(tag.type == "Ingrédient"){
             if(recipe.ingredients.find(i => i.ingredient.match(reg))) score++;
         }
@@ -1920,6 +1923,10 @@ function UniformizeText(text = "", list = []){
     }
     return outputTxt;
 }
+
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+  }
 
 //[NOT USED]
 //#region Levenshtein distance --> Check similarity between 2 strings

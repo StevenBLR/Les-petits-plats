@@ -148,7 +148,7 @@ function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
         recipesToDisplay.forEach(r => {
             str ="";
             r.ingredients.forEach(i =>{
-                str += `<p><strong>${i.ingredient} ${i.hasOwnProperty('quantity') || i.hasOwnProperty('unit')?":":""}</strong> ${i.hasOwnProperty('quantity')?i.quantity:""} ${i.hasOwnProperty('unit')?i.unit:""}</p>`;
+                str += `<p><strong>${i.ingredient} ${i.quantity != null || i.unit != null ?":":""}</strong> ${i.quantity != null ? i.quantity : ""} ${i.unit != null ? i.unit : ""}</p>`;
             })
             recipesRootElt.innerHTML +=
             `<div class="card recipes__card">
