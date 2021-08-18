@@ -1739,7 +1739,7 @@ class Ingrédient{
     constructor(ingredient,quantity,unit){
         this.ingredient = ingredient;
         this.quantity = quantity || null;
-        this.unit = unit || null; // truthy or falsy
+        this.unit = unit || null; // truthy or falsy --> No undefined value, either filled or null ( Easier tests later on )
     }
 }
 
@@ -1830,7 +1830,7 @@ function GetMatchingElement(input = "", tags = []){
             recipe.visible = visible;
             
             if(recipe.visible){
-                console.log(`Recette ${recipe} tags test = ${checkTags(recipe,tags)} / input test = ${checkTextInput(recipe,input)} / status = ${checkTags(recipe,tags) && checkTextInput(recipe,input)}`, recipe);
+                //console.log(`Recette ${recipe} tags test = ${checkTags(recipe,tags)} / input test = ${checkTextInput(recipe,input)} / status = ${checkTags(recipe,tags) && checkTextInput(recipe,input)}`, recipe);
                 matchingRecipes.push(recipe);
             }
         });
@@ -1926,7 +1926,7 @@ function UniformizeText(text = "", list = []){
 
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-  }
+}
 
 //[NOT USED]
 //#region Levenshtein distance --> Check similarity between 2 strings

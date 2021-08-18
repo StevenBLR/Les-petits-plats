@@ -6,7 +6,7 @@ var mainSearchBar = document.querySelector(".filters__search-bar");
 var tagsRootElt = document.querySelector(".filters__tags");
 var recipesRootElt = document.querySelector(".recipes");
 
-var currentAsf; // ASF = Advanced Search Field
+var currentAsf = null; // ASF = Advanced Search Field
 var currentTagList = []; 
 var currentRecipeList = [];
 var allAsfContent = new Map(); // key : Asf Type | content : list of elements 
@@ -25,10 +25,20 @@ function InitEvents(){
     // Main Search Bar
     mainSearchBar.addEventListener("input", function(e){
         e.preventDefault;
-       if(mainSearchBar.value.toString().length > 2){
-           console.log("Refresh UI");
-           PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value, currentTagList));
-       }
+        if(mainSearchBar.value.toString().length > 2 || mainSearchBar.value.toString().length == 0){
+            console.log("Refresh UI");
+            // More than caracters 
+            if(mainSearchBar.value.toString().length > 2){
+                PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value, currentTagList));
+                // Update Asf with correct data depending on the combo between main search bar and current asf bar
+                if(currentAsf != null) currentAsf.value != "" ? PopulateAdvancedSearchField(currentAsf.id,currentAsf.value) : PopulateAdvancedSearchField(currentAsf.id);
+            }
+            // No caracters
+            if (mainSearchBar.value.toString().length == 0){
+                PopulateRecipeFeed(true);
+                if(currentAsf != null) currentAsf.value != "" ? PopulateAdvancedSearchField(currentAsf.id,currentAsf.value) : PopulateAdvancedSearchField(currentAsf.id);
+            }
+        }
     })
     // Advanced Search Fields
     document.querySelectorAll("[data-info=asf]").forEach(asf => {
@@ -40,12 +50,12 @@ function InitAdvancedSearchField(elt){
     // Click on text input
     elt.addEventListener("click", function(e){
         if (elt != currentAsf){
-            OpenAsf(elt);
             currentAsf = elt;
+            OpenAsf(elt);
             ulElt = elt.closest("div[data-info]").querySelector("ul");
         }
     })
-    // Input text
+    // Input text in Asf
     elt.addEventListener("input", function(e){
         var asfId = elt.id;
         if(logs) console.log(`Refresh Asf ${asfId} with value "${elt.value}"`);
@@ -67,9 +77,12 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
     var ulElt = document.createElement("ul");
 
     elementsToDisplay = [];
+    
+    // [TODO] Revoir la structure ------------------------------------------------------------------------------------
     // Via tag ou main input
     if (txtInput == ""){
-        if (currentTagList.length > 0 || mainSearchBar.value.toString().length){
+        console.log("nothing in asf txt field");
+        if (currentTagList.length > 0 || mainSearchBar.value.toString().length > 2){
             elementsToDisplay = [...GetAsfElementsFromRecipes(currentAsfId, currentRecipeList)];
         }
         else{
@@ -80,10 +93,13 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
             }
         }
     }
-    //Via asf txt input
+    //Via asf txt input only
     else{
-        elementsToDisplay = GetAsfElementsFromText(id, txtInput);
+        console.log("Something in asg txt field");
+        elementsToDisplay = [...GetAsfElementsFromRecipes(currentAsfId, currentRecipeList, txtInput)];
     }
+    //----------------------------------------------------------------------------------------------------------------
+
     // Generate elements 
     if(elementsToDisplay.length > 0){
         elementsToDisplay.forEach(i =>{
@@ -101,7 +117,7 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
                         e.preventDefault();
                         PopulateTag(i, e.target.parentNode.id,currentAsfId);
                         PopulateRecipeFeed(false, GetMatchingElement(mainSearchBar.value,currentTagList));
-                        PopulateAdvancedSearchField(currentAsfId);
+                        currentAsf.value != "" ? PopulateAdvancedSearchField(currentAsfId,currentAsf.value) : PopulateAdvancedSearchField(currentAsfId);PopulateAdvancedSearchField(currentAsfId);
                     }
                 });
                 
@@ -130,10 +146,11 @@ function PopulateAdvancedSearchField(id, txtInput = ""){
 function PopulateRecipeFeed(displayAll = false, filteredRecipes = []){
     recipesRootElt.innerHTML = "";
     recipesToDisplay = [];
-    // Storing filtered recipes for later use
-    currentRecipeList = [...filteredRecipes];
+    
     if (displayAll) recipesToDisplay = [...recipes];
     else recipesToDisplay = [...filteredRecipes];
+    // Storing filtered recipes for later use
+    currentRecipeList = recipesToDisplay;
     if (recipesToDisplay.length == 0){
         console.log("Display none message");
         // Generate a message with 2 random ingredients
@@ -197,7 +214,7 @@ function PopulateTag(title, id, type){
         // Load all recipes when there is no more tags
         else PopulateRecipeFeed(true);
         // Update Asfs 
-        PopulateAdvancedSearchField(currentAsf.id);
+        currentAsf.value != "" ? PopulateAdvancedSearchField(currentAsf.id,currentAsf.value) : PopulateAdvancedSearchField(currentAsf.id);
     })
 
     // Style - Update tag color with type
@@ -232,38 +249,41 @@ function OpenAsf(elt){
         asf.querySelector(".advanced-search-field__text-input").setAttribute("placeholder", `${asf.querySelector(".advanced-search-field__text-input").id}s`);
     })
     // Open current asf
-    PopulateAdvancedSearchField(elt.id);
+    if(currentAsf != null) currentAsf.value != "" ? PopulateAdvancedSearchField(elt.id,currentAsf.value) : PopulateAdvancedSearchField(elt.id);
+    else PopulateAdvancedSearchField(elt.id);
     elt.setAttribute("placeholder", `Rechercher un ${elt.id}`);
 }
 
-function GetAsfElementsFromRecipes(asfId, currentRecipes){
+function GetAsfElementsFromRecipes(asfId, currentRecipes, textInput = ""){
     const asfContent = [];
+    console.log(currentRecipes);
+    if (textInput != "") var reg = new RegExp(escapeRegExp(textInput), "i");
+
     // Adding asf elts from current recipes list if not stored
     currentRecipes.forEach(r => {
         // Adding Appliances
-        if (asfId == "Appareil" && !asfContent.includes(r.appliance))asfContent.push(r.appliance);
+        if (asfId == "Appareil" && !asfContent.includes(r.appliance)){
+            if(textInput != "") r.appliance.match(reg) ? asfContent.push(r.appliance) : ""; 
+            else asfContent.push(r.appliance);
+        } 
 
         // Adding Ingrédients
         if (asfId == "Ingrédient") r.ingredients.forEach(i => {
-            if (!asfContent.includes(i.ingredient)) asfContent.push(i.ingredient);});
+            if (!asfContent.includes(i.ingredient)){
+                if(textInput != "") i.ingredient.match(reg) ? asfContent.push(i.ingredient) : "";
+                else asfContent.push(i.ingredient);
+            }
+        });
 
         // Adding Ustencils
         if (asfId == "Ustensile") r.ustensils.forEach(u => {
-            if(!asfContent.includes(u)) asfContent.push(u);});
-    })
+            if(!asfContent.includes(u)){
+                if(textInput != "") u.match(reg) ? asfContent.push(u) : "";
+                else asfContent.push(u);
+            }
+        });
+    });
     console.log("Asf Content", asfContent);
-    return asfContent;
-}
-
-function GetAsfElementsFromText(asfId,text){
-    const asfContent = [];
-    const reg = new RegExp(`${text}`, 'i'); // Expression, Parametre
-    var mapToCompare = allAsfContent.get(asfId);
-
-    mapToCompare
-    .filter(x => x.match(reg))
-    .forEach(elt => asfContent.push(elt));
-    console.log(`Items to show in ${asfId}`,asfContent);
     return asfContent;
 }
 
