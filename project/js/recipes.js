@@ -20,7 +20,7 @@ const recipesJSON = [
             },
             {
                 "ingredient" : "Sucre",
-                "quantite" : 30,
+                "quantity" : 30,
                 "unit" : "grammes"
             },
             {
@@ -1746,7 +1746,7 @@ class Ingrédient{
 var recipes = [];
 var descriptions = [];
 
-
+console.log(recipesJSON);
 function Init(){
     StoreAllRecipes();
 }
