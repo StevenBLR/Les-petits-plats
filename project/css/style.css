@@ -29,7 +29,6 @@
 
   div .recipes .recipes__card {
     max-width: 100%;
-    min-width: unset;
     width: 100%;
   }
 }
