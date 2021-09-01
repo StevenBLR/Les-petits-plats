@@ -1,23 +1,43 @@
 $body-max-width: 1250px;
 
-@media (min-width: $body-max-width){
-    body .page-wrapper{
-        margin: 20px auto auto auto;
+@media (min-width: $body-max-width) {
+  body .page-wrapper {
+    margin: 20px auto auto auto;
+  }
+}
+
+// Breakdown Dropdown
+@media (max-width: 1200px) {
+  .filters__advanced-search {
+    div[data-info] ul {
+      column-count: 2;
     }
+  }
 }
 
 // Mobile version
-@media (max-width: 840px){
-    .filters__advanced-search{
-        div[data-info]{
-            width: 100%;
-            margin: unset;
-            margin-bottom: 10px;
-        }
+@media (max-width: 840px) {
+  .filters__advanced-search {
+    div[data-info] {
+      display: block;
+      position: relative;
+      left: unset;
+      width: 100%;
+      margin: unset;
+      margin-bottom: 10px;
+
+      ul {
+        column-count: 3;
+      }
     }
-    div .recipes .recipes__card{
-        max-width: 100%;
-        min-width: unset;
-        width: 100%;
-    }
+  }
+
+  main.recipes {
+    margin-top: unset;
+  }
+  div .recipes .recipes__card {
+    max-width: 100%;
+    min-width: unset;
+    width: 100%;
+  }
 }

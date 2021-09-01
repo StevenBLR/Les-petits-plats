@@ -1,70 +1,73 @@
-$asf-max-height : 250px;
+$asf-max-height: 250px;
 
-@mixin advanced-sf($color){
-    position: relative;
-    width: max-content;
-    height: max-content;
-    border-radius: 10px;
-    margin: 0 20px 7px 0;
-    background-color: $color;
-    
-    &__text-input{
-        border: none;
-        height: 70px;
-        width: 100%;
-        padding: 20px;
-        font-weight: 600;
-        color: white;
-        background-color: transparent;
-    }
+@mixin advanced-sf($color) {
+  position: absolute;
+  z-index: 1;
+  width: 33%;
+  height: max-content;
+  border-radius: 10px;
+  margin: 0 20px 7px 0;
+  background-color: $color;
 
-    ::placeholder{
-        color: white;
-        //opacity: 0.9;
-    }
+  &__text-input {
+    border: none;
+    height: 70px;
+    width: 100%;
+    padding: 20px;
+    font-weight: 600;
+    color: white;
+    background-color: transparent;
+  }
 
-    i{
-        position: absolute;
-        right: 15px;
-        top: 27px;
-        color: white;
-    }
+  ::placeholder {
+    color: white;
+    //opacity: 0.9;
+  }
 
-    // Advanced search list
-    ul{
-        //@include animScaleY(1s);
-        max-height: $asf-max-height;
-        margin: 10px 20px 10px 20px;
-        padding: unset;
-        column-count: 3;
+  i {
+    position: absolute;
+    right: 15px;
+    top: 27px;
+    color: white;
+  }
+
+  // Advanced search list
+  ul {
+    //@include animScaleY(1s);
+    max-height: $asf-max-height;
+    margin: 10px 20px 10px 20px;
+    padding: unset;
+    column-count: 3;
+    overflow: hidden;
+  }
+  li {
+    @include staggerAnim(1500ms, 0.05s);
+    max-width: 125px;
+    overflow: hidden;
+    button {
+      border: none;
+      background-color: transparent;
+      color: white;
+      padding: unset;
+      // [TODO] Fix (not effective)
+      span {
+        white-space: nowrap;
+        text-overflow: ellipsis;
         overflow: hidden;
+      }
     }
-    li{
-        @include staggerAnim(1500ms, 0.05s);
-        max-width: 125px;
-        overflow: hidden;
-        button{
-            border: none;
-            background-color: transparent;
-            color: white;
-            padding: unset;
-            // [TODO] Fix (not effective)
-            span{
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-            }
-        }
-    }
+  }
 }
 
-.advanced-search-field{
-    @include advanced-sf($blue);
-    &--green{
-        @include advanced-sf($green);
-    }
-    &--orange{
-        @include advanced-sf($orange);
-    }
-    
+.advanced-search-field {
+  @include advanced-sf($blue);
+
+  &--green {
+    @include advanced-sf($green);
+    left: 33.5%;
+  }
+  &--orange {
+    @include advanced-sf($orange);
+    left: 67%;
+  }
 }

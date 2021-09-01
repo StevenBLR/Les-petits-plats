@@ -1,73 +1,73 @@
-$card-border-radius : 10px;
+$card-border-radius: 10px;
 
-.recipes{
+.recipes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 90px;
+  margin-inline: -20px;
+
+  p#recipes__message {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 50px;
+  }
+
+  .recipes__img {
+    height: 170px;
+    object-fit: cover;
+    border-radius: $card-border-radius $card-border-radius 0 0;
+  }
+
+  .recipes__card {
+    @include staggerAnim(1500ms, 0.1s, 2rem);
+    width: 33%;
+    max-width: 380px;
+    min-width: 300px;
+    max-height: 364px;
+    margin: 0 20px 20px 20px;
+    border-radius: $card-border-radius;
+  }
+  .card-body {
+    position: relative;
+  }
+  &__title {
+    width: calc(80% - 30px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__time-label {
+    position: absolute;
+    font-weight: 600;
+    font-size: 17px;
+    right: 17px;
+    top: 17px;
+  }
+
+  &__content {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-inline: -20px;
-    
-    p#recipes__message {
-        font-size: 20px;
-        font-weight: 500;
-        margin-top: 50px;
-    }
+    font-size: small;
+    height: 100px;
+    .recipes__ingredients {
+      flex-shrink: 0;
+      margin-right: 20px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: calc(50% - 15px);
+      white-space: nowrap;
+      text-overflow: ellipsis;
 
-    .recipes__img{
-        height: 170px;
-        object-fit: cover;
-        border-radius: $card-border-radius $card-border-radius 0 0;
-    }
-
-    .recipes__card{
-        @include staggerAnim(1500ms, 0.1s, 2rem);
-        width: 33%;
-        max-width: 380px;
-        min-width: 300px;
-        max-height: 364px;
-        margin: 0 20px 20px 20px;
-        border-radius: $card-border-radius;
-    }
-    .card-body{
-        position: relative;
-    }
-    &__title{
-        width: calc(80% - 30px);
+      p {
+        margin-bottom: unset;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+      }
     }
 
-    &__time-label{
-        position: absolute;
-        font-weight: 600;
-        font-size: 17px;
-        right: 17px;
-        top: 17px;
+    .recipes__recipe {
+      overflow: auto;
     }
-
-    &__content{
-        display: flex;
-        font-size: small;
-        height: 100px;
-        .recipes__ingredients{
-            flex-shrink: 0;
-            margin-right: 20px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            width: calc(50% - 15px);
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        
-            p{
-                margin-bottom: unset;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-
-        .recipes__recipe{
-            overflow: auto;
-        }
-    }
-    
+  }
 }
