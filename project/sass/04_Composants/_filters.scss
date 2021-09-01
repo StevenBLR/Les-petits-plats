@@ -1,70 +1,66 @@
 /* FILTERS --------------------------- */
-$search-bar-height : 55px;
-$tag-font-size : 14px;
+$search-bar-height: 55px;
+$tag-font-size: 14px;
 
-.filters{
+.filters {
+  position: relative;
+  // Search bar
+  &__search-bar-wrapper {
+    height: $search-bar-height;
     position: relative;
-    // Search bar
-    &__search-bar-wrapper{
-        height: $search-bar-height;
-        position: relative;
-        .filters__send-bt{
-            position: absolute;
-            font-size: 20px;
-            right: 0;
-            height: 100%;
-            width: $search-bar-height;
-            border: none;
-            background-color: unset;
-        }
-        .filters__search-bar {
-            height: 100%;
-            width: 100%;
-            border-radius: 5px;
-            padding: 10px $search-bar-height 10px 15px;
-            border: none;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            background-color: #E7E7E7;
-        }
+    .filters__send-bt {
+      position: absolute;
+      font-size: 20px;
+      right: 0;
+      height: 100%;
+      width: $search-bar-height;
+      border: none;
+      background-color: unset;
+    }
+    .filters__search-bar {
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      padding: 10px $search-bar-height 10px 15px;
+      border: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      background-color: #e7e7e7;
+    }
+  }
+
+  // Tags
+  &__tags {
+    margin-bottom: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    .filters__tag {
+      font-size: $tag-font-size;
+      border-radius: 7px;
+      padding: 10px 3px 10px 10px;
+      margin: 7px 7px 0 0;
+      color: white;
+      white-space: nowrap;
+      background-color: #3282f7;
     }
 
-    // Tags
-    &__tags {
-        margin-bottom: 7px;
-        display: flex;
-        flex-wrap: wrap;
-        .filters__tag {
-            font-size: $tag-font-size;
-            border-radius: 7px;
-            padding: 10px 3px 10px 10px;
-            margin: 7px 7px 0 0;
-            color: white;
-            white-space: nowrap;
-            background-color: #3282F7;
-        }
-
-        button{
-            border: none;
-            color: white;
-            background-color: transparent;
-            i{
-                font-size: $tag-font-size; //+ 3px;
-            }
-        }
+    button {
+      border: none;
+      color: white;
+      background-color: transparent;
+      i {
+        font-size: $tag-font-size; //+ 3px;
+      }
     }
+  }
 
-    // Advanced search
-    &__advanced-search{
-        display: flex;
-        flex-wrap: wrap;
-        margin: 20px 0;
+  // Advanced search
+  &__advanced-search {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    i {
+      pointer-events: none;
     }
+  }
 }
-
-
- 
-
-
-
-

@@ -1220,6 +1220,7 @@ header .header__logo {
   margin-top: 50px;
 }
 .recipes .recipes__img {
+  background-color: #c7bebe;
   height: 170px;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
@@ -1545,6 +1546,8 @@ header .header__logo {
 }
 .recipes .card-body {
   position: relative;
+  height: 180px;
+  overflow: hidden;
 }
 .recipes__title {
   width: calc(80% - 30px);
@@ -1562,7 +1565,7 @@ header .header__logo {
 .recipes__content {
   display: flex;
   font-size: small;
-  height: 100px;
+  height: calc(100% - 10px);
 }
 .recipes__content .recipes__ingredients {
   flex-shrink: 0;
@@ -1607,7 +1610,7 @@ header .header__logo {
   border: none;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
 }
 .filters__tags {
   margin-bottom: 7px;
@@ -1621,7 +1624,7 @@ header .header__logo {
   margin: 7px 7px 0 0;
   color: white;
   white-space: nowrap;
-  background-color: #3282F7;
+  background-color: #3282f7;
 }
 .filters__tags button {
   border: none;
@@ -1635,6 +1638,9 @@ header .header__logo {
   display: flex;
   flex-wrap: wrap;
   margin: 20px 0;
+}
+.filters__advanced-search i {
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=style.css.map */
